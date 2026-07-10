@@ -1,0 +1,103 @@
+:root {
+  --font-sans: var(--font-geist), "Geist", -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
+  color-scheme: light;
+  --launcher-black: #030303;
+  --launcher-gray: #737373;
+  --launcher-soft: #f4f4f4;
+  --launcher-line: #e7e7e7;
+}
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  min-height: 100%;
+}
+
+body {
+  font-family: var(--font-sans);
+  color: var(--launcher-black);
+  background: #ffffff;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: geometricPrecision;
+}
+
+a {
+  text-underline-offset: 3px;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+button,
+input,
+textarea,
+select {
+  font: inherit;
+}
+
+.launcher-shell {
+  min-height: 100vh;
+  background: #ffffff;
+}
+
+.launcher-frame {
+  margin-inline: auto;
+  width: 100%;
+  max-width: 37rem;
+}
+
+.launcher-public-header {
+  position: sticky;
+  top: 0;
+  z-index: 30;
+  background: rgba(255, 255, 255, 0.9);
+  backdrop-filter: blur(18px);
+}
+
+.launcher-cube-shadow {
+  filter: none;
+}
+
+.launcher-hero-plate {
+  background:
+    radial-gradient(circle at 50% 80%, rgba(0, 0, 0, 0.11), transparent 17rem),
+    linear-gradient(135deg, #f7f7f7, #ffffff 52%, #eeeeee);
+}
+
+.prose {
+  max-width: 70ch;
+  color: #111111;
+  line-height: 1.58;
+}
+
+.prose h2 {
+  margin-top: 2rem;
+  margin-bottom: 0.8rem;
+  font-size: clamp(1.5rem, 5vw, 2rem);
+  line-height: 1.1;
+  font-weight: 500;
+}
+
+.prose p,
+.prose li {
+  margin-top: 0.7rem;
+  margin-bottom: 0.7rem;
+  font-size: 1.06rem;
+}
+
+.prose code {
+  font-size: 0.95rem;
+  background: #f0f0f0;
+  border-radius: 0.35rem;
+  padding: 0.1rem 0.28rem;
+}
