@@ -9,6 +9,7 @@ import {
 } from "@/lib/sample-data";
 import {
   createFallbackPost,
+  deleteFallbackPost,
   getFallbackPosts,
   getFallbackPostByIdOrSlug,
   saveFallbackPost,
@@ -358,6 +359,25 @@ export async function getPostByIdOrSlug(idOrSlug: string): Promise<CmsBlogPost |
   }
 
   return null;
+}
+
+export async function deletePost(postId: string): Promise<boolean> {
+  const client = createServerClient();
+
+  if (!client) {
+    return deleteFallbackPost(postId);
+  }
+
+  const { error, count } = await client
+    .from("posts")
+    .delete({ count: "exact" })
+    .eq("id", postId);
+
+  if (error) {
+    throw new Error(`Failed to delete post: ${error.message}`);
+  }
+
+  return (count || 0) > 0;
 }
 
 type SavePostPayload = {

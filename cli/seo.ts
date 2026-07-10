@@ -1,6 +1,6 @@
 import { existsSync, mkdirSync, readFileSync, readdirSync, statSync, writeFileSync } from "node:fs";
 import path from "node:path";
-import { createPost, getPostByIdOrSlug, listPostsForAdmin, savePost } from "@/lib/db";
+import { createPost, deletePost, getPostByIdOrSlug, listPostsForAdmin, savePost } from "@/lib/db";
 import { renderSeoScoreMarkdown, scoreBlogPost, type SeoScoreContext } from "@/lib/seo-score";
 import {
   auditPage,
@@ -66,6 +66,7 @@ Usage:
   bun run seo import-pages --file ./data/seed-pages-ai-cluster.json
   bun run seo audit-page --id best-ai-note-takers-for-meetings
   bun run seo score-page --id plaud-note-alternatives --locale en --site-url http://localhost:3000 --out reports/seo/plaud-note-alternatives-en.md
+  bun run seo delete-page --id plaud-note-alternatives --seed-file data/seed-pages-first-topic-cluster.json --yes
 
 Commands:
   create-page    Create a draft page from the best-x-for-y-in-z template
@@ -74,6 +75,7 @@ Commands:
   import-pages   Bulk create full pages from a JSON seed file
   audit-page     Audit one page for SEO/commercial readiness
   score-page     Generate a weighted SEO + A/B testing score report for one page
+  delete-page    Delete one page, optionally removing it from a JSON seed file
 `);
 }
 
@@ -536,6 +538,51 @@ async function handleScorePage(args: Args) {
   console.log(markdown);
 }
 
+function deleteFromSeedFile(filePath: string, page: Awaited<ReturnType<typeof getPostByIdOrSlug>>) {
+  if (!page) return 0;
+  const absolutePath = path.isAbsolute(filePath) ? filePath : path.join(process.cwd(), filePath);
+  const parsed = JSON.parse(readFileSync(absolutePath, "utf8")) as unknown;
+  const slugs = new Set([page.id, page.slug, ...page.translations.map((item) => item.slug)]);
+
+  if (Array.isArray(parsed)) {
+    const next = parsed.filter((entry) => !entry || typeof entry !== "object" || !slugs.has(String((entry as { slug?: unknown }).slug || "")));
+    writeFileSync(absolutePath, `${JSON.stringify(next, null, 2)}\n`, "utf8");
+    return parsed.length - next.length;
+  }
+
+  if (parsed && typeof parsed === "object" && Array.isArray((parsed as { pages?: unknown[] }).pages)) {
+    const container = parsed as { pages: unknown[] };
+    const next = container.pages.filter((entry) => !entry || typeof entry !== "object" || !slugs.has(String((entry as { slug?: unknown }).slug || "")));
+    writeFileSync(absolutePath, `${JSON.stringify({ ...(parsed as Record<string, unknown>), pages: next }, null, 2)}\n`, "utf8");
+    return container.pages.length - next.length;
+  }
+
+  throw new Error("Seed file must be an array or an object with a pages array");
+}
+
+async function handleDeletePage(args: Args) {
+  if (!args.yes) {
+    throw new Error("Deletion requires --yes");
+  }
+
+  const id = requireStringArg(args, "id");
+  const page = await getPostByIdOrSlug(id);
+
+  if (!page) {
+    throw new Error(`Page not found: ${id}`);
+  }
+
+  const deleted = await deletePost(page.id);
+  if (!deleted) {
+    throw new Error(`Page could not be deleted: ${id}`);
+  }
+
+  const seedFile = getStringArg(args, "seed-file");
+  const removedFromSeed = seedFile ? deleteFromSeedFile(seedFile, page) : 0;
+  console.log(`Deleted page ${page.slug} (${page.id})`);
+  if (seedFile) console.log(`Removed ${removedFromSeed} matching seed page(s) from ${seedFile}`);
+}
+
 async function main() {
   const args = parseArgs(process.argv.slice(2));
   const command = args._[0];
@@ -572,6 +619,11 @@ async function main() {
 
   if (command === "score-page") {
     await handleScorePage(args);
+    return;
+  }
+
+  if (command === "delete-page") {
+    await handleDeletePage(args);
     return;
   }
 

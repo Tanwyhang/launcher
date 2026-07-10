@@ -254,6 +254,18 @@ export function saveFallbackPost(
   return clonePost(next);
 }
 
+export function deleteFallbackPost(postId: string): boolean {
+  const posts = readFallbackPosts();
+  const nextPosts = posts.filter((post) => post.id !== postId);
+
+  if (nextPosts.length === posts.length) {
+    return false;
+  }
+
+  writeFallbackPosts(nextPosts);
+  return true;
+}
+
 export function ensureFallbackSeed() {
   ensureFallbackFile();
 
