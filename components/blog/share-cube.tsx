@@ -1,13 +1,13 @@
 "use client";
 
-import { Check, Copy, DownloadSimple, FacebookLogo, LinkedinLogo, ShareNetwork, XLogo } from "@phosphor-icons/react";
+import { Check, Copy, DownloadSimple, FacebookLogo, ImageSquare, LinkedinLogo, ShareNetwork, XLogo } from "@phosphor-icons/react";
 import { useState } from "react";
 import type { LocaleCode } from "@/lib/utils";
 
 const copy = {
-  en: { share: "Share cube", copied: "Copied", story: "Share story card", x: "Post to X", facebook: "Facebook", linkedin: "LinkedIn" },
-  ms: { share: "Kongsi cube", copied: "Disalin", story: "Kongsi kad story", x: "Post ke X", facebook: "Facebook", linkedin: "LinkedIn" },
-  "zh-Hans": { share: "分享 cube", copied: "已复制", story: "分享 Story 卡片", x: "发布到 X", facebook: "Facebook", linkedin: "LinkedIn" },
+  en: { share: "Share article", copied: "Copied", shareImage: "Share image", saveImage: "Save image", x: "Post to X", facebook: "Facebook", linkedin: "LinkedIn" },
+  ms: { share: "Kongsi artikel", copied: "Disalin", shareImage: "Kongsi imej", saveImage: "Simpan imej", x: "Post ke X", facebook: "Facebook", linkedin: "LinkedIn" },
+  "zh-Hans": { share: "分享文章", copied: "已复制", shareImage: "分享图片", saveImage: "保存图片", x: "发布到 X", facebook: "Facebook", linkedin: "LinkedIn" },
 } as const;
 
 export function ShareCube({ locale, title, storyImagePath }: { locale: LocaleCode; title: string; storyImagePath: string }) {
@@ -32,22 +32,35 @@ export function ShareCube({ locale, title, storyImagePath }: { locale: LocaleCod
     window.setTimeout(() => setCopied(false), 1800);
   }
 
-  async function shareStoryCard() {
+  async function getStoryFile() {
     const imageUrl = new URL(storyImagePath, window.location.origin).toString();
     const response = await fetch(imageUrl);
+    if (!response.ok) throw new Error("Unable to create share image");
     const blob = await response.blob();
-    const file = new File([blob], "launcher-story-card.png", { type: "image/png" });
+    return new File([blob], "launcher-portrait-guide.png", { type: "image/png" });
+  }
+
+  async function shareStoryCard() {
+    const file = await getStoryFile();
 
     if (navigator.share && navigator.canShare?.({ files: [file] })) {
       await navigator.share({ title, text: title, files: [file], url: currentUrl() });
       return;
     }
 
+    saveFile(file);
+  }
+
+  function saveFile(file: File) {
     const link = document.createElement("a");
-    link.href = URL.createObjectURL(blob);
-    link.download = "launcher-story-card.png";
+    link.href = URL.createObjectURL(file);
+    link.download = file.name;
     link.click();
-    URL.revokeObjectURL(link.href);
+    window.setTimeout(() => URL.revokeObjectURL(link.href), 1000);
+  }
+
+  async function saveStoryCard() {
+    saveFile(await getStoryFile());
   }
 
   function openSocial(base: string) {
@@ -62,7 +75,10 @@ export function ShareCube({ locale, title, storyImagePath }: { locale: LocaleCod
         <ShareNetwork size={17} aria-hidden="true" /> {labels.share}
       </button>
       <button type="button" className={buttonClass} onClick={shareStoryCard}>
-        <DownloadSimple size={17} aria-hidden="true" /> {labels.story}
+        <ImageSquare size={17} aria-hidden="true" /> {labels.shareImage}
+      </button>
+      <button type="button" className={buttonClass} onClick={saveStoryCard}>
+        <DownloadSimple size={17} aria-hidden="true" /> {labels.saveImage}
       </button>
       <button type="button" className={buttonClass} onClick={() => openSocial(`https://twitter.com/intent/tweet?text=${encodeURIComponent(title)}&url=${encodeURIComponent(currentUrl())}`)}>
         <XLogo size={17} aria-hidden="true" /> {labels.x}
