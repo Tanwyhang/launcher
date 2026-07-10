@@ -233,6 +233,8 @@ function PageEdit() {
             <NumberInput source="score" label="Score" min={0} max={10} step={0.1} fullWidth />
             <TextInput source="destinationUrl" label="Destination URL" fullWidth />
             <TextInput source="trackingUrl" label="Tracking URL" fullWidth />
+            <TextInput source="imageUrl" label="Product image URL" fullWidth />
+            <TextInput source="imageLinkUrl" label="Image hyperlink / affiliate URL" fullWidth />
             <TextInput source="ctaTextEn" label="CTA (EN)" fullWidth />
             <TextInput source="ctaTextMs" label="CTA (MS)" fullWidth />
             <TextInput source="ctaTextZhHans" label="CTA (ZH)" fullWidth />

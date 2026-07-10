@@ -120,6 +120,15 @@ function normalizeOffer(raw: unknown, index: number): AffiliateLinkDraft {
     anchorText,
     destinationUrl,
     trackingUrl: typeof candidate.trackingUrl === "string" ? candidate.trackingUrl : "",
+    imageUrl: typeof candidate.imageUrl === "string" ? candidate.imageUrl : "",
+    imageLinkUrl: typeof candidate.imageLinkUrl === "string" ? candidate.imageLinkUrl : "",
+    sourceUrls: Array.isArray(candidate.sourceUrls)
+      ? candidate.sourceUrls.filter((item): item is { label: string; url: string } => {
+          if (!item || typeof item !== "object") return false;
+          const source = item as Record<string, unknown>;
+          return typeof source.label === "string" && typeof source.url === "string";
+        })
+      : [],
     rel: typeof candidate.rel === "string" && candidate.rel.trim() ? candidate.rel : "sponsored nofollow noopener",
     target: typeof candidate.target === "string" && candidate.target.trim() ? candidate.target : "_blank",
     ctaTextEn: typeof candidate.ctaTextEn === "string" && candidate.ctaTextEn.trim() ? candidate.ctaTextEn : "Check current price",
@@ -244,6 +253,7 @@ function buildSeoScoreContext(siteUrl?: string): SeoScoreContext {
       /ANALYTICS_EVENTS/.test(analyticsSource) &&
       /affiliateCardClick|leadOfferClick|saveAuthClick|affiliate_card_click|lead_offer_click|save_auth_click/.test(sourceText + analyticsSource),
     hasVariantRegistry: /SEO_EXPERIMENTS/.test(experimentSource) && /variants/.test(experimentSource),
+    hasShareControls: /ShareCube|story-card|twitter\.com\/intent\/tweet/.test(sourceText),
   };
 }
 

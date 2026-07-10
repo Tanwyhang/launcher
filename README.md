@@ -13,6 +13,8 @@ Trilingual APAC product decision guides and a CMS-oriented publishing foundation
 - section blocks, takeaways, FAQ, and disclosure fields per page
 - optional Supabase persistence plus local content mode
 - localized metadata, canonical URLs, hreflang and social images
+- per-article 1200x630 link previews and downloadable 1080x1920 story cards
+- native sharing plus X, Facebook, LinkedIn and copy-link controls
 - BlogPosting, FAQPage, ItemList, BreadcrumbList, Organization and WebSite JSON-LD
 - favicon, Apple icon, web app manifest, robots and sitemap routes
 
@@ -105,7 +107,8 @@ Each page stores:
 - locale fields in `post_translations`
   - `slug`, `title`, `meta_title`, `meta_description`, `quick_answer`, `hero_image_url`, `key_takeaways`, `sections`, `faq_items`, `body`
 - offer slots in `affiliate_links`
-  - merchant, anchor/product, CTA labels, `summary`, `best_for`, `price_band`, `score`, URLs
+  - merchant, anchor/product, CTA labels, localized decision copy and official source URLs
+  - independent `image_url` and `image_link_url` fields so product images can use a configurable affiliate destination
 
 ### Admin UX
 

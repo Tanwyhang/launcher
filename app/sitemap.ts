@@ -14,19 +14,6 @@ function localizedLanguages(pathBuilder: (locale: (typeof LOCALES)[number]) => s
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const posts = (await listPostsForAdmin()).filter((post) => post.status === "published");
   const routes: MetadataRoute.Sitemap = [
-    {
-      url: absoluteUrl("/"),
-      changeFrequency: "weekly",
-      priority: 0.7,
-    },
-    ...LOCALES.map((locale) => ({
-      url: absoluteUrl(getLocalePath(locale.code)),
-      changeFrequency: "weekly" as const,
-      priority: 0.6,
-      alternates: {
-        languages: localizedLanguages((item) => getLocalePath(item.code)),
-      },
-    })),
     ...LOCALES.map((locale) => ({
       url: absoluteUrl(`${getLocalePath(locale.code)}/blog`),
       changeFrequency: "daily" as const,

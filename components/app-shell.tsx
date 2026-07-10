@@ -70,7 +70,7 @@ export function AppShell({ children }: { children: ReactNode }) {
       <header className="launcher-public-header">
         <div className="launcher-frame px-4 pb-3 pt-4 sm:px-6 sm:pt-6">
           <div className="flex items-center justify-between gap-3">
-            <Link href={`/${activeLocaleSegment}` as any} className="flex min-w-0 items-center gap-2.5 no-underline" aria-label="launcher home">
+            <Link href={`/${activeLocaleSegment}/blog` as any} className="flex min-w-0 items-center gap-2.5 no-underline" aria-label="launcher blog">
               <img src="/logo.png" alt="" className="h-6 w-6 shrink-0 object-contain sm:h-7 sm:w-7" />
               <span className="truncate text-[1.3rem] font-medium leading-none text-black sm:text-[1.45rem]">launcher</span>
             </Link>

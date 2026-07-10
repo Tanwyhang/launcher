@@ -3,6 +3,7 @@ import Link from "next/link";
 import { ANALYTICS_EVENTS } from "@/lib/analytics-events";
 import type { AffiliateLinkDraft, CmsBlogPost } from "@/lib/sample-data";
 import { MarkdownArticle } from "@/components/markdown-article";
+import { ShareCube } from "@/components/blog/share-cube";
 import { resolveTranslationForLocale } from "@/lib/public-blog";
 import { SEO_EXPERIMENTS, getSeoExperimentVariant } from "@/lib/seo-experiments";
 import { absoluteUrl, getSiteUrl } from "@/lib/site";
@@ -199,6 +200,7 @@ export function PublicArticle({ post, localeCode }: Props) {
           name: item.anchorText,
           description: item.summary,
           url: item.destinationUrl,
+          image: item.imageUrl || undefined,
         },
       })),
       },
@@ -240,6 +242,12 @@ export function PublicArticle({ post, localeCode }: Props) {
         <h1 className="mt-5 text-[2.2rem] font-medium leading-tight text-black sm:text-[3.2rem]">
           {translation.title}
         </h1>
+
+        <ShareCube
+          locale={localeCode}
+          title={translation.title}
+          storyImagePath={`${getLocalePath(localeCode, translation.slug)}/story-card`}
+        />
 
         <div className="mt-6">
           <div className="flex items-center gap-4">
@@ -292,20 +300,25 @@ export function PublicArticle({ post, localeCode }: Props) {
             </div>
             <div className="grid gap-4">
               {activeOffers.map((item, index) => (
-                <a
+                <div
                   key={item.id}
-                  href={item.trackingUrl || item.destinationUrl}
-                  target="_blank"
-                  rel={item.rel}
                   className="rounded-[1.2rem] border border-neutral-200 bg-white p-5 text-black no-underline"
-                  data-analytics-event={ANALYTICS_EVENTS.affiliateCardClick}
-                  data-page-id={post.id}
-                  data-locale={localeCode}
-                  data-offer-id={item.id}
-                  data-offer-position={index + 1}
                 >
                   <div className="flex gap-4">
-                    <img src={cubeAssets[index % cubeAssets.length]} alt="" className="h-16 w-16 shrink-0 object-contain" />
+                    <a
+                      href={item.imageLinkUrl || item.trackingUrl || item.destinationUrl}
+                      target="_blank"
+                      rel={item.rel}
+                      aria-label={`${item.anchorText}: ${pickCta(localeCode, item)}`}
+                      className="h-24 w-28 shrink-0 overflow-hidden rounded-xl bg-neutral-50"
+                    >
+                      <img
+                        src={item.imageUrl || cubeAssets[index % cubeAssets.length]}
+                        alt={item.anchorText}
+                        className="h-full w-full object-contain"
+                        loading={index === 0 ? "eager" : "lazy"}
+                      />
+                    </a>
                     <div className="min-w-0 flex-1">
                       <div className="flex flex-wrap items-center gap-2 text-sm text-neutral-500">
                         <span>{labels.affiliatePick}</span>
@@ -316,14 +329,24 @@ export function PublicArticle({ post, localeCode }: Props) {
                       <p className="mt-2 text-[0.98rem] leading-relaxed text-neutral-700">{item.summary}</p>
                       <div className="mt-4 flex flex-wrap items-center justify-between gap-3">
                         <span className="text-sm text-neutral-500">{item.bestFor}</span>
-                        <span className="inline-flex items-center rounded-full bg-black px-4 py-2 text-sm font-medium text-white">
+                        <a
+                          href={item.trackingUrl || item.destinationUrl}
+                          target="_blank"
+                          rel={item.rel}
+                          className="inline-flex items-center rounded-full bg-black px-4 py-2 text-sm font-medium text-white no-underline"
+                          data-analytics-event={ANALYTICS_EVENTS.affiliateCardClick}
+                          data-page-id={post.id}
+                          data-locale={localeCode}
+                          data-offer-id={item.id}
+                          data-offer-position={index + 1}
+                        >
                           {pickCta(localeCode, item)}
                           <ArrowRight className="ml-2" size={16} weight="regular" aria-hidden="true" />
-                        </span>
+                        </a>
                       </div>
                     </div>
                   </div>
-                </a>
+                </div>
               ))}
             </div>
           </section>
@@ -421,13 +444,16 @@ export function PublicArticle({ post, localeCode }: Props) {
           <section className="mt-10 pt-2">
             <h2 className="text-[1.4rem] font-medium text-black">{labels.sources}</h2>
             <ul className="mt-4 space-y-3 text-base">
-              {activeOffers.map((item) => (
-                <li key={item.id}>
-                  <a className="text-black underline underline-offset-4" href={item.destinationUrl} target="_blank" rel="noopener noreferrer">
-                    {item.merchantName}: {item.anchorText}
-                  </a>
-                </li>
-              ))}
+              {activeOffers.flatMap((item) => {
+                const sources = item.sourceUrls?.length ? item.sourceUrls : [{ label: item.anchorText, url: item.destinationUrl }];
+                return sources.map((source) => (
+                  <li key={`${item.id}-${source.url}`}>
+                    <a className="text-black underline underline-offset-4" href={source.url} target="_blank" rel="noopener noreferrer">
+                      {item.merchantName}: {source.label}
+                    </a>
+                  </li>
+                ));
+              })}
             </ul>
           </section>
         ) : null}

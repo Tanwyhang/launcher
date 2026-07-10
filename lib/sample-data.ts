@@ -42,6 +42,9 @@ export type AffiliateLinkDraft = {
   anchorText: string;
   destinationUrl: string;
   trackingUrl?: string;
+  imageUrl?: string;
+  imageLinkUrl?: string;
+  sourceUrls?: Array<{ label: string; url: string }>;
   rel: string;
   target: string;
   ctaTextEn: string;

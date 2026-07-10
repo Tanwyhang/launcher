@@ -75,6 +75,15 @@ function normalizeAffiliateLink(raw: unknown, index: number): AffiliateLinkDraft
     anchorText: typeof candidate.anchorText === "string" ? candidate.anchorText : "",
     destinationUrl: typeof candidate.destinationUrl === "string" ? candidate.destinationUrl : "",
     trackingUrl: typeof candidate.trackingUrl === "string" ? candidate.trackingUrl : "",
+    imageUrl: typeof candidate.imageUrl === "string" ? candidate.imageUrl : "",
+    imageLinkUrl: typeof candidate.imageLinkUrl === "string" ? candidate.imageLinkUrl : "",
+    sourceUrls: Array.isArray(candidate.sourceUrls)
+      ? candidate.sourceUrls.filter((item): item is { label: string; url: string } => {
+          if (!item || typeof item !== "object") return false;
+          const source = item as Record<string, unknown>;
+          return typeof source.label === "string" && typeof source.url === "string";
+        })
+      : [],
     rel:
       typeof candidate.rel === "string" && candidate.rel.trim()
         ? candidate.rel

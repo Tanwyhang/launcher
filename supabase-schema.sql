@@ -47,6 +47,10 @@ create table if not exists public.affiliate_links (
   anchor_text text not null default '',
   destination_url text not null,
   tracking_url text,
+  image_url text,
+  image_link_url text,
+  source_urls jsonb not null default '[]'::jsonb,
+  localized_content jsonb not null default '{}'::jsonb,
   rel text not null default 'sponsored nofollow noopener',
   target text not null default '_blank',
   cta_text_en text not null default 'Check current price',
@@ -98,3 +102,15 @@ alter table public.affiliate_links
 
 alter table public.affiliate_links
   add column if not exists cons jsonb not null default '[]'::jsonb;
+
+alter table public.affiliate_links
+  add column if not exists image_url text;
+
+alter table public.affiliate_links
+  add column if not exists image_link_url text;
+
+alter table public.affiliate_links
+  add column if not exists source_urls jsonb not null default '[]'::jsonb;
+
+alter table public.affiliate_links
+  add column if not exists localized_content jsonb not null default '{}'::jsonb;

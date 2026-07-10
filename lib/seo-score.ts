@@ -38,6 +38,7 @@ export type SeoScoreContext = {
   hasLegacyRedirects: boolean;
   hasAnalyticsEvents: boolean;
   hasVariantRegistry: boolean;
+  hasShareControls: boolean;
 };
 
 export type SeoScoreReport = {
@@ -248,14 +249,14 @@ function buildLocalizationCategory(post: CmsBlogPost) {
 
 function buildTrustCategory(translation: TranslationDraft, context: SeoScoreContext) {
   const body = `${translation.body} ${translation.sections.map((item) => item.sectionBody).join(" ")}`;
-  const mentionsHandsOn = /tested|hands-on|benchmark|sample|real room|long-session|ujian|bilik sebenar|situasi sebenar|测试|实测|真实房间/i.test(body);
+  const statesEvidenceBoundary = /did not run|did not test|official.*documentation|tidak menjalankan|tidak mendakwa|没有进行|不会声称|官方.*文档/i.test(body);
   const mentionsLimits = /not for|skip|tradeoff|complaint|constraint|kurang|不适合|限制/i.test(body);
 
   return category("trust", "E-E-A-T And Rich Results", 10, [
     check("Named publisher", true, 4, "Publisher is consistently shown as launcher."),
     check("Updated date", true, 4, "Updated date is rendered from CMS data."),
     check("JSON-LD schema", context.hasJsonLd, 8, "Structured data is present in app code.", "No JSON-LD Article/FAQ/Product schema detected."),
-    check("Hands-on evidence", mentionsHandsOn, 7, "Copy mentions concrete testing/evidence signals.", "Copy lacks hands-on testing or evidence language."),
+    check("Evidence boundaries", statesEvidenceBoundary, 7, "Copy clearly states its evidence and testing boundaries.", "Copy does not clearly state whether claims come from documentation or hands-on testing."),
     check("Tradeoffs and limits", mentionsLimits, 5, "Copy includes limits/tradeoffs.", "Copy needs clearer limitations and non-fit guidance."),
   ]);
 }
@@ -263,7 +264,7 @@ function buildTrustCategory(translation: TranslationDraft, context: SeoScoreCont
 function buildExperimentCategory(context: SeoScoreContext) {
   return category("testing", "A/B Testing Readiness", 8, [
     check("Stable conversion surfaces", true, 5, "Template has repeatable affiliate cards, comparison table, and lead-offer CTA."),
-    check("Save intent surface", true, 4, "Save/auth card can become a soft-conversion metric."),
+    check("Share intent surface", context.hasShareControls, 4, "Native share, social posting, link copy, and story-card controls exist.", "No reusable social sharing surface was detected."),
     check("Explicit analytics events", context.hasAnalyticsEvents, 6, "Analytics event taxonomy and template hooks exist.", "No event taxonomy or experiment assignment was detected in code."),
     check("Variant registry", context.hasVariantRegistry, 5, "Experiment variants are centrally defined.", "No central A/B variant registry exists yet."),
   ]);

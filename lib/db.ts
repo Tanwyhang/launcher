@@ -39,6 +39,10 @@ type AffiliateLinkRow = {
   anchor_text: string;
   destination_url: string;
   tracking_url: string | null;
+  image_url: string | null;
+  image_link_url: string | null;
+  source_urls: unknown;
+  localized_content: unknown;
   rel: string;
   target: string;
   cta_text_en: string;
@@ -87,7 +91,7 @@ const postSelect = `
       page_config,
       updated_at,
       post_translations:post_translations(id, locale, title, slug, meta_title, meta_description, quick_answer, hero_image_url, key_takeaways, sections, faq_items, body),
-      affiliate_links(id, merchant_name, anchor_text, destination_url, tracking_url, rel, target, cta_text_en, cta_text_ms, cta_text_zh_hans, summary, best_for, not_for, price_band, pricing_summary, pros, cons, score, is_active)
+      affiliate_links(id, merchant_name, anchor_text, destination_url, tracking_url, image_url, image_link_url, source_urls, localized_content, rel, target, cta_text_en, cta_text_ms, cta_text_zh_hans, summary, best_for, not_for, price_band, pricing_summary, pros, cons, score, is_active)
     `;
 
 function normalizeStringArray(raw: unknown): string[] {
@@ -238,6 +242,19 @@ function toLocalePost(row: PostRow): CmsBlogPost {
       anchorText: link.anchor_text,
       destinationUrl: link.destination_url,
       trackingUrl: link.tracking_url ?? "",
+      imageUrl: link.image_url ?? "",
+      imageLinkUrl: link.image_link_url ?? "",
+      sourceUrls: Array.isArray(link.source_urls)
+        ? link.source_urls.filter((item): item is { label: string; url: string } => {
+            if (!item || typeof item !== "object") return false;
+            const source = item as Record<string, unknown>;
+            return typeof source.label === "string" && typeof source.url === "string";
+          })
+        : [],
+      localizedContent:
+        link.localized_content && typeof link.localized_content === "object"
+          ? (link.localized_content as AffiliateLinkDraft["localizedContent"])
+          : undefined,
       rel: link.rel,
       target: link.target,
       ctaTextEn: link.cta_text_en,
@@ -462,6 +479,10 @@ export async function savePost(payload: SavePostPayload): Promise<CmsBlogPost> {
       anchor_text: link.anchorText,
       destination_url: link.destinationUrl,
       tracking_url: link.trackingUrl || null,
+      image_url: link.imageUrl || null,
+      image_link_url: link.imageLinkUrl || null,
+      source_urls: link.sourceUrls || [],
+      localized_content: link.localizedContent || {},
       rel: link.rel || "sponsored nofollow noopener",
       target: link.target || "_blank",
       cta_text_en: link.ctaTextEn || "Check current price",

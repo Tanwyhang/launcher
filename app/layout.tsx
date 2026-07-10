@@ -17,7 +17,7 @@ export const metadata: Metadata = {
   category: "technology",
   referrer: "origin-when-cross-origin",
   icons: {
-    icon: [{ url: "/icon.svg", type: "image/svg+xml" }],
+    icon: [{ url: "/icon.png", sizes: "512x512", type: "image/png" }],
     apple: [{ url: "/apple-icon.png", sizes: "180x180", type: "image/png" }],
   },
   manifest: "/manifest.webmanifest",
@@ -61,7 +61,7 @@ export default async function RootLayout({ children }: { children: ReactNode }) 
         url: siteUrl,
         logo: {
           "@type": "ImageObject",
-          url: absoluteUrl("/icon.svg"),
+          url: absoluteUrl("/icon.png"),
         },
         description: SITE_DESCRIPTIONS.en,
       },
