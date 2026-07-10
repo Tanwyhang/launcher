@@ -2,6 +2,10 @@
 
 Trilingual APAC product decision guides and a CMS-oriented publishing foundation.
 
+- Repository: https://github.com/Tanwyhang/launcher
+- Production branch: `master`
+- Hosting: Vercel Git integration
+
 - one React-Admin back office at `/admin`
 - one repeatable page architecture: `best-x-for-y-in-z`
 - one locale-specific public URL tree per translation (`/en`, `/my`, `/zh`)
