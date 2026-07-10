@@ -109,7 +109,7 @@ export default async function SecureAdminPage({
           </button>
         </form>
       </div>
-      <AdminShell basename={ADMIN_BASE_PATH} />
+      <AdminShell />
     </div>
   );
 }

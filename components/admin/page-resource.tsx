@@ -8,7 +8,6 @@ import {
   FunctionField,
   List,
   NumberInput,
-  Resource,
   SaveButton,
   SelectInput,
   SimpleForm,
@@ -121,7 +120,7 @@ function PageToolbar() {
   );
 }
 
-function PageList() {
+export function PageList() {
   return (
     <List perPage={25} sort={{ field: "updatedAt", order: "DESC" }}>
       <DataTable rowClick="edit">
@@ -159,7 +158,7 @@ function PageList() {
   );
 }
 
-function PageEdit() {
+export function PageEdit() {
   return (
     <Edit mutationMode="pessimistic">
       <SimpleForm toolbar={<PageToolbar />}>
@@ -244,8 +243,4 @@ function PageEdit() {
       </SimpleForm>
     </Edit>
   );
-}
-
-export function AdminResources() {
-  return <Resource name="pages" list={PageList} edit={PageEdit} recordRepresentation="slug" />;
 }

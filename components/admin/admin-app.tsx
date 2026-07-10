@@ -4,9 +4,9 @@ import AutoStoriesIcon from "@mui/icons-material/AutoStories";
 import InsightsIcon from "@mui/icons-material/Insights";
 import PublicIcon from "@mui/icons-material/Public";
 import { Card, CardContent, CardHeader, Stack, Typography } from "@mui/material";
-import { Admin, Layout } from "react-admin";
+import { Admin, Layout, Resource } from "react-admin";
 import { adminDataProvider } from "@/components/admin/data-provider";
-import { AdminResources } from "@/components/admin/page-resource";
+import { PageEdit, PageList } from "@/components/admin/page-resource";
 
 function Dashboard() {
   return (
@@ -47,10 +47,10 @@ function AdminLayout(props: any) {
   return <Layout {...props} sx={{ "& .RaLayout-content": { backgroundColor: "#f1f5f9" } }} />;
 }
 
-export default function AdminApp({ basename }: { basename: string }) {
+export default function AdminApp() {
   return (
-    <Admin basename={basename} dataProvider={adminDataProvider} dashboard={Dashboard} layout={AdminLayout}>
-      <AdminResources />
+    <Admin dataProvider={adminDataProvider} dashboard={Dashboard} layout={AdminLayout}>
+      <Resource name="pages" list={PageList} edit={PageEdit} recordRepresentation="slug" />
     </Admin>
   );
 }
