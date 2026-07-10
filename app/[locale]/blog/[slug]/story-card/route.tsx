@@ -36,14 +36,14 @@ export async function GET(request: Request, { params }: { params: Promise<{ loca
   const title = translation?.title || "launcher";
   const summary = shorten(translation?.quickAnswer || "Independent comparisons with transparent tradeoffs.", localeCode === "zh-Hans" ? 110 : 245);
   const takeaway = translation?.keyTakeaways[0];
-  const heroImageUrl = translation?.heroImageUrl;
   const logoUrl = new URL("/logo.png", request.url).toString();
+  const cubeUrl = new URL("/cube-launcher-mark.png", request.url).toString();
 
   return new ImageResponse(
     <div
       style={{
         alignItems: "center",
-        background: "#f3f1ec",
+        background: "#f5f4f1",
         color: "#121212",
         display: "flex",
         height: "100%",
@@ -52,16 +52,12 @@ export async function GET(request: Request, { params }: { params: Promise<{ loca
         width: "100%",
       }}
     >
-      <div style={{ background: "#e6e2d8", borderRadius: 56, height: 480, left: -210, position: "absolute", top: 160, transform: "rotate(-7deg)", width: 420 }} />
-      <div style={{ background: "#e9e5dc", borderRadius: 56, height: 520, position: "absolute", right: -250, top: 650, transform: "rotate(8deg)", width: 450 }} />
-      <div style={{ background: "#e4e0d6", borderRadius: 56, bottom: 70, height: 390, left: -170, position: "absolute", transform: "rotate(5deg)", width: 390 }} />
-
       <div
         style={{
           background: "white",
           border: "1px solid #dedbd4",
           borderRadius: 54,
-          boxShadow: "0 32px 80px rgba(20, 20, 20, 0.17)",
+          boxShadow: "0 24px 60px rgba(20, 20, 20, 0.11)",
           display: "flex",
           flexDirection: "column",
           overflow: "hidden",
@@ -79,13 +75,9 @@ export async function GET(request: Request, { params }: { params: Promise<{ loca
           <div style={{ color: "#77736d", display: "flex", fontSize: 34, marginLeft: "auto", marginTop: -22 }}>•••</div>
         </div>
 
-        {heroImageUrl ? (
-          <div style={{ background: "#dedbd4", display: "flex", height: 610, overflow: "hidden", width: "100%" }}>
-            <img alt="" height="610" src={heroImageUrl} style={{ height: "100%", objectFit: "cover", width: "100%" }} width="850" />
-          </div>
-        ) : (
-          <div style={{ alignItems: "center", background: "#181818", color: "white", display: "flex", fontSize: 120, height: 610, justifyContent: "center", width: "100%" }}>L</div>
-        )}
+        <div style={{ background: "white", display: "flex", height: 610, overflow: "hidden", width: "100%" }}>
+          <img alt="" height="610" src={cubeUrl} style={{ height: "100%", objectFit: "cover", width: "100%" }} width="850" />
+        </div>
 
         <div style={{ display: "flex", flexDirection: "column", padding: "42px 48px 48px" }}>
           <div style={{ color: "#77736d", fontSize: 23, fontWeight: 600, letterSpacing: 1.4, textTransform: "uppercase" }}>{labels.region}</div>
