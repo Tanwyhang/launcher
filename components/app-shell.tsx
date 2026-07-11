@@ -59,8 +59,18 @@ function RoutePrefetcher() {
 
 export function AppShell({ children }: { children: ReactNode }) {
   const pathname = usePathname();
+  const router = useRouter();
   const activeSegment = pathname.split("/").filter(Boolean)[0] || "en";
   const activeLocaleSegment = languageTabs.some((item) => item.segment === activeSegment) ? activeSegment : "en";
+  const isLocalizedBlogPost = /^\/(en|my|zh)\/blog\/[^/]+$/.test(pathname);
+
+  function switchArticleLocale(targetSegment: string) {
+    const href = document
+      .querySelector<HTMLLinkElement>(`link[hreflang="${targetSegment === "my" ? "ms" : targetSegment === "zh" ? "zh-Hans" : "en"}"]`)
+      ?.getAttribute("href");
+
+    router.push((href || `/${targetSegment}/blog`) as any);
+  }
 
   if (pathname.startsWith("/admin") || pathname.startsWith(ADMIN_BASE_PATH)) {
     return <div className="min-h-screen bg-slate-100">{children}</div>;
@@ -80,13 +90,24 @@ export function AppShell({ children }: { children: ReactNode }) {
                 const active = activeLocaleSegment === tab.segment;
 
                 return (
-                  <Link
-                    key={tab.segment}
-                    href={getLocaleHref(pathname, tab.segment) as any}
-                    className={active ? "rounded-full bg-black px-2.5 py-1 text-white no-underline" : "rounded-full px-2.5 py-1 text-neutral-500 no-underline hover:text-black"}
-                  >
-                    {tab.label}
-                  </Link>
+                  isLocalizedBlogPost ? (
+                    <button
+                      key={tab.segment}
+                      type="button"
+                      onClick={() => switchArticleLocale(tab.segment)}
+                      className={active ? "rounded-full bg-black px-2.5 py-1 text-white" : "rounded-full px-2.5 py-1 text-neutral-500 hover:text-black"}
+                    >
+                      {tab.label}
+                    </button>
+                  ) : (
+                    <Link
+                      key={tab.segment}
+                      href={getLocaleHref(pathname, tab.segment) as any}
+                      className={active ? "rounded-full bg-black px-2.5 py-1 text-white no-underline" : "rounded-full px-2.5 py-1 text-neutral-500 no-underline hover:text-black"}
+                    >
+                      {tab.label}
+                    </Link>
+                  )
                 );
               })}
             </nav>

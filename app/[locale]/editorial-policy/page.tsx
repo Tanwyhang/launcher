@@ -12,14 +12,15 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
   const { locale } = await params;
   const localeConfig = getLocaleByPathSegment(locale);
   if (!localeConfig) return {};
-  const pageCopy = copy[locale as keyof typeof copy];
+  const pageCopy = copy[localeConfig.code === "zh-Hans" ? "zh" : localeConfig.code];
   return { title: pageCopy.title, description: pageCopy.description, alternates: { canonical: `${getLocalePath(localeConfig.code)}/editorial-policy`, languages: { ...Object.fromEntries(LOCALES.map((item) => [item.htmlLang, `${getLocalePath(item.code)}/editorial-policy`])), "x-default": "/en/editorial-policy" } } };
 }
 
 export default async function EditorialPolicyPage({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;
-  if (!getLocaleByPathSegment(locale)) notFound();
-  const pageCopy = copy[locale as keyof typeof copy];
+  const localeConfig = getLocaleByPathSegment(locale);
+  if (!localeConfig) notFound();
+  const pageCopy = copy[localeConfig.code === "zh-Hans" ? "zh" : localeConfig.code];
   return <article className="launcher-frame px-4 py-12 sm:px-6"><h1 className="text-4xl font-medium text-black sm:text-5xl">{pageCopy.title}</h1><p className="mt-5 text-lg text-neutral-600">{pageCopy.description}</p>{pageCopy.sections.map(([title, body]) => <section key={title} className="mt-10"><h2 className="text-2xl font-medium text-black">{title}</h2><p className="mt-4 text-lg leading-relaxed text-neutral-700">{body}</p></section>)}</article>;
 }
 

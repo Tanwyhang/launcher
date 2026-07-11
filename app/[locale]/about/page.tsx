@@ -40,7 +40,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
   const { locale } = await params;
   const localeConfig = getLocaleByPathSegment(locale);
   if (!localeConfig) return {};
-  const pageCopy = copy[locale as keyof typeof copy];
+  const pageCopy = copy[localeConfig.code === "zh-Hans" ? "zh" : localeConfig.code];
   return {
     title: pageCopy.title,
     description: pageCopy.description,
@@ -58,7 +58,7 @@ export default async function AboutPage({ params }: { params: Promise<{ locale: 
   const { locale } = await params;
   const localeConfig = getLocaleByPathSegment(locale);
   if (!localeConfig) notFound();
-  const pageCopy = copy[locale as keyof typeof copy];
+  const pageCopy = copy[localeConfig.code === "zh-Hans" ? "zh" : localeConfig.code];
   return (
     <article className="launcher-frame px-4 py-12 sm:px-6">
       <h1 className="text-4xl font-medium text-black sm:text-5xl">{pageCopy.title}</h1>
