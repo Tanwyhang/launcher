@@ -1,4 +1,5 @@
 import type { ReactNode } from "react";
+import Link from "next/link";
 
 type Props = {
   markdown: string;
@@ -7,7 +8,7 @@ type Props = {
 
 function renderInline(text: string): ReactNode[] {
   const parts: ReactNode[] = [];
-  const regex = /(\*\*([^*]+)\*\*)/g;
+  const regex = /(\*\*([^*]+)\*\*|\[([^\]]+)\]\(([^)]+)\))/g;
   let lastIndex = 0;
   let match: RegExpExecArray | null;
 
@@ -16,11 +17,34 @@ function renderInline(text: string): ReactNode[] {
       parts.push(text.slice(lastIndex, match.index));
     }
 
-    parts.push(
-      <strong key={`${match.index}-${match[2]}`} className="font-medium text-black">
-        {match[2]}
-      </strong>,
-    );
+    if (match[2]) {
+      parts.push(
+        <strong key={`${match.index}-${match[2]}`} className="font-medium text-black">
+          {match[2]}
+        </strong>,
+      );
+    } else {
+      const label = match[3];
+      const href = match[4];
+      const internal = href.startsWith("/");
+      const safeExternal = /^https:\/\//i.test(href);
+
+      if (internal) {
+        parts.push(
+          <Link key={`${match.index}-${href}`} href={href as any} className="underline decoration-neutral-300 underline-offset-4 hover:decoration-black">
+            {label}
+          </Link>,
+        );
+      } else if (safeExternal) {
+        parts.push(
+          <a key={`${match.index}-${href}`} href={href} className="underline decoration-neutral-300 underline-offset-4 hover:decoration-black" target="_blank" rel="noopener noreferrer">
+            {label}
+          </a>,
+        );
+      } else {
+        parts.push(label);
+      }
+    }
 
     lastIndex = regex.lastIndex;
   }

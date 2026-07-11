@@ -196,18 +196,24 @@ export default async function LocalizedBlogIndexPage({
       </div>
 
       <div className="mt-14 grid gap-10 border-t border-neutral-200 pt-10 text-[0.98rem] leading-7 text-neutral-700 sm:grid-cols-2 sm:text-base">
-        <section>
-          <h2 className="mb-4 text-xl font-medium leading-tight text-black sm:text-2xl">{pageCopy.approachTitle}</h2>
-          <div className="space-y-4">
+        <details className="group">
+          <summary className="flex cursor-pointer list-none items-center justify-between gap-4 text-xl font-medium leading-tight text-black [&::-webkit-details-marker]:hidden sm:text-2xl">
+            {pageCopy.approachTitle}
+            <span aria-hidden="true" className="text-2xl font-normal transition-transform group-open:rotate-45">+</span>
+          </summary>
+          <div className="mt-4 space-y-4">
             {pageCopy.approach.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}
           </div>
-        </section>
-        <section>
-          <h2 className="mb-4 text-xl font-medium leading-tight text-black sm:text-2xl">{pageCopy.coverageTitle}</h2>
-          <div className="space-y-4">
+        </details>
+        <details className="group">
+          <summary className="flex cursor-pointer list-none items-center justify-between gap-4 text-xl font-medium leading-tight text-black [&::-webkit-details-marker]:hidden sm:text-2xl">
+            {pageCopy.coverageTitle}
+            <span aria-hidden="true" className="text-2xl font-normal transition-transform group-open:rotate-45">+</span>
+          </summary>
+          <div className="mt-4 space-y-4">
             {pageCopy.coverage.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}
           </div>
-        </section>
+        </details>
       </div>
     </section>
   );
