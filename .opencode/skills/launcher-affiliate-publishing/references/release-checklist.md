@@ -24,6 +24,7 @@
 - No cubes, initials, letters, unrelated stock, or cross-model substitutions.
 - Every monetized editorial/product image is clickable through affiliate tracking.
 - Missing verified images result in omitted image blocks, not placeholders.
+- Hero and section image URLs are distinct where more than one verified relevant asset exists; repeated image URLs have an explicit source-availability reason.
 
 ## CLI And Build
 

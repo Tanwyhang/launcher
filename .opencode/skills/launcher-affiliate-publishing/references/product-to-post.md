@@ -38,6 +38,8 @@ bun run seo validate-offers --file data/affiliate-products-shopee-my.json
 - Use only images stored in `heroImageUrl`, `sectionImageUrl`, or `imageUrl`.
 - Prefer manufacturer/operator-hosted assets or authorized merchant images.
 - Never use Launcher cube assets or initial placeholders as product imagery.
+- Use a distinct verified asset for the hero and every image-bearing section. Do not repeat one image throughout an article simply to fill visual slots.
+- If fewer verified assets exist than visual slots, omit the extra image blocks rather than reuse, crop, generate, or substitute an unrelated image.
 - Never substitute an image from a newer/different model.
 - Record the image's source URL and usage caveat.
 - On monetized pages, every editorial/product image is expected to be clickable through the matched offer's affiliate URL.

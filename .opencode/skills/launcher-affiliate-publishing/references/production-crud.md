@@ -81,3 +81,16 @@ vercel inspect <matching-deployment-url> --wait --timeout 3m --scope tanwyhangs-
 ```
 
 Match the deployment by `githubCommitSha`. Report production only after status is `READY` and aliases include `https://www.launcher.my`.
+
+## Repeatable Content Pipeline
+
+Use the pipeline before promotion so every article has a source-backed brief, sufficient long-form depth, localized internal links, and non-repeated verified imagery:
+
+```bash
+bun run content-pipeline queue --count 4 --out /tmp/launcher-batch.json
+bun run content-pipeline brief --id <draft-slug>
+bun run content-pipeline validate --file /tmp/researched-article.json
+bun run content-pipeline promote --id <draft-slug> --file /tmp/researched-article.json --prod --yes
+```
+
+`promote` runs the same Git, build, and non-force-push safeguards as `seo edit-post`; it refuses content that fails the pipeline gates.

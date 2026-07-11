@@ -99,3 +99,9 @@ Exactly one each of `en`, `ms`, and `zh-Hans`:
 Every active published offer needs a distinct HTTPS `trackingUrl`. The public renderer routes merchant listing sources, images, cards, section CTAs, alternatives, structured product URLs, and mobile CTAs through it.
 
 Official specifications, terms, policies, and coverage maps remain direct evidence links.
+
+## Image Diversity
+
+- `heroImageUrl` and each populated `sectionImageUrl` must be an exact verified product, merchant, operator, or official editorial asset relevant to that section.
+- Do not reuse one image URL for every visual slot in an article.
+- Missing verified assets mean the relevant image field remains empty. Never fill it with a Launcher asset, initials, generated placeholder, or unrelated stock image.

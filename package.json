@@ -8,7 +8,8 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "seo": "bun run cli/seo.ts"
+    "seo": "bun run cli/seo.ts",
+    "content-pipeline": "bun run cli/content-pipeline.ts"
   },
   "dependencies": {
     "@emotion/react": "^11.14.0",
