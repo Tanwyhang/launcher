@@ -5,22 +5,22 @@ const localeMetadata = {
   en: {
     homeTitle: "Independent APAC product guides",
     homeDescription: "Clear, independent product decision guides for buyers in Malaysia and Singapore.",
-    blogTitle: "Product comparisons and buying guides",
-    blogDescription: "Compare technology products with transparent tradeoffs and Malaysia-Singapore buying context.",
+    blogTitle: "Malaysia Tech Comparisons and Buyer Guides",
+    blogDescription: "Compare tech products, mobile plans, and creator gear with independent research, transparent tradeoffs, and practical buying context for Malaysia.",
     ogLocale: "en_MY",
   },
   ms: {
     homeTitle: "Panduan produk bebas untuk pembeli APAC",
     homeDescription: "Panduan keputusan produk yang jelas dan bebas untuk pembeli Malaysia dan Singapura.",
-    blogTitle: "Perbandingan produk dan panduan membeli",
-    blogDescription: "Bandingkan produk teknologi dengan tradeoff telus dan konteks pembeli Malaysia-Singapura.",
+    blogTitle: "Perbandingan Teknologi dan Panduan Pembeli Malaysia",
+    blogDescription: "Bandingkan produk teknologi, pelan mudah alih dan peralatan pencipta dengan kajian bebas, pertimbangan telus dan konteks pembelian Malaysia.",
     ogLocale: "ms_MY",
   },
   "zh-Hans": {
     homeTitle: "面向亚太买家的独立产品指南",
     homeDescription: "为马来西亚和新加坡买家提供清晰、独立的产品决策指南。",
-    blogTitle: "产品比较与购买指南",
-    blogDescription: "通过透明取舍与马新购买语境，比较适合你的科技产品。",
+    blogTitle: "马来西亚科技产品比较与购买指南",
+    blogDescription: "通过独立研究、透明的优缺点分析和马来西亚本地购买信息，比较科技产品、移动配套与创作者设备。",
     ogLocale: "zh_CN",
   },
 } as const;
