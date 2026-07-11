@@ -94,6 +94,7 @@ Agent-only production CRUD uses GitHub write access as the publisher boundary. E
 
 ```bash
 bun run seo publish-post --file /tmp/full-page.json --prod --yes
+bun run seo show-post --id existing-slug --out /tmp/existing-post.json
 bun run seo edit-post --id existing-slug --file /tmp/full-page.json --prod --yes
 bun run seo remove-post --id existing-slug --prod --yes
 ```
@@ -112,6 +113,7 @@ Current commands:
 - `publish-post`
 - `edit-post`
 - `remove-post`
+- `show-post`
 
 ### Current page model
 

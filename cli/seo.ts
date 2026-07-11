@@ -72,6 +72,7 @@ Usage:
   bun run seo publish-post --file /tmp/page.json --prod --yes
   bun run seo edit-post --id existing-slug --file /tmp/page.json --prod --yes
   bun run seo remove-post --id existing-slug --prod --yes
+  bun run seo show-post --id existing-slug --out /tmp/existing-post.json
 
 Commands:
   create-page    Create a draft page from the best-x-for-y-in-z template
@@ -85,6 +86,7 @@ Commands:
   publish-post   Publish one full page to the Git-backed content store
   edit-post      Replace one existing page from a full page JSON file
   remove-post    Remove one page from the Git-backed content store
+  show-post      Read or export one complete page for agent editing
 `);
 }
 
@@ -619,6 +621,22 @@ function handleRemovePost(args: Args) {
   console.log(JSON.stringify({ operation: "remove", id: existing.post.id, slug: existing.post.slug, production: !!args.prod, commitSha }, null, 2));
 }
 
+function handleShowPost(args: Args) {
+  const id = requireStringArg(args, "id");
+  const contentFile = getContentFile(args);
+  const { post } = findContentPost(readContentPosts(contentFile), id);
+  const output = `${JSON.stringify(post, null, 2)}\n`;
+  const outputPath = getStringArg(args, "out");
+
+  if (outputPath) {
+    writeFileSync(resolveFile(outputPath), output, "utf8");
+    console.log(`Exported ${post.slug} to ${outputPath}`);
+    return;
+  }
+
+  process.stdout.write(output);
+}
+
 async function handleCreatePage(args: Args) {
   const input: CreatePageInput = {
     category: requireStringArg(args, "category"),
@@ -978,6 +996,11 @@ async function main() {
 
   if (command === "remove-post") {
     handleRemovePost(args);
+    return;
+  }
+
+  if (command === "show-post") {
+    handleShowPost(args);
     return;
   }
 
