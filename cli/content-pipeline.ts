@@ -107,6 +107,19 @@ function validHttps(value: string) {
   }
 }
 
+function run(command: string, args: string[], capture = false) {
+  const result = spawnSync(command, args, {
+    cwd: root,
+    encoding: "utf8",
+    stdio: capture ? "pipe" : "inherit",
+  });
+  if (result.status !== 0) {
+    const detail = capture ? String(result.stderr || result.stdout || "").trim() : "";
+    throw new Error(`${command} ${args.join(" ")} failed${detail ? `: ${detail}` : ""}`);
+  }
+  return String(result.stdout || "").trim();
+}
+
 function audit(page: Page) {
   const blockers: string[] = [];
   const warnings: string[] = [];
@@ -217,6 +230,45 @@ function promote(args: Record<string, string | boolean>) {
   if (command.status !== 0) process.exitCode = command.status || 1;
 }
 
+function promoteReady(args: Record<string, string | boolean>) {
+  const currentPages = pages();
+  const ready = currentPages.filter((page) => page.status === "draft" && isResearched(page) && audit(page).valid);
+  const summary = { readyGroups: ready.length, localizedUrls: ready.length * 3, slugs: ready.map((page) => page.slug) };
+
+  if (!args.prod) {
+    process.stdout.write(`${JSON.stringify(summary, null, 2)}\n`);
+    return;
+  }
+  if (!args.yes) throw new Error("Production bulk promotion requires --yes");
+  if (ready.length === 0) throw new Error("No validated draft groups are ready for promotion");
+  if (run("git", ["branch", "--show-current"], true) !== "master") throw new Error("Production promotion requires master");
+  if (run("git", ["status", "--porcelain=v1", "--untracked-files=all"], true)) throw new Error("Production promotion requires a clean worktree");
+  run("git", ["fetch", "origin", "master"]);
+  if (run("git", ["rev-list", "--left-right", "--count", "origin/master...HEAD"], true) !== "0\t0") {
+    throw new Error("Local master must exactly match origin/master");
+  }
+  run("git", ["push", "--dry-run", "origin", "HEAD:master"]);
+
+  const original = readFileSync(pagesPath, "utf8");
+  const readyIds = new Set(ready.map((page) => page.id));
+  const nextPages = currentPages.map((page) => readyIds.has(page.id) ? { ...page, status: "published" as const } : page);
+  let committed = false;
+  try {
+    writeFileSync(pagesPath, `${JSON.stringify(nextPages, null, 2)}\n`, "utf8");
+    run("npm", ["run", "build"]);
+    const changed = run("git", ["status", "--porcelain=v1", "--untracked-files=all"], true).split("\n").filter(Boolean).map((line) => line.slice(3));
+    if (changed.length !== 1 || changed[0] !== "data/pages.json") throw new Error(`Unexpected changed files: ${changed.join(", ")}`);
+    run("git", ["add", "--", "data/pages.json"]);
+    run("git", ["commit", "-m", `content: publish ${ready.length} researched article groups`, "--", "data/pages.json"]);
+    committed = true;
+    run("git", ["push", "origin", "HEAD:master"]);
+    process.stdout.write(`${JSON.stringify({ ...summary, production: true, commitSha: run("git", ["rev-parse", "HEAD"], true) }, null, 2)}\n`);
+  } catch (error) {
+    if (!committed) writeFileSync(pagesPath, original, "utf8");
+    throw error;
+  }
+}
+
 function help() {
   console.log(`Content pipeline
 
@@ -225,6 +277,7 @@ Commands:
   bun run content-pipeline brief --id <draft-slug>
   bun run content-pipeline validate --file /tmp/article.json
   bun run content-pipeline promote --id <draft-slug> --file /tmp/article.json --prod --yes
+  bun run content-pipeline promote-ready [--prod --yes]
 
 Promotion invokes the protected seo edit-post publisher. It validates long-form depth,
 affiliate tracking, source coverage, image diversity, and localized internal links first.`);
@@ -236,4 +289,5 @@ if (command === "queue") queue(args);
 else if (command === "brief") brief(args);
 else if (command === "validate") validate(args);
 else if (command === "promote") promote(args);
+else if (command === "promote-ready") promoteReady(args);
 else help();
