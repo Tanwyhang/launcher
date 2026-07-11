@@ -256,7 +256,7 @@ function promoteReady(args: Record<string, string | boolean>) {
   try {
     writeFileSync(pagesPath, `${JSON.stringify(nextPages, null, 2)}\n`, "utf8");
     run("npm", ["run", "build"]);
-    const changed = run("git", ["status", "--porcelain=v1", "--untracked-files=all"], true).split("\n").filter(Boolean).map((line) => line.slice(3));
+    const changed = run("git", ["status", "--porcelain=v1", "--untracked-files=all"], true).split("\n").filter(Boolean).map((line) => line.slice(2).trim());
     if (changed.length !== 1 || changed[0] !== "data/pages.json") throw new Error(`Unexpected changed files: ${changed.join(", ")}`);
     run("git", ["add", "--", "data/pages.json"]);
     run("git", ["commit", "-m", `content: publish ${ready.length} researched article groups`, "--", "data/pages.json"]);
