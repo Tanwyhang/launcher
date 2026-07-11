@@ -21,6 +21,19 @@ function localizeOffer(offer: AffiliateLinkDraft, locale: LocaleCode): Affiliate
   return localized ? { ...offer, ...localized } : offer;
 }
 
+function getAffiliateUrl(offer: AffiliateLinkDraft) {
+  return offer.trackingUrl || offer.imageLinkUrl || offer.destinationUrl;
+}
+
+function getPublicSourceUrl(offer: AffiliateLinkDraft, sourceUrl: string) {
+  if (!offer.trackingUrl) return sourceUrl;
+  const normalizedSource = sourceUrl.replace(/\/$/, "");
+  const normalizedProduct = offer.destinationUrl.replace(/\/$/, "");
+  return normalizedSource === normalizedProduct || sourceUrl.includes("shopee.com.my/product/")
+    ? offer.trackingUrl
+    : sourceUrl;
+}
+
 function localizeLabels(locale: LocaleCode) {
   if (locale === "ms") {
     return {
@@ -195,7 +208,7 @@ export function PublicArticle({ post, localeCode }: Props) {
           "@type": "Thing",
           name: item.anchorText,
           description: item.summary,
-          url: item.destinationUrl,
+          url: getAffiliateUrl(item),
           image: item.imageUrl || undefined,
         },
       })),
@@ -302,7 +315,7 @@ export function PublicArticle({ post, localeCode }: Props) {
                   <div className="flex gap-4">
                     {item.imageUrl ? (
                       <a
-                        href={item.imageLinkUrl || item.trackingUrl || item.destinationUrl}
+                        href={getAffiliateUrl(item)}
                         target="_blank"
                         rel={item.rel}
                         aria-label={`${item.anchorText}: ${pickCta(localeCode, item)}`}
@@ -327,7 +340,7 @@ export function PublicArticle({ post, localeCode }: Props) {
                       <div className="mt-4 flex flex-wrap items-center justify-between gap-3">
                         <span className="text-sm text-neutral-500">{item.bestFor}</span>
                         <a
-                          href={item.trackingUrl || item.destinationUrl}
+                          href={getAffiliateUrl(item)}
                           target="_blank"
                           rel={item.rel}
                           className="inline-flex items-center rounded-full bg-black px-4 py-2 text-sm font-medium text-white no-underline"
@@ -396,7 +409,7 @@ export function PublicArticle({ post, localeCode }: Props) {
                 <p className="mt-3 text-[1.05rem] leading-relaxed text-neutral-800">{leadOffer.pricingSummary}</p>
                 {leadOffer.verifiedAt ? <p className="mt-2 text-sm text-neutral-500">{labels.priceChecked}: {leadOffer.verifiedAt}</p> : null}
                 <a
-                  href={leadOffer.trackingUrl || leadOffer.destinationUrl}
+                  href={getAffiliateUrl(leadOffer)}
                   target="_blank"
                   rel={leadOffer.rel}
                   className="mt-6 inline-flex items-center rounded-xl bg-black px-5 py-3 text-sm font-medium text-white no-underline"
@@ -446,7 +459,7 @@ export function PublicArticle({ post, localeCode }: Props) {
                 const sources = item.sourceUrls?.length ? item.sourceUrls : [{ label: item.anchorText, url: item.destinationUrl }];
                 return sources.map((source) => (
                   <li key={`${item.id}-${source.url}`}>
-                    <a className="text-black underline underline-offset-4" href={source.url} target="_blank" rel="noopener noreferrer">
+                    <a className="text-black underline underline-offset-4" href={getPublicSourceUrl(item, source.url)} target="_blank" rel={getPublicSourceUrl(item, source.url) === item.trackingUrl ? item.rel : "noopener noreferrer"}>
                       {item.merchantName}: {source.label}
                     </a>
                   </li>
@@ -482,7 +495,7 @@ export function PublicArticle({ post, localeCode }: Props) {
               {alternativeOffers.map((item, index) => (
                 <li key={item.id}>
                   <a
-                    href={item.trackingUrl || item.destinationUrl}
+                    href={getAffiliateUrl(item)}
                     target="_blank"
                     rel={item.rel}
                     className="block rounded-[1.2rem] border border-neutral-200 bg-white p-5 text-black no-underline"
