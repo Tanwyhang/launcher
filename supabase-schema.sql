@@ -60,7 +60,11 @@ create table if not exists public.affiliate_links (
   best_for text not null default '',
   not_for text not null default '',
   price_band text not null default '',
+  displayed_price text,
   pricing_summary text not null default '',
+  commission_rate numeric,
+  commission_snapshot text,
+  verified_at date,
   pros jsonb not null default '[]'::jsonb,
   cons jsonb not null default '[]'::jsonb,
   score numeric not null default 0,
@@ -96,6 +100,18 @@ alter table public.affiliate_links
 
 alter table public.affiliate_links
   add column if not exists pricing_summary text not null default '';
+
+alter table public.affiliate_links
+  add column if not exists displayed_price text;
+
+alter table public.affiliate_links
+  add column if not exists commission_rate numeric;
+
+alter table public.affiliate_links
+  add column if not exists commission_snapshot text;
+
+alter table public.affiliate_links
+  add column if not exists verified_at date;
 
 alter table public.affiliate_links
   add column if not exists pros jsonb not null default '[]'::jsonb;

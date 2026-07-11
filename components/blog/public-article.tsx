@@ -56,6 +56,7 @@ function localizeLabels(locale: LocaleCode) {
       price: "Format",
       takeaways: "Perkara utama",
       sources: "Sumber rasmi disemak",
+      priceChecked: "Harga disemak",
       disclosureText: "Pautan di halaman ini pergi terus ke laman rasmi. launcher tidak menerima komisen daripada pautan ini pada masa penerbitan.",
     };
   }
@@ -83,6 +84,7 @@ function localizeLabels(locale: LocaleCode) {
       price: "形式",
       takeaways: "重点结论",
       sources: "已核对的官方来源",
+      priceChecked: "价格核对于",
       disclosureText: "本页链接直接指向官方站点。发布时，launcher 不会从这些链接获得佣金。",
     };
   }
@@ -109,6 +111,7 @@ function localizeLabels(locale: LocaleCode) {
     price: "Format",
     takeaways: "Key takeaways",
     sources: "Official sources checked",
+    priceChecked: "Price checked",
     disclosureText: "Links on this page go directly to official product sites. launcher did not earn a commission from these links at publication time.",
   };
 }
@@ -323,7 +326,7 @@ export function PublicArticle({ post, localeCode }: Props) {
                       <div className="flex flex-wrap items-center gap-2 text-sm text-neutral-500">
                         <span>{labels.affiliatePick}</span>
                         <span aria-hidden="true">.</span>
-                        <span>{item.priceBand}</span>
+                        <span>{item.displayedPrice || item.priceBand}</span>
                       </div>
                       <h3 className="mt-2 text-[1.18rem] font-medium leading-snug text-black">{item.anchorText}</h3>
                       <p className="mt-2 text-[0.98rem] leading-relaxed text-neutral-700">{item.summary}</p>
@@ -368,7 +371,7 @@ export function PublicArticle({ post, localeCode }: Props) {
                   <tr key={item.id} className="border-b border-neutral-100 align-top">
                     <td className="py-4 pr-6 font-medium text-black">{item.anchorText}</td>
                     <td className="py-4 pr-6">{item.bestFor}</td>
-                    <td className="py-4 pr-6">{item.priceBand}</td>
+                    <td className="py-4 pr-6">{item.displayedPrice || item.priceBand}</td>
                   </tr>
                 ))}
               </tbody>
@@ -397,6 +400,7 @@ export function PublicArticle({ post, localeCode }: Props) {
               <div>
                 <h3 className="text-sm font-medium uppercase text-neutral-500">{labels.pricing}</h3>
                 <p className="mt-3 text-[1.05rem] leading-relaxed text-neutral-800">{leadOffer.pricingSummary}</p>
+                {leadOffer.verifiedAt ? <p className="mt-2 text-sm text-neutral-500">{labels.priceChecked}: {leadOffer.verifiedAt}</p> : null}
                 <a
                   href={leadOffer.trackingUrl || leadOffer.destinationUrl}
                   target="_blank"
@@ -508,7 +512,7 @@ export function PublicArticle({ post, localeCode }: Props) {
                           </p>
                           <p>
                             <span className="block text-neutral-500">{labels.pricing}</span>
-                            <span className="text-black">{item.priceBand}</span>
+                            <span className="text-black">{item.displayedPrice || item.priceBand}</span>
                           </p>
                         </div>
                         <span className="mt-4 inline-flex items-center rounded-full bg-black px-4 py-2 text-sm font-medium text-white">

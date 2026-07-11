@@ -53,7 +53,11 @@ type AffiliateLinkRow = {
   best_for: string;
   not_for: string;
   price_band: string;
+  displayed_price: string | null;
   pricing_summary: string;
+  commission_rate: number | null;
+  commission_snapshot: string | null;
+  verified_at: string | null;
   pros: unknown;
   cons: unknown;
   score: number | null;
@@ -92,7 +96,7 @@ const postSelect = `
       page_config,
       updated_at,
       post_translations:post_translations(id, locale, title, slug, meta_title, meta_description, quick_answer, hero_image_url, key_takeaways, sections, faq_items, body),
-      affiliate_links(id, merchant_name, anchor_text, destination_url, tracking_url, image_url, image_link_url, source_urls, localized_content, rel, target, cta_text_en, cta_text_ms, cta_text_zh_hans, summary, best_for, not_for, price_band, pricing_summary, pros, cons, score, is_active)
+      affiliate_links(id, merchant_name, anchor_text, destination_url, tracking_url, image_url, image_link_url, source_urls, localized_content, rel, target, cta_text_en, cta_text_ms, cta_text_zh_hans, summary, best_for, not_for, price_band, displayed_price, pricing_summary, commission_rate, commission_snapshot, verified_at, pros, cons, score, is_active)
     `;
 
 function normalizeStringArray(raw: unknown): string[] {
@@ -265,7 +269,11 @@ function toLocalePost(row: PostRow): CmsBlogPost {
       bestFor: link.best_for,
       notFor: link.not_for,
       priceBand: link.price_band,
+      displayedPrice: link.displayed_price ?? "",
       pricingSummary: link.pricing_summary,
+      commissionRate: link.commission_rate ?? undefined,
+      commissionSnapshot: link.commission_snapshot ?? "",
+      verifiedAt: link.verified_at ?? "",
       pros: normalizeStringArray(link.pros),
       cons: normalizeStringArray(link.cons),
       score: link.score ?? 0,
@@ -512,7 +520,11 @@ export async function savePost(payload: SavePostPayload): Promise<CmsBlogPost> {
       best_for: link.bestFor || "",
       not_for: link.notFor || "",
       price_band: link.priceBand || "",
+      displayed_price: link.displayedPrice || null,
       pricing_summary: link.pricingSummary || "",
+      commission_rate: link.commissionRate ?? null,
+      commission_snapshot: link.commissionSnapshot || null,
+      verified_at: link.verifiedAt || null,
       pros: link.pros || [],
       cons: link.cons || [],
       score: link.score || 0,

@@ -54,7 +54,11 @@ export type AffiliateLinkDraft = {
   bestFor: string;
   notFor: string;
   priceBand: string;
+  displayedPrice?: string;
   pricingSummary: string;
+  commissionRate?: number;
+  commissionSnapshot?: string;
+  verifiedAt?: string;
   pros: string[];
   cons: string[];
   score: number;

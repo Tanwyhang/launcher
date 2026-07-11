@@ -60,9 +60,10 @@ function printHelp() {
   console.log(`SEO CLI
 
 Usage:
-  bun run seo create-page --category "AI note takers" --use-case "sales teams" --market "Malaysia" --keyword "best ai note takers for sales teams malaysia" --slug-en best-ai-note-takers-sales-malaysia --slug-ms ai-note-taker-sales-malaysia --slug-zh ai-note-taker-sales-malaysia-zh
+  bun run seo create-page --category "AI note takers" --use-case "sales teams" --market "Malaysia" --keyword "best ai note takers for sales teams malaysia" --slug-en best-ai-note-takers-sales-malaysia --slug-ms ai-note-taker-sales-malaysia --slug-zh ai-note-taker-sales-malaysia-zh --offers-file ./products.json
   bun run seo clone-page --source best-ai-note-takers-for-meetings --slug-en new-en --slug-ms new-ms --slug-zh new-zh --market "Singapore" --use-case "sales teams"
   bun run seo assign-offers --id best-ai-note-takers-for-meetings --file ./offers.json
+  bun run seo validate-offers --file ./products.json
   bun run seo import-pages --file ./data/seed-pages-ai-cluster.json
   bun run seo audit-page --id best-ai-note-takers-for-meetings
   bun run seo score-page --id plaud-note-alternatives --locale en --site-url http://localhost:3000 --out reports/seo/plaud-note-alternatives-en.md
@@ -72,6 +73,7 @@ Commands:
   create-page    Create a draft page from the best-x-for-y-in-z template
   clone-page     Duplicate a winning page into a new slug/market/use-case set
   assign-offers  Replace affiliate offers on one page from a JSON file
+  validate-offers Validate and normalize an offer/product JSON file without saving it
   import-pages   Bulk create full pages from a JSON seed file
   audit-page     Audit one page for SEO/commercial readiness
   score-page     Generate a weighted SEO + A/B testing score report for one page
@@ -109,8 +111,27 @@ function normalizeOffer(raw: unknown, index: number): AffiliateLinkDraft {
 
   const candidate = raw as Record<string, unknown>;
   const merchantName = typeof candidate.merchantName === "string" ? candidate.merchantName : "";
-  const anchorText = typeof candidate.anchorText === "string" ? candidate.anchorText : "";
-  const destinationUrl = typeof candidate.destinationUrl === "string" ? candidate.destinationUrl : "";
+  const anchorText = typeof candidate.anchorText === "string"
+    ? candidate.anchorText
+    : typeof candidate.productName === "string"
+      ? candidate.productName
+      : typeof candidate.name === "string"
+        ? candidate.name
+        : "";
+  const destinationUrl = typeof candidate.destinationUrl === "string"
+    ? candidate.destinationUrl
+    : typeof candidate.productUrl === "string"
+      ? candidate.productUrl
+      : "";
+  const verifiedAt = typeof candidate.verifiedAt === "string"
+    ? candidate.verifiedAt
+    : typeof candidate.verificationDate === "string"
+      ? candidate.verificationDate
+      : "";
+
+  if (verifiedAt && !/^\d{4}-\d{2}-\d{2}$/.test(verifiedAt)) {
+    throw new Error(`Offer ${index + 1} verifiedAt must use YYYY-MM-DD`);
+  }
 
   if (!merchantName || !anchorText || !destinationUrl) {
     throw new Error(`Offer ${index + 1} must include merchantName, anchorText, and destinationUrl`);
@@ -121,7 +142,11 @@ function normalizeOffer(raw: unknown, index: number): AffiliateLinkDraft {
     merchantName,
     anchorText,
     destinationUrl,
-    trackingUrl: typeof candidate.trackingUrl === "string" ? candidate.trackingUrl : "",
+    trackingUrl: typeof candidate.trackingUrl === "string"
+      ? candidate.trackingUrl
+      : typeof candidate.affiliateUrl === "string"
+        ? candidate.affiliateUrl
+        : "",
     imageUrl: typeof candidate.imageUrl === "string" ? candidate.imageUrl : "",
     imageLinkUrl: typeof candidate.imageLinkUrl === "string" ? candidate.imageLinkUrl : "",
     sourceUrls: Array.isArray(candidate.sourceUrls)
@@ -143,7 +168,18 @@ function normalizeOffer(raw: unknown, index: number): AffiliateLinkDraft {
     bestFor: typeof candidate.bestFor === "string" ? candidate.bestFor : "",
     notFor: typeof candidate.notFor === "string" ? candidate.notFor : "",
     priceBand: typeof candidate.priceBand === "string" ? candidate.priceBand : "",
+    displayedPrice: typeof candidate.displayedPrice === "string"
+      ? candidate.displayedPrice
+      : typeof candidate.price === "string"
+        ? candidate.price
+        : "",
     pricingSummary: typeof candidate.pricingSummary === "string" ? candidate.pricingSummary : "",
+    commissionRate:
+      typeof candidate.commissionRate === "number" && Number.isFinite(candidate.commissionRate)
+        ? candidate.commissionRate
+        : undefined,
+    commissionSnapshot: typeof candidate.commissionSnapshot === "string" ? candidate.commissionSnapshot : "",
+    verifiedAt,
     pros: Array.isArray(candidate.pros)
       ? candidate.pros.filter((item): item is string => typeof item === "string" && item.trim().length > 0)
       : [],
@@ -168,10 +204,12 @@ function loadOffersFromFile(filePath: string): AffiliateLinkDraft[] {
       ? parsed
       : parsed && typeof parsed === "object" && Array.isArray((parsed as { offers?: unknown[] }).offers)
         ? (parsed as { offers: unknown[] }).offers
-        : null;
+        : parsed && typeof parsed === "object" && Array.isArray((parsed as { products?: unknown[] }).products)
+          ? (parsed as { products: unknown[] }).products
+          : null;
 
   if (!source) {
-    throw new Error("Offer file must be an array or an object with an offers array");
+    throw new Error("Offer file must be an array or an object with an offers or products array");
   }
 
   return source.map((entry, index) => normalizeOffer(entry, index));
@@ -315,6 +353,10 @@ async function handleCreatePage(args: Args) {
   }
 
   const draft = buildTemplatePageDraft(input);
+  const offersFile = getStringArg(args, "offers-file");
+  if (offersFile) {
+    draft.affiliateLinks = loadOffersFromFile(offersFile);
+  }
   const created = await createPost(draft);
   const audit = auditPage(created);
   const output = {
@@ -423,6 +465,12 @@ async function handleAssignOffers(args: Args) {
 
   console.log(`Assigned ${affiliateLinks.length} offers to ${saved.id}`);
   printAuditSummary(audit);
+}
+
+function handleValidateOffers(args: Args) {
+  const file = requireStringArg(args, "file");
+  const offers = loadOffersFromFile(file);
+  console.log(JSON.stringify({ valid: true, offerCount: offers.length, offers }, null, 2));
 }
 
 async function handleImportPages(args: Args) {
@@ -604,6 +652,11 @@ async function main() {
 
   if (command === "assign-offers") {
     await handleAssignOffers(args);
+    return;
+  }
+
+  if (command === "validate-offers") {
+    handleValidateOffers(args);
     return;
   }
 
