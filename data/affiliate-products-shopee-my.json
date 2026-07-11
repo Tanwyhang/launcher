@@ -1,0 +1,182 @@
+{
+  "market": "MY",
+  "network": "Shopee Malaysia Affiliate",
+  "verifiedAt": "2026-07-11",
+  "notes": "Canonical product catalog. Keep normal Shopee listing URLs in productUrl and generated tracking URLs in affiliateUrl. Recheck prices, stock, claims, and commission terms before each publication update.",
+  "products": [
+    {
+      "id": "shopee-my-dji-osmo-pocket-3",
+      "merchantName": "Shopee Malaysia",
+      "productName": "DJI Osmo Pocket 3 / DJI Osmo Pocket 3 Creator Combo",
+      "productUrl": "https://shopee.com.my/product/42120407/49703577121",
+      "affiliateUrl": "https://s.shopee.com.my/9zw39I7DLm",
+      "imageLinkUrl": "https://s.shopee.com.my/9zw39I7DLm",
+      "imageUrl": "https://cdn.shopify.com/s/files/1/0724/6112/3747/files/DJI_Osmo_Pocket_3_1.jpg?v=1761725109",
+      "price": "RM2,225.00",
+      "commissionRate": 16,
+      "commissionSnapshot": "Shopee Malaysia displayed a 16% commission rate when shortlisted.",
+      "verificationDate": "2026-07-11",
+      "sourceUrls": [
+        {
+          "label": "Shopee Malaysia product listing",
+          "url": "https://shopee.com.my/product/42120407/49703577121"
+        },
+        {
+          "label": "DJI official specifications",
+          "url": "https://www.dji.com/global/osmo-pocket-3/specs"
+        },
+        {
+          "label": "DJI Store Malaysia",
+          "url": "https://djistore-malaysia.com/products/dji-osmo-pocket-3"
+        }
+      ],
+      "isActive": true
+    },
+    {
+      "id": "shopee-my-ugreen-magnetic-power-bank-10000mah",
+      "merchantName": "Shopee Malaysia",
+      "productName": "UGREEN Magnetic Wireless 10000mAh Power Bank",
+      "productUrl": "https://shopee.com.my/product/82080415/23858076124",
+      "affiliateUrl": "https://s.shopee.com.my/6AjKaJBbBY",
+      "imageLinkUrl": "https://s.shopee.com.my/6AjKaJBbBY",
+      "imageUrl": "",
+      "price": "RM89.00",
+      "commissionRate": 7,
+      "commissionSnapshot": "Shopee Malaysia displayed a 7% commission rate and 60k+ sold when shortlisted.",
+      "verificationDate": "2026-07-11",
+      "sourceUrls": [
+        {
+          "label": "Shopee Malaysia product listing",
+          "url": "https://shopee.com.my/product/82080415/23858076124"
+        }
+      ],
+      "isActive": true
+    },
+    {
+      "id": "shopee-my-goojodoq-gfs001-handheld-fan",
+      "merchantName": "Shopee Malaysia",
+      "productName": "GOOJODOQ GFS001 100 Gear High Speed Handheld Fan with LED Display",
+      "productUrl": "https://shopee.com.my/product/764456949/24676932732",
+      "affiliateUrl": "https://s.shopee.com.my/2g9SPwT9No",
+      "imageLinkUrl": "https://s.shopee.com.my/2g9SPwT9No",
+      "imageUrl": "",
+      "price": "RM50.00",
+      "commissionRate": 10,
+      "commissionSnapshot": "Shopee Malaysia displayed a 10% commission rate and 100k+ sold when shortlisted.",
+      "verificationDate": "2026-07-11",
+      "sourceUrls": [
+        {
+          "label": "Shopee Malaysia product listing",
+          "url": "https://shopee.com.my/product/764456949/24676932732"
+        }
+      ],
+      "isActive": true
+    },
+    {
+      "id": "shopee-my-goojodoq-mini-fan-display",
+      "merchantName": "Shopee Malaysia",
+      "productName": "GOOJODOQ Mini High Speed Handheld Fan with Display",
+      "productUrl": "https://shopee.com.my/product/1117360958/26180006931",
+      "affiliateUrl": "https://s.shopee.com.my/4AyGCk7isM",
+      "imageLinkUrl": "https://s.shopee.com.my/4AyGCk7isM",
+      "imageUrl": "",
+      "price": "RM37.00",
+      "commissionRate": 10,
+      "commissionSnapshot": "Shopee Malaysia displayed a 10% commission rate and 80k+ sold when shortlisted.",
+      "verificationDate": "2026-07-11",
+      "sourceUrls": [
+        {
+          "label": "Shopee Malaysia product listing",
+          "url": "https://shopee.com.my/product/1117360958/26180006931"
+        }
+      ],
+      "isActive": true
+    },
+    {
+      "id": "shopee-my-eastel-prepaid-ultra-5g",
+      "merchantName": "ETELXO",
+      "productName": "Eastel Prepaid Ultra 5G Data Besar High Speed SIM",
+      "productUrl": "https://shopee.com.my/product/1052723721/44808247661",
+      "affiliateUrl": "https://s.shopee.com.my/4fuWnhDoL3",
+      "imageLinkUrl": "https://s.shopee.com.my/4fuWnhDoL3",
+      "imageUrl": "",
+      "price": "RM9.96",
+      "commissionRate": 81,
+      "commissionSnapshot": "ETELXO Shopee Comms XTRA displayed an 81% commission rate and 6 sold when shortlisted. Offer period stated no limit.",
+      "verificationDate": "2026-07-11",
+      "sourceUrls": [
+        {
+          "label": "Shopee Malaysia product listing",
+          "url": "https://shopee.com.my/product/1052723721/44808247661"
+        }
+      ],
+      "isActive": true
+    },
+    {
+      "id": "shopee-my-beone-mobile-prepaid-5g",
+      "merchantName": "ETELXO",
+      "productName": "BeONE Mobile Prepaid 5G Coverage Maxis SIM",
+      "productUrl": "https://shopee.com.my/product/1320854719/41173784910",
+      "affiliateUrl": "https://s.shopee.com.my/5LADazr6Y4",
+      "imageLinkUrl": "https://s.shopee.com.my/5LADazr6Y4",
+      "imageUrl": "",
+      "price": "RM0.10",
+      "commissionRate": 81,
+      "commissionSnapshot": "ETELXO Shopee Comms XTRA displayed an 81% commission rate when shortlisted. Offer period stated no limit.",
+      "verificationDate": "2026-07-11",
+      "sourceUrls": [
+        {
+          "label": "Shopee Malaysia product listing",
+          "url": "https://shopee.com.my/product/1320854719/41173784910"
+        }
+      ],
+      "isActive": true
+    },
+    {
+      "id": "shopee-my-halo-telco-full-hotspot",
+      "merchantName": "ETELXO",
+      "productName": "Halo Telco Full Hotspot Prepaid SIM",
+      "productUrl": "https://shopee.com.my/product/1202774244/29856625215",
+      "affiliateUrl": "https://s.shopee.com.my/8KnpAZIkyx",
+      "imageLinkUrl": "https://s.shopee.com.my/8KnpAZIkyx",
+      "imageUrl": "",
+      "price": "RM4.96",
+      "commissionRate": 81,
+      "commissionSnapshot": "ETELXO Shopee Comms XTRA displayed an 81% commission rate and 1 sold when shortlisted. Offer period stated no limit.",
+      "verificationDate": "2026-07-11",
+      "sourceUrls": [
+        {
+          "label": "Shopee Malaysia product listing",
+          "url": "https://shopee.com.my/product/1202774244/29856625215"
+        }
+      ],
+      "isActive": true
+    },
+    {
+      "id": "shopee-my-motorcycle-bluetooth-intercom-c1-c2",
+      "merchantName": "Shopee Malaysia",
+      "productName": "C1/C2 Motorcycle Bluetooth Intercom Headset",
+      "productUrl": "https://shopee.com.my/product/1032444976/23678014067",
+      "affiliateUrl": "https://s.shopee.com.my/4AyGD0IinC",
+      "imageLinkUrl": "https://s.shopee.com.my/4AyGD0IinC",
+      "imageUrl": "",
+      "price": "RM69.52",
+      "commissionRate": 7,
+      "commissionSnapshot": "Shopee Malaysia displayed a 7% commission rate and 6 sold per month when shortlisted.",
+      "verificationDate": "2026-07-11",
+      "sourceUrls": [
+        {
+          "label": "Shopee Malaysia product listing",
+          "url": "https://shopee.com.my/product/1032444976/23678014067"
+        }
+      ],
+      "isActive": true
+    }
+  ],
+  "skipped": [
+    {
+      "selectionNumber": 6,
+      "reason": "Skipped by user"
+    }
+  ]
+}

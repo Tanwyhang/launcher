@@ -58,6 +58,7 @@ function localizeLabels(locale: LocaleCode) {
       sources: "Sumber rasmi disemak",
       priceChecked: "Harga disemak",
       disclosureText: "Pautan di halaman ini pergi terus ke laman rasmi. launcher tidak menerima komisen daripada pautan ini pada masa penerbitan.",
+      affiliateDisclosureText: "Halaman ini mengandungi pautan affiliate. Jika anda membeli melaluinya, launcher mungkin menerima komisen tanpa kos tambahan kepada anda. Kesimpulan editorial tidak ditentukan oleh bayaran merchant.",
     };
   }
 
@@ -86,6 +87,7 @@ function localizeLabels(locale: LocaleCode) {
       sources: "已核对的官方来源",
       priceChecked: "价格核对于",
       disclosureText: "本页链接直接指向官方站点。发布时，launcher 不会从这些链接获得佣金。",
+      affiliateDisclosureText: "本页包含联盟链接。如果你通过链接购买，launcher 可能获得佣金，但你无需支付额外费用。编辑结论不由商家佣金决定。",
     };
   }
 
@@ -113,6 +115,7 @@ function localizeLabels(locale: LocaleCode) {
     sources: "Official sources checked",
     priceChecked: "Price checked",
     disclosureText: "Links on this page go directly to official product sites. launcher did not earn a commission from these links at publication time.",
+    affiliateDisclosureText: "This page contains affiliate links. If you buy through them, launcher may earn a commission at no extra cost to you. Merchant payouts do not determine the editorial conclusion.",
   };
 }
 
@@ -149,6 +152,7 @@ type Props = {
 export function PublicArticle({ post, localeCode }: Props) {
   const translation = resolveTranslationForLocale(post, localeCode);
   const activeOffers = post.affiliateLinks.filter((item) => item.isActive).map((item) => localizeOffer(item, localeCode));
+  const hasAffiliateTracking = activeOffers.some((item) => item.trackingUrl && item.trackingUrl !== item.destinationUrl);
   const leadOffer = activeOffers[0] ?? null;
   const alternativeOffers = activeOffers.slice(1);
   const labels = localizeLabels(localeCode);
@@ -542,7 +546,7 @@ export function PublicArticle({ post, localeCode }: Props) {
 
         <aside className="mt-10 pt-2 text-sm leading-6 text-neutral-500">
           <p className="text-xs font-medium uppercase text-neutral-500">{labels.disclosure}</p>
-          <p className="mt-3">{labels.disclosureText}</p>
+          <p className="mt-3">{hasAffiliateTracking ? labels.affiliateDisclosureText : labels.disclosureText}</p>
         </aside>
       </div>
 

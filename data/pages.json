@@ -235,7 +235,10 @@
         "bestFor": "Multilingual Malaysia and Singapore meetings",
         "notFor": "Teams assuming every language is available in bilingual mode",
         "priceBand": "Free and paid software plans",
+        "displayedPrice": "",
         "pricingSummary": "The official page displays USD plans; verify current billing and feature limits.",
+        "commissionSnapshot": "",
+        "verifiedAt": "",
         "pros": [
           "58 documented monolingual transcription languages",
           "Meeting bot and file uploads",
@@ -315,7 +318,10 @@
         "bestFor": "Broad multilingual and integration-heavy team workflows",
         "notFor": "Teams expecting mixed-language mode on lower tiers",
         "priceBand": "Free and paid software plans",
+        "displayedPrice": "",
         "pricingSummary": "Business is required for documented Multi-Language Mode; verify current USD pricing.",
+        "commissionSnapshot": "",
+        "verifiedAt": "",
         "pros": [
           "100+ documented languages",
           "Multiple capture methods and uploads",
@@ -395,7 +401,10 @@
         "bestFor": "English-first meeting knowledge and follow-up",
         "notFor": "Teams requiring Malay or Tamil transcription",
         "priceBand": "Free and paid software plans",
+        "displayedPrice": "",
         "pricingSummary": "The official page displays USD plans with conversation and import limits by tier.",
+        "commissionSnapshot": "",
+        "verifiedAt": "",
         "pros": [
           "Searchable meeting knowledge",
           "Summaries and action items",
@@ -479,7 +488,10 @@
         "bestFor": "Individuals recording live Zoom, Meet, or Teams calls",
         "notFor": "Users needing uploaded recordings or overlapping meetings",
         "priceBand": "Free and paid software plans",
+        "displayedPrice": "",
         "pricingSummary": "Individual Free includes unlimited live recordings; team tiers and advanced features are paid.",
+        "commissionSnapshot": "",
+        "verifiedAt": "",
         "pros": [
           "Generous individual free starting point",
           "Live summaries and action items",
@@ -529,5 +541,366 @@
         }
       }
     ]
+  },
+  {
+    "id": "fb5020bd-3f44-4292-b8f9-5e416c52989c",
+    "slug": "dji-osmo-pocket-3-vs-creator-combo-malaysia",
+    "status": "published",
+    "pageConfig": {
+      "templateKey": "x-vs-y",
+      "category": "Pocket cameras",
+      "useCase": "choosing between DJI Osmo Pocket 3 packages",
+      "market": "Malaysia",
+      "primaryKeyword": "DJI Osmo Pocket 3 vs Creator Combo Malaysia",
+      "disclosure": "This page contains an affiliate link. If you buy through it, we may earn a commission at no extra cost to you. The comparison, editorial conclusions, and placement are based on buyer fit and documented evidence, independently of merchant payout or commission rate."
+    },
+    "translations": [
+      {
+        "locale": "en",
+        "title": "DJI Osmo Pocket 3 vs Creator Combo Malaysia: Is the RM510 Upgrade Worth It?",
+        "slug": "dji-osmo-pocket-3-vs-creator-combo-malaysia",
+        "metaTitle": "DJI Pocket 3 vs Creator Combo Malaysia",
+        "metaDescription": "Compare DJI Osmo Pocket 3 and Creator Combo contents, official Malaysia prices, core specs, warranty, storage and app caveats before paying RM510 more.",
+        "quickAnswer": "At the official Malaysia reference prices checked on 11 July 2026, the standard Osmo Pocket 3 was RM1,639 and the Creator Combo was RM2,149, a RM510 difference. The upgrade is easiest to justify if you already need the included DJI Mic 2 Transmitter, Battery Handle, Wide-Angle Lens, Mini Tripod and Carrying Bag. Choose the standard package if you mainly want the same camera and gimbal, can use the three built-in microphones, and do not need the bundled accessories. The supplied Shopee listing showed RM2,225 when checked, but marketplace prices and selected variations can change. No hands-on controlled test was performed for this comparison.",
+        "heroImageUrl": "https://cdn.shopify.com/s/files/1/0724/6112/3747/files/DJI_Osmo_Pocket_3_1.jpg?v=1761725109",
+        "keyTakeaways": [
+          "Both packages use the same 179g Osmo Pocket 3 camera with a 1-inch CMOS sensor, 20mm-equivalent f/2.0 lens and three-axis mechanical gimbal.",
+          "The official Malaysia reference-price gap was RM510; the Creator Combo changes the accessory bundle, not the camera's core image specification.",
+          "Budget separately for a compatible microSD card, verify DJI Mimo compatibility, and confirm Malaysian warranty coverage before buying from a marketplace seller."
+        ],
+        "sections": [
+          {
+            "id": "en-pocket3-1",
+            "sectionTitle": "The RM510 decision in one table",
+            "sectionImageUrl": "https://cdn.shopify.com/s/files/1/0724/6112/3747/files/DJI_Osmo_Pocket_3_1.jpg?v=1761725109",
+            "sectionBody": "DJI Store Malaysia listed the standard Osmo Pocket 3 at RM1,639 and the Creator Combo at RM2,149 when checked on 11 July 2026. That makes the official reference-price difference RM510. The supplied Shopee listing showed RM2,225, but its live price may depend on the chosen variation, vouchers and campaign timing, so verify the checkout item rather than comparing a headline price alone. Both official variants contain the same camera. The standard package is the lower-cost route to the camera, Protective Cover, Handle With 1/4-inch Thread, wrist strap and USB-C PD cable. The Creator Combo adds production accessories; it does not provide a different sensor, lens or gimbal."
+          },
+          {
+            "id": "en-pocket3-2",
+            "sectionTitle": "What the Creator Combo adds",
+            "sectionImageUrl": "https://cdn.shopify.com/s/files/1/0724/6112/3747/files/DJI_Osmo_Pocket_3_1.jpg?v=1761725109",
+            "sectionBody": "The documented Creator Combo additions are one DJI Mic 2 Transmitter, a Mic 2 windscreen and clip magnet, the Osmo Pocket 3 Battery Handle, Wide-Angle Lens, Osmo Mini Tripod and Carrying Bag. The Battery Handle is claimed by DJI to add approximately 103 minutes, or about 62%, under its 1080p/24fps laboratory conditions at 25 degrees Celsius. One transmitter is included even though Pocket 3 can connect directly to two DJI Mic 2 or Mic Mini transmitters. The bundle has the strongest fit for solo presenters, travel creators and buyers who expect to use external wireless audio and longer sessions. If those accessories would remain in the bag, the RM510 is harder to recover."
+          },
+          {
+            "id": "en-pocket3-3",
+            "sectionTitle": "The camera specifications are identical",
+            "sectionImageUrl": "https://cdn.shopify.com/s/files/1/0724/6112/3747/files/DJI_Osmo_Pocket_3_1.jpg?v=1761725109",
+            "sectionBody": "Current DJI specifications list a 1-inch CMOS sensor, 20mm-equivalent f/2.0 lens with a 0.2m minimum focus distance, three-axis mechanical stabilization, ActiveTrack 6.0 and a 2-inch rotating 556x314 touchscreen rated at 700 nits. Normal video reaches 4K/60fps; 4K/120fps is available in Slow Motion, while 1080p slow motion reaches 240fps. Maximum video bitrate is 130Mbps, recording formats are MP4 H.264 or HEVC, and photos are approximately 9.4MP with JPEG or JPEG+DNG options. The camera has three built-in microphones, weighs 179g and measures 139.7x42.2x33.5mm. Neither package improves these core specifications."
+          },
+          {
+            "id": "en-pocket3-4",
+            "sectionTitle": "Malaysia buying checks before checkout",
+            "sectionImageUrl": "https://cdn.shopify.com/s/files/1/0724/6112/3747/files/DJI_Osmo_Pocket_3_1.jpg?v=1761725109",
+            "sectionBody": "Pocket 3 has no built-in recording storage, so a compatible microSD card is required; DJI lists support up to 1TB and publishes recommended cards. Initial activation and firmware updates use DJI Mimo, so check the current supported operating system and phone list. The camera is not waterproof. DJI's 166-minute runtime claim was measured at 25 degrees Celsius while recording 1080p/24fps with Wi-Fi and the screen off. Its 80% in 16 minutes and 100% in 32 minutes charging claims were measured with the separately sold DJI 65W PD charger in a laboratory. DJI states that warranty service is regional and requires valid proof of purchase; confirm the seller is authorized, the unit is Malaysian stock, the serial number is intact and an acceptable invoice will be supplied."
+          },
+          {
+            "id": "en-pocket3-5",
+            "sectionTitle": "Verdict: who should pay RM510 more",
+            "sectionImageUrl": "https://cdn.shopify.com/s/files/1/0724/6112/3747/files/DJI_Osmo_Pocket_3_1.jpg?v=1761725109",
+            "sectionBody": "Pay the RM510 official reference-price premium when the Mic 2 Transmitter and Battery Handle are already on your purchase list and the tripod, wide-angle lens and bag will be used. Buy the standard package when portability, the built-in microphones and shorter recording sessions cover the job, or when you prefer to select accessories individually. Compare the final payable price and exact box contents, not only the listing title. This is a documentation-based buying analysis using official specifications and package information; no hands-on controlled image, audio, stabilization, battery or charging test was performed."
+          }
+        ],
+        "faqItems": [
+          {
+            "id": "en-pocket3-faq-1",
+            "question": "Is the Creator Combo camera better than the standard Osmo Pocket 3?",
+            "answer": "No. The camera, 1-inch CMOS sensor, lens, gimbal and recording specifications are the same. The Creator Combo's value comes from its additional accessories."
+          },
+          {
+            "id": "en-pocket3-faq-2",
+            "question": "What does the RM510 Creator Combo upgrade include?",
+            "answer": "It adds one DJI Mic 2 Transmitter with windscreen and clip magnet, a Battery Handle, Wide-Angle Lens, Osmo Mini Tripod and Carrying Bag over the standard package."
+          },
+          {
+            "id": "en-pocket3-faq-3",
+            "question": "Does Osmo Pocket 3 need a microSD card?",
+            "answer": "Yes. It has no built-in recording storage. DJI specifies microSD support up to 1TB and provides a recommended-card list on its specifications page."
+          },
+          {
+            "id": "en-pocket3-faq-4",
+            "question": "Is DJI Osmo Pocket 3 waterproof?",
+            "answer": "No. DJI explicitly states that Pocket 3 is not waterproof. Protect it from rain, splashes and moisture, which can also affect warranty eligibility."
+          },
+          {
+            "id": "en-pocket3-faq-5",
+            "question": "Is the Shopee price guaranteed to stay at RM2,225?",
+            "answer": "No. RM2,225 was the displayed price supplied for the listing on 11 July 2026. Marketplace price, selected variation, vouchers, stock and seller terms can change, so check the final checkout details."
+          }
+        ],
+        "body": "## Disclosure\nThis page contains an affiliate link. If you buy through it, we may earn a commission at no extra cost to you. The comparison, editorial conclusions and placement are independent of merchant payout or commission rate.\n\n## Method and evidence\nWe compared DJI's official product, specifications, FAQ, downloads and after-sales policy pages, DJI Store Malaysia product data, and the supplied Shopee listing on 11 July 2026. Official Malaysia reference prices were RM1,639 for Osmo Pocket 3 and RM2,149 for the Creator Combo. The supplied Shopee listing showed RM2,225 and may change. We did not perform a hands-on controlled test, so this page does not claim independently measured image quality, microphone quality, stabilization, runtime or charging speed.\n\n## Bottom line\nThe RM510 premium is an accessory decision. It is defensible when the Mic 2 Transmitter and Battery Handle solve needs you already have. It is unnecessary if the same camera with built-in audio and the standard handle is enough. Confirm the live variation, full box contents, Malaysian invoice and regional warranty route before payment."
+      },
+      {
+        "locale": "ms",
+        "title": "DJI Osmo Pocket 3 vs Creator Combo Malaysia: Berbaloi Tambah RM510?",
+        "slug": "dji-osmo-pocket-3-vs-creator-combo-berbaloi-malaysia",
+        "metaTitle": "DJI Pocket 3 vs Creator Combo Malaysia",
+        "metaDescription": "Bandingkan kandungan, harga rasmi Malaysia, spesifikasi, microSD, aplikasi Mimo dan waranti DJI Pocket 3 sebelum tambah RM510 untuk Creator Combo.",
+        "quickAnswer": "Berdasarkan harga rujukan rasmi Malaysia yang disemak pada 11 Julai 2026, Osmo Pocket 3 biasa berharga RM1,639 manakala Creator Combo RM2,149, iaitu beza RM510. Tambahan ini lebih mudah dianggap berbaloi jika anda memang perlukan DJI Mic 2 Transmitter, Battery Handle, Wide-Angle Lens, Mini Tripod dan Carrying Bag yang disertakan. Pilih pakej biasa jika anda cuma mahukan kamera dan gimbal yang sama, boleh bergantung pada tiga mikrofon terbina dalam, dan tidak memerlukan aksesori bundle. Listing Shopee yang dibekalkan memaparkan RM2,225 ketika disemak, tetapi harga marketplace dan variasi boleh berubah. Tiada ujian hands-on terkawal dijalankan untuk perbandingan ini.",
+        "heroImageUrl": "https://cdn.shopify.com/s/files/1/0724/6112/3747/files/DJI_Osmo_Pocket_3_1.jpg?v=1761725109",
+        "keyTakeaways": [
+          "Kedua-dua pakej menggunakan kamera Osmo Pocket 3 179g yang sama, dengan sensor CMOS 1 inci, lensa setara 20mm f/2.0 dan gimbal mekanikal tiga paksi.",
+          "Beza harga rujukan rasmi ialah RM510; Creator Combo menukar set aksesori, bukan spesifikasi imej utama kamera.",
+          "Sediakan bajet untuk kad microSD, semak keserasian DJI Mimo, dan sahkan waranti Malaysia sebelum membeli daripada penjual marketplace."
+        ],
+        "sections": [
+          {
+            "id": "ms-pocket3-1",
+            "sectionTitle": "Keputusan RM510 secara ringkas",
+            "sectionImageUrl": "https://cdn.shopify.com/s/files/1/0724/6112/3747/files/DJI_Osmo_Pocket_3_1.jpg?v=1761725109",
+            "sectionBody": "DJI Store Malaysia menyenaraikan Osmo Pocket 3 biasa pada RM1,639 dan Creator Combo pada RM2,149 ketika disemak pada 11 Julai 2026. Beza harga rujukan rasmi ialah RM510. Listing Shopee yang dibekalkan memaparkan RM2,225, namun harga akhir mungkin berubah mengikut variasi yang dipilih, voucher dan kempen. Semak item pada checkout, bukan angka tajuk sahaja. Kedua-dua variasi rasmi memberikan kamera yang sama. Pakej biasa merangkumi kamera, Protective Cover, Handle With 1/4-inch Thread, wrist strap dan kabel USB-C PD. Creator Combo menambah aksesori untuk penghasilan kandungan; sensornya bukan lebih besar dan gimbalnya bukan versi lain."
+          },
+          {
+            "id": "ms-pocket3-2",
+            "sectionTitle": "Apa yang ditambah dalam Creator Combo",
+            "sectionImageUrl": "https://cdn.shopify.com/s/files/1/0724/6112/3747/files/DJI_Osmo_Pocket_3_1.jpg?v=1761725109",
+            "sectionBody": "Tambahan rasmi Creator Combo ialah satu DJI Mic 2 Transmitter, windscreen dan clip magnet Mic 2, Osmo Pocket 3 Battery Handle, Wide-Angle Lens, Osmo Mini Tripod serta Carrying Bag. DJI mendakwa Battery Handle menambah kira-kira 103 minit, atau lebih kurang 62%, berdasarkan ujian 1080p/24fps pada suhu 25 darjah Celsius. Hanya satu transmitter disertakan walaupun Pocket 3 boleh disambungkan terus kepada dua DJI Mic 2 atau Mic Mini transmitter. Bundle ini paling masuk akal untuk presenter solo, pencipta travel dan pembeli yang memang memerlukan audio wireless serta sesi lebih panjang. Jika kebanyakan aksesori tidak akan digunakan, sukar untuk mempertahankan tambahan RM510."
+          },
+          {
+            "id": "ms-pocket3-3",
+            "sectionTitle": "Spesifikasi kamera tetap sama",
+            "sectionImageUrl": "https://cdn.shopify.com/s/files/1/0724/6112/3747/files/DJI_Osmo_Pocket_3_1.jpg?v=1761725109",
+            "sectionBody": "Spesifikasi semasa DJI menyatakan sensor CMOS 1 inci, lensa setara 20mm f/2.0 dengan jarak fokus minimum 0.2m, penstabilan mekanikal tiga paksi, ActiveTrack 6.0 dan skrin sentuh berputar 2 inci beresolusi 556x314 dengan kecerahan 700 nits. Rakaman biasa mencapai 4K/60fps; 4K/120fps hanya dalam mod Slow Motion, manakala slow motion 1080p mencapai 240fps. Bitrate maksimum ialah 130Mbps, format video MP4 H.264 atau HEVC, dan foto kira-kira 9.4MP dalam JPEG atau JPEG+DNG. Kamera mempunyai tiga mikrofon terbina dalam, berat 179g dan berukuran 139.7x42.2x33.5mm. Creator Combo tidak menaik taraf spesifikasi teras ini."
+          },
+          {
+            "id": "ms-pocket3-4",
+            "sectionTitle": "Perkara yang pembeli Malaysia perlu semak",
+            "sectionImageUrl": "https://cdn.shopify.com/s/files/1/0724/6112/3747/files/DJI_Osmo_Pocket_3_1.jpg?v=1761725109",
+            "sectionBody": "Pocket 3 tiada storan rakaman terbina dalam, jadi kad microSD yang sesuai diperlukan; DJI menyokong sehingga 1TB dan menerbitkan senarai kad yang disyorkan. Pengaktifan awal dan kemas kini firmware menggunakan DJI Mimo, maka semak versi sistem operasi serta telefon yang disokong. Kamera ini tidak kalis air. Dakwaan masa operasi 166 minit diuji oleh DJI pada 25 darjah Celsius dengan rakaman 1080p/24fps, Wi-Fi ditutup dan skrin dimatikan. Dakwaan cas 80% dalam 16 minit dan 100% dalam 32 minit pula menggunakan pengecas DJI 65W PD yang dijual berasingan dalam persekitaran makmal. Waranti DJI adalah mengikut wilayah dan memerlukan bukti pembelian sah; sahkan stok Malaysia, status penjual sah, nombor siri dan invois sebelum membayar."
+          },
+          {
+            "id": "ms-pocket3-5",
+            "sectionTitle": "Keputusan: siapa patut tambah RM510",
+            "sectionImageUrl": "https://cdn.shopify.com/s/files/1/0724/6112/3747/files/DJI_Osmo_Pocket_3_1.jpg?v=1761725109",
+            "sectionBody": "Bayar premium RM510 berdasarkan harga rujukan rasmi jika Mic 2 Transmitter dan Battery Handle memang sudah ada dalam senarai belian anda, serta tripod, lensa wide-angle dan beg akan digunakan. Ambil pakej biasa jika mikrofon terbina dalam dan sesi rakaman lebih pendek sudah memadai, atau jika anda mahu memilih aksesori satu demi satu. Bandingkan jumlah akhir yang perlu dibayar dan isi kotak sebenar. Analisis ini berasaskan dokumentasi rasmi; kami tidak menjalankan ujian hands-on terkawal untuk imej, audio, stabilisasi, bateri atau pengecasan."
+          }
+        ],
+        "faqItems": [
+          {
+            "id": "ms-pocket3-faq-1",
+            "question": "Adakah kamera Creator Combo lebih baik daripada Osmo Pocket 3 biasa?",
+            "answer": "Tidak. Kamera, sensor CMOS 1 inci, lensa, gimbal dan spesifikasi rakaman adalah sama. Nilai Creator Combo datang daripada aksesori tambahan."
+          },
+          {
+            "id": "ms-pocket3-faq-2",
+            "question": "Apa yang saya dapat dengan tambahan RM510?",
+            "answer": "Creator Combo menambah satu DJI Mic 2 Transmitter bersama windscreen dan clip magnet, Battery Handle, Wide-Angle Lens, Osmo Mini Tripod dan Carrying Bag."
+          },
+          {
+            "id": "ms-pocket3-faq-3",
+            "question": "Adakah Osmo Pocket 3 wajib menggunakan kad microSD?",
+            "answer": "Ya. Tiada storan rakaman terbina dalam. DJI menyatakan sokongan microSD sehingga 1TB dan menyediakan senarai model kad yang disyorkan."
+          },
+          {
+            "id": "ms-pocket3-faq-4",
+            "question": "Adakah DJI Osmo Pocket 3 kalis air?",
+            "answer": "Tidak. DJI menyatakan Pocket 3 tidak kalis air. Lindungi kamera daripada hujan, percikan dan kelembapan kerana kerosakan air juga boleh menjejaskan tuntutan waranti."
+          },
+          {
+            "id": "ms-pocket3-faq-5",
+            "question": "Adakah harga Shopee RM2,225 akan kekal?",
+            "answer": "Tidak dijamin. RM2,225 ialah harga yang dipaparkan untuk listing yang dibekalkan pada 11 Julai 2026. Harga, variasi, voucher, stok dan terma penjual boleh berubah; semak butiran akhir di checkout."
+          }
+        ],
+        "body": "## Pendedahan affiliate\nHalaman ini mengandungi pautan affiliate. Jika anda membeli melaluinya, kami mungkin menerima komisen tanpa kos tambahan kepada anda. Perbandingan, kesimpulan editorial dan susunan produk dibuat berdasarkan kesesuaian pembeli dan bukti, secara bebas daripada kadar komisen atau bayaran penjual.\n\n## Kaedah dan bukti\nKami membandingkan halaman produk, spesifikasi, FAQ, muat turun dan polisi selepas jualan rasmi DJI, data produk DJI Store Malaysia, serta listing Shopee yang dibekalkan pada 11 Julai 2026. Harga rujukan rasmi Malaysia ialah RM1,639 untuk Osmo Pocket 3 dan RM2,149 untuk Creator Combo. Listing Shopee yang dibekalkan memaparkan RM2,225 dan boleh berubah. Kami tidak menjalankan ujian hands-on terkawal, jadi halaman ini tidak mendakwa ukuran bebas untuk kualiti imej, mikrofon, stabilisasi, masa operasi atau kelajuan pengecasan.\n\n## Kesimpulan\nPremium RM510 ialah keputusan tentang aksesori. Ia berbaloi jika Mic 2 Transmitter dan Battery Handle menyelesaikan keperluan sebenar anda. Ia tidak perlu jika kamera yang sama, audio terbina dalam dan handle biasa sudah mencukupi. Sahkan variasi live, kandungan kotak, invois Malaysia dan laluan waranti serantau sebelum membayar."
+      },
+      {
+        "locale": "zh-Hans",
+        "title": "DJI Osmo Pocket 3 对比 Creator Combo：马来西亚多付 RM510 值吗？",
+        "slug": "dji-osmo-pocket-3-creator-combo-malaysia",
+        "metaTitle": "DJI Pocket 3 与 Creator Combo 马来西亚对比",
+        "metaDescription": "比较 DJI Pocket 3 与 Creator Combo 的马来西亚官方价格、配件、规格、microSD、Mimo 激活、防水和保修注意事项。",
+        "quickAnswer": "按 2026 年 7 月 11 日核对的马来西亚官方参考价，标准版 Osmo Pocket 3 为 RM1,639，Creator Combo 为 RM2,149，相差 RM510。如果你本来就要购买 DJI Mic 2 发射器、Battery Handle、广角镜、Mini Tripod 和收纳包，这笔升级费较容易合理化。如果你只需要相同的相机与云台，三颗内置麦克风已经够用，而且不会常用套装配件，标准版更划算。所提供的 Shopee 商品页当时显示 RM2,225，但平台价格和所选版本随时可能变化。本比较没有进行亲手受控测试。",
+        "heroImageUrl": "https://cdn.shopify.com/s/files/1/0724/6112/3747/files/DJI_Osmo_Pocket_3_1.jpg?v=1761725109",
+        "keyTakeaways": [
+          "两个套装都是同一台 179g Osmo Pocket 3，采用 1 英寸 CMOS、等效 20mm f/2.0 镜头和三轴机械云台。",
+          "马来西亚官方参考价相差 RM510；Creator Combo 升级的是配件组合，不是相机的核心画质规格。",
+          "购买前还要预算 microSD 卡、检查 DJI Mimo 兼容性，并确认卖家提供马来西亚地区保修所需的有效凭证。"
+        ],
+        "sections": [
+          {
+            "id": "zh-pocket3-1",
+            "sectionTitle": "RM510 到底买到什么",
+            "sectionImageUrl": "https://cdn.shopify.com/s/files/1/0724/6112/3747/files/DJI_Osmo_Pocket_3_1.jpg?v=1761725109",
+            "sectionBody": "DJI Store Malaysia 在 2026 年 7 月 11 日显示，标准版 Osmo Pocket 3 为 RM1,639，Creator Combo 为 RM2,149，官方参考差价是 RM510。所提供的 Shopee 商品页显示 RM2,225，但最终金额可能受所选版本、优惠券和促销影响，不能只看商品页上的一个数字。两个官方版本使用完全相同的相机。标准版包含相机、Protective Cover、带 1/4 英寸螺纹手柄、腕带和 USB-C PD 线；Creator Combo 增加的是创作配件，并没有换成更大的传感器或不同的云台。"
+          },
+          {
+            "id": "zh-pocket3-2",
+            "sectionTitle": "Creator Combo 增加的配件",
+            "sectionImageUrl": "https://cdn.shopify.com/s/files/1/0724/6112/3747/files/DJI_Osmo_Pocket_3_1.jpg?v=1761725109",
+            "sectionBody": "Creator Combo 官方配件包括一个 DJI Mic 2 发射器、Mic 2 防风毛套和背夹磁铁、Osmo Pocket 3 Battery Handle、广角镜、Osmo Mini Tripod 以及收纳包。DJI 表示 Battery Handle 在 25 摄氏度、1080p/24fps 的实验条件下可增加约 103 分钟，也就是约 62% 的续航。套装只附一个发射器，虽然 Pocket 3 可以直接连接两个 DJI Mic 2 或 Mic Mini 发射器。对单人出镜、旅行创作和确实需要无线收音与较长拍摄时间的人，这套组合较合理；如果这些配件大多不会使用，就不容易收回 RM510 的价值。"
+          },
+          {
+            "id": "zh-pocket3-3",
+            "sectionTitle": "两个版本的相机规格相同",
+            "sectionImageUrl": "https://cdn.shopify.com/s/files/1/0724/6112/3747/files/DJI_Osmo_Pocket_3_1.jpg?v=1761725109",
+            "sectionBody": "DJI 当前规格列出 1 英寸 CMOS、等效 20mm f/2.0 镜头、0.2m 最近对焦距离、三轴机械增稳、ActiveTrack 6.0，以及 2 英寸可旋转触屏；屏幕分辨率 556x314，亮度 700 尼特。普通视频最高 4K/60fps；4K/120fps 只在 Slow Motion 模式提供，1080p 慢动作最高 240fps。最高码率为 130Mbps，视频格式为 MP4 H.264 或 HEVC，照片约 9.4MP并支持 JPEG 或 JPEG+DNG。机身有三颗内置麦克风，重 179g，尺寸为 139.7x42.2x33.5mm。Creator Combo 不会提升这些核心规格。"
+          },
+          {
+            "id": "zh-pocket3-4",
+            "sectionTitle": "马来西亚买家下单前要核对",
+            "sectionImageUrl": "https://cdn.shopify.com/s/files/1/0724/6112/3747/files/DJI_Osmo_Pocket_3_1.jpg?v=1761725109",
+            "sectionBody": "Pocket 3 没有内置录像存储，因此必须另备兼容 microSD 卡；DJI 标示最高支持 1TB，并提供推荐型号。首次激活和固件更新需要 DJI Mimo，应先核对目前支持的手机与系统版本。相机不防水。DJI 的 166 分钟续航数据是在 25 摄氏度、1080p/24fps、关闭 Wi-Fi 和屏幕的条件下测得；16 分钟充至 80%、32 分钟充满的说法，则是在实验室使用另售 DJI 65W PD 充电器测得。DJI 说明保修按购买地区提供，并要求有效购买凭证；从平台购买前，应确认卖家授权情况、马来西亚本地货、序列号完整和发票是否可用于保修。"
+          },
+          {
+            "id": "zh-pocket3-5",
+            "sectionTitle": "结论：谁适合多付 RM510",
+            "sectionImageUrl": "https://cdn.shopify.com/s/files/1/0724/6112/3747/files/DJI_Osmo_Pocket_3_1.jpg?v=1761725109",
+            "sectionBody": "如果 Mic 2 发射器和 Battery Handle 本来就在采购清单里，而且脚架、广角镜和收纳包都会用到，按官方参考价多付 RM510 有实际依据。如果内置麦克风和较短拍摄时长已经够用，或你想自行选择配件，标准版更合适。比较时应看最终付款金额与准确盒内物品，而不是只看标题。这是一份基于官方文档的购买分析；我们没有亲手进行画质、收音、防抖、续航或充电受控测试。"
+          }
+        ],
+        "faqItems": [
+          {
+            "id": "zh-pocket3-faq-1",
+            "question": "Creator Combo 的相机比标准版更好吗？",
+            "answer": "不是。相机、1 英寸 CMOS、镜头、云台和录像规格都相同。Creator Combo 的差别和价值来自额外配件。"
+          },
+          {
+            "id": "zh-pocket3-faq-2",
+            "question": "多付 RM510 包含哪些东西？",
+            "answer": "相比标准版，Creator Combo 增加一个 DJI Mic 2 发射器及其防风毛套和背夹磁铁、Battery Handle、广角镜、Osmo Mini Tripod 和收纳包。"
+          },
+          {
+            "id": "zh-pocket3-faq-3",
+            "question": "Osmo Pocket 3 一定要用 microSD 卡吗？",
+            "answer": "要。机身没有内置录像存储。DJI 标示支持最高 1TB microSD，并在规格页列出推荐卡。"
+          },
+          {
+            "id": "zh-pocket3-faq-4",
+            "question": "DJI Osmo Pocket 3 防水吗？",
+            "answer": "不防水。DJI 明确说明 Pocket 3 不防水，应避免雨水、泼溅和潮气；进水也可能影响保修资格。"
+          },
+          {
+            "id": "zh-pocket3-faq-5",
+            "question": "Shopee 的 RM2,225 会一直保持吗？",
+            "answer": "不会保证。RM2,225 是所提供商品页在 2026 年 7 月 11 日显示的价格。平台价格、版本、优惠券、库存和卖家条款都可能变化，应以结账页为准。"
+          }
+        ],
+        "body": "## 联盟链接披露\n本页含联盟链接。如果你通过链接购买，我们可能获得佣金，但你不需要支付额外费用。比较结果、编辑结论和展示位置以买家适配与证据为依据，不受商家佣金或分成比例影响。\n\n## 资料与方法\n我们核对了 DJI 官方产品、规格、FAQ、下载与售后政策页面、DJI Store Malaysia 产品数据，以及所提供的 Shopee 商品页，资料检查日期为 2026 年 7 月 11 日。马来西亚官方参考价为标准版 RM1,639、Creator Combo RM2,149。所提供 Shopee 商品页显示 RM2,225，价格可能变化。我们没有进行亲手受控测试，因此不会声称独立测得画质、麦克风、防抖、续航或充电速度。\n\n## 最终判断\nRM510 是配件选择，不是相机升级。如果 Mic 2 发射器和 Battery Handle 正好解决你的需求，这笔差价有理由；如果相同的相机、内置收音和标准手柄已经够用，就没有必要。付款前确认实时版本、完整盒内物品、马来西亚发票和地区保修渠道。"
+      }
+    ],
+    "affiliateLinks": [
+      {
+        "id": "shopee-my-dji-osmo-pocket-3",
+        "merchantName": "Shopee Malaysia",
+        "anchorText": "DJI Osmo Pocket 3 listing",
+        "destinationUrl": "https://shopee.com.my/product/42120407/49703577121",
+        "trackingUrl": "https://s.shopee.com.my/9zw39I7DLm",
+        "imageUrl": "https://cdn.shopify.com/s/files/1/0724/6112/3747/files/DJI_Osmo_Pocket_3_1.jpg?v=1761725109",
+        "imageLinkUrl": "https://s.shopee.com.my/9zw39I7DLm",
+        "sourceUrls": [
+          {
+            "label": "DJI official product page",
+            "url": "https://www.dji.com/global/osmo-pocket-3"
+          },
+          {
+            "label": "DJI official specifications",
+            "url": "https://www.dji.com/global/osmo-pocket-3/specs"
+          },
+          {
+            "label": "DJI official FAQ",
+            "url": "https://www.dji.com/global/osmo-pocket-3/faq"
+          },
+          {
+            "label": "DJI official downloads and manuals",
+            "url": "https://www.dji.com/global/osmo-pocket-3/downloads"
+          },
+          {
+            "label": "DJI official after-sales policy",
+            "url": "https://www.dji.com/global/service/policy"
+          },
+          {
+            "label": "DJI Store Malaysia product page",
+            "url": "https://djistore-malaysia.com/products/dji-osmo-pocket-3"
+          },
+          {
+            "label": "Shopee Malaysia listing",
+            "url": "https://shopee.com.my/product/42120407/49703577121"
+          }
+        ],
+        "rel": "sponsored nofollow noopener noreferrer",
+        "target": "_blank",
+        "ctaTextEn": "Check current price",
+        "ctaTextMs": "Semak harga terkini",
+        "ctaTextZhHans": "查看最新价格",
+        "summary": "The supplied Shopee Malaysia listing for Osmo Pocket 3; confirm the selected package, live price, seller authorization, Malaysian invoice and warranty route before payment.",
+        "bestFor": "Malaysia buyers comparing the live marketplace offer with official package reference prices",
+        "notFor": "Buyers who have not confirmed the selected variation, exact box contents or regional warranty eligibility",
+        "priceBand": "RM2,225.00 displayed on 2026-07-11",
+        "displayedPrice": "RM2,225.00",
+        "pricingSummary": "The supplied listing showed RM2,225 on 11 July 2026. Shopee prices, variations, vouchers and availability can change; compare the final checkout amount with the official Malaysia references of RM1,639 standard and RM2,149 Creator Combo.",
+        "commissionRate": 16,
+        "commissionSnapshot": "Shopee Malaysia displayed a 16% commission rate when verified on 2026-07-11. The payout does not determine the editorial conclusion, placement or package recommendation.",
+        "verifiedAt": "2026-07-11",
+        "pros": [
+          "Direct access to the supplied Malaysia marketplace listing",
+          "Useful for checking current variation pricing and platform vouchers",
+          "Same listing can be compared against documented official package contents"
+        ],
+        "cons": [
+          "Displayed price and availability can change",
+          "Seller authorization, local invoice and regional warranty must be confirmed",
+          "The selected variation may not be clear from the headline price"
+        ],
+        "score": 88,
+        "isActive": true,
+        "localizedContent": {
+          "en": {
+            "anchorText": "DJI Osmo Pocket 3 listing",
+            "summary": "The supplied Shopee Malaysia listing for Osmo Pocket 3; confirm the selected package, live price, seller authorization, Malaysian invoice and warranty route before payment.",
+            "bestFor": "Malaysia buyers comparing the live marketplace offer with official package reference prices",
+            "notFor": "Buyers who have not confirmed the selected variation, exact box contents or regional warranty eligibility",
+            "priceBand": "RM2,225.00 displayed on 2026-07-11",
+            "pricingSummary": "The supplied listing showed RM2,225 on 11 July 2026. Shopee prices, variations, vouchers and availability can change; compare the final checkout amount with the official Malaysia references of RM1,639 standard and RM2,149 Creator Combo.",
+            "pros": [
+              "Direct access to the supplied Malaysia marketplace listing",
+              "Useful for checking current variation pricing and platform vouchers",
+              "Strong editorial fit for this package comparison"
+            ],
+            "cons": [
+              "Displayed price and availability can change",
+              "Seller authorization, local invoice and regional warranty must be confirmed",
+              "The selected variation may not be clear from the headline price"
+            ]
+          },
+          "ms": {
+            "anchorText": "Listing DJI Osmo Pocket 3",
+            "summary": "Listing Shopee Malaysia yang dibekalkan untuk Osmo Pocket 3; sahkan pakej dipilih, harga live, status penjual sah, invois Malaysia dan laluan waranti sebelum membayar.",
+            "bestFor": "Pembeli Malaysia yang mahu membandingkan tawaran marketplace dengan harga rujukan pakej rasmi",
+            "notFor": "Pembeli yang belum mengesahkan variasi, kandungan kotak atau kelayakan waranti serantau",
+            "priceBand": "RM2,225.00 dipaparkan pada 2026-07-11",
+            "pricingSummary": "Listing yang dibekalkan memaparkan RM2,225 pada 11 Julai 2026. Harga, variasi, voucher dan stok Shopee boleh berubah; bandingkan jumlah checkout dengan rujukan rasmi Malaysia RM1,639 untuk standard dan RM2,149 untuk Creator Combo.",
+            "pros": [
+              "Akses terus kepada listing marketplace Malaysia yang dibekalkan",
+              "Berguna untuk menyemak harga variasi dan voucher platform semasa",
+              "Sangat sesuai dengan fokus editorial perbandingan pakej ini"
+            ],
+            "cons": [
+              "Harga dan stok yang dipaparkan boleh berubah",
+              "Status penjual sah, invois tempatan dan waranti serantau perlu disahkan",
+              "Variasi dipilih mungkin tidak jelas daripada harga tajuk"
+            ]
+          },
+          "zh-Hans": {
+            "anchorText": "DJI Osmo Pocket 3 商品页",
+            "summary": "所提供的 Shopee Malaysia Osmo Pocket 3 商品页；付款前应确认所选套装、实时价格、卖家授权、马来西亚发票和保修渠道。",
+            "bestFor": "想把平台实时优惠与官方套装参考价比较的马来西亚买家",
+            "notFor": "尚未确认版本、盒内物品或地区保修资格的买家",
+            "priceBand": "2026-07-11 显示 RM2,225.00",
+            "pricingSummary": "所提供商品页在 2026 年 7 月 11 日显示 RM2,225。Shopee 价格、版本、优惠券和库存可能变化；最终结账金额应与马来西亚官方参考价标准版 RM1,639、Creator Combo RM2,149 比较。",
+            "pros": [
+              "可直接打开所提供的马来西亚平台商品页",
+              "方便核对当前版本价格和平台优惠券",
+              "与本页套装比较的编辑主题高度相关"
+            ],
+            "cons": [
+              "显示价格和库存可能变化",
+              "卖家授权、本地发票和地区保修必须另行确认",
+              "标题价格未必清楚对应哪个版本"
+            ]
+          }
+        }
+      }
+    ],
+    "updatedAt": "2026-07-11T02:40:55.754Z"
   }
 ]
