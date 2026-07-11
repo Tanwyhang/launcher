@@ -99,7 +99,7 @@
       "productUrl": "https://shopee.com.my/product/1052723721/44808247661",
       "affiliateUrl": "https://s.shopee.com.my/4fuWnhDoL3",
       "imageLinkUrl": "https://s.shopee.com.my/4fuWnhDoL3",
-      "imageUrl": "",
+      "imageUrl": "https://lemonchiffon-mandrill-902114.hostingersite.com/wp-content/uploads/2026/02/ez35-2048x1047.png",
       "price": "RM9.96",
       "commissionRate": 81,
       "commissionSnapshot": "ETELXO Shopee Comms XTRA displayed an 81% commission rate and 6 sold when shortlisted. Offer period stated no limit.",
@@ -108,6 +108,14 @@
         {
           "label": "Shopee Malaysia product listing",
           "url": "https://shopee.com.my/product/1052723721/44808247661"
+        },
+        {
+          "label": "Eastel official plans",
+          "url": "https://eastel.com.my/mobile-plan/"
+        },
+        {
+          "label": "Eastel official terms and FUP",
+          "url": "https://eastel.com.my/terms-and-conditions"
         }
       ],
       "isActive": true
@@ -119,7 +127,7 @@
       "productUrl": "https://shopee.com.my/product/1320854719/41173784910",
       "affiliateUrl": "https://s.shopee.com.my/5LADazr6Y4",
       "imageLinkUrl": "https://s.shopee.com.my/5LADazr6Y4",
-      "imageUrl": "",
+      "imageUrl": "https://www.beonemobile.com.my/images/Simcard/Website%202026%20Material%20v3.2-62.png",
       "price": "RM0.10",
       "commissionRate": 81,
       "commissionSnapshot": "ETELXO Shopee Comms XTRA displayed an 81% commission rate when shortlisted. Offer period stated no limit.",
@@ -128,6 +136,14 @@
         {
           "label": "Shopee Malaysia product listing",
           "url": "https://shopee.com.my/product/1320854719/41173784910"
+        },
+        {
+          "label": "BeONE official plans",
+          "url": "https://www.beonemobile.com.my/plans"
+        },
+        {
+          "label": "BeONE official fair usage policy",
+          "url": "https://www.beonemobile.com.my/pages/fair-usage-policy"
         }
       ],
       "isActive": true
@@ -139,7 +155,7 @@
       "productUrl": "https://shopee.com.my/product/1202774244/29856625215",
       "affiliateUrl": "https://s.shopee.com.my/8KnpAZIkyx",
       "imageLinkUrl": "https://s.shopee.com.my/8KnpAZIkyx",
-      "imageUrl": "",
+      "imageUrl": "https://d3tmsgdxrf5kuq.cloudfront.net/3025ec7a-7e80-4d0d-8021-520f2b1653f6/images/guest-layout/halo_logo.png",
       "price": "RM4.96",
       "commissionRate": 81,
       "commissionSnapshot": "ETELXO Shopee Comms XTRA displayed an 81% commission rate and 1 sold when shortlisted. Offer period stated no limit.",
@@ -148,6 +164,14 @@
         {
           "label": "Shopee Malaysia product listing",
           "url": "https://shopee.com.my/product/1202774244/29856625215"
+        },
+        {
+          "label": "Halo official EPIK plans",
+          "url": "https://halotelco.com/plans/halo-epik"
+        },
+        {
+          "label": "Halo official service subscription terms",
+          "url": "https://halotelco.com/terms-and-conditions/service-subscription"
         }
       ],
       "isActive": true

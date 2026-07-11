@@ -10,17 +10,6 @@ import { absoluteUrl, getSiteUrl } from "@/lib/site";
 import type { LocaleCode } from "@/lib/utils";
 import { getLocalePath, LOCALES } from "@/lib/utils";
 
-const cubeAssets = [
-  "/cube-launcher-mark.png",
-  "/cube-slash.png",
-  "/cube-square.png",
-  "/cube-triangle.png",
-  "/cube-steps.png",
-  "/cube-plus.png",
-  "/cube-pair.png",
-  "/cube-frame.png",
-];
-
 function pickCta(locale: LocaleCode, link: { ctaTextEn: string; ctaTextMs: string; ctaTextZhHans: string }) {
   if (locale === "ms") return link.ctaTextMs;
   if (locale === "zh-Hans") return link.ctaTextZhHans;
@@ -271,12 +260,11 @@ export function PublicArticle({ post, localeCode }: Props) {
         </div>
       </header>
 
-      <figure className="launcher-hero-plate relative mt-6 h-[15rem] overflow-hidden rounded-[1.15rem] border border-black/5 sm:h-[20rem]">
-        <img src="/cube-square.png" alt="" className="absolute bottom-4 left-[12%] w-[34%]" />
-        <img src="/cube-launcher-mark.png" alt="" className="absolute bottom-5 left-[34%] w-[38%]" />
-        <img src="/cube-pair.png" alt="" className="absolute right-[10%] top-[8%] w-[28%]" />
-        <figcaption className="sr-only">{translation.title}</figcaption>
-      </figure>
+      {translation.heroImageUrl ? (
+        <figure className="relative mt-6 h-[15rem] overflow-hidden rounded-[1.15rem] border border-black/5 bg-neutral-50 sm:h-[20rem]">
+          <img src={translation.heroImageUrl} alt={translation.title} className="h-full w-full object-contain" />
+        </figure>
+      ) : null}
 
       <div className="mt-6">
         <p className="text-[1.05rem] leading-relaxed text-black sm:text-[1.12rem]">
@@ -312,20 +300,22 @@ export function PublicArticle({ post, localeCode }: Props) {
                   className="rounded-[1.2rem] border border-neutral-200 bg-white p-5 text-black no-underline"
                 >
                   <div className="flex gap-4">
-                    <a
-                      href={item.imageLinkUrl || item.trackingUrl || item.destinationUrl}
-                      target="_blank"
-                      rel={item.rel}
-                      aria-label={`${item.anchorText}: ${pickCta(localeCode, item)}`}
-                      className="h-24 w-28 shrink-0 overflow-hidden rounded-xl bg-neutral-50"
-                    >
-                      <img
-                        src={item.imageUrl || cubeAssets[index % cubeAssets.length]}
-                        alt={item.anchorText}
-                        className="h-full w-full object-contain"
-                        loading={index === 0 ? "eager" : "lazy"}
-                      />
-                    </a>
+                    {item.imageUrl ? (
+                      <a
+                        href={item.imageLinkUrl || item.trackingUrl || item.destinationUrl}
+                        target="_blank"
+                        rel={item.rel}
+                        aria-label={`${item.anchorText}: ${pickCta(localeCode, item)}`}
+                        className="h-24 w-28 shrink-0 overflow-hidden rounded-xl bg-neutral-50"
+                      >
+                        <img
+                          src={item.imageUrl}
+                          alt={item.anchorText}
+                          className="h-full w-full object-contain"
+                          loading={index === 0 ? "eager" : "lazy"}
+                        />
+                      </a>
+                    ) : null}
                     <div className="min-w-0 flex-1">
                       <div className="flex flex-wrap items-center gap-2 text-sm text-neutral-500">
                         <span>{labels.affiliatePick}</span>
@@ -466,16 +456,17 @@ export function PublicArticle({ post, localeCode }: Props) {
           </section>
         ) : null}
 
-        {translation.sections.map((section, index) => {
+        {translation.sections.map((section) => {
           const sectionBody = cleanSectionBody(section.sectionTitle, section.sectionBody);
 
           return (
             <section key={section.id} className="mt-10 pt-2">
               {section.sectionImageUrl ? (
                 <img
-                  src={cubeAssets[(index + 2) % cubeAssets.length]}
+                  src={section.sectionImageUrl}
                   alt={section.sectionTitle}
-                  className="mx-auto mb-6 h-44 w-44 object-contain"
+                  className="mb-6 max-h-80 w-full rounded-[1.15rem] bg-neutral-50 object-contain"
+                  loading="lazy"
                 />
               ) : null}
               <h2 className="text-[1.55rem] font-medium leading-tight text-black sm:text-[1.8rem]">{section.sectionTitle}</h2>

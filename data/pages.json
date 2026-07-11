@@ -546,6 +546,7 @@
     "id": "fb5020bd-3f44-4292-b8f9-5e416c52989c",
     "slug": "dji-osmo-pocket-3-vs-creator-combo-malaysia",
     "status": "published",
+    "updatedAt": "2026-07-11T02:40:55.754Z",
     "pageConfig": {
       "templateKey": "x-vs-y",
       "category": "Pocket cameras",
@@ -900,7 +901,573 @@
           }
         }
       }
+    ]
+  },
+  {
+    "id": "5ff28e25-a6e1-4cd1-a35e-eb06b2736d65",
+    "slug": "eastel-vs-beone-vs-halo-prepaid-sim-malaysia",
+    "status": "published",
+    "pageConfig": {
+      "templateKey": "x-vs-y",
+      "category": "Malaysia prepaid SIM cards",
+      "useCase": "comparing Eastel, BeONE, and Halo prepaid SIM terms before marketplace checkout",
+      "market": "Malaysia",
+      "primaryKeyword": "Eastel vs BeONE vs Halo prepaid SIM Malaysia",
+      "disclosure": "This page contains affiliate links. If you buy through them, we may earn a commission at no extra cost to you. Product inclusion, order, and editorial conclusions are based on documented buyer fit and official operator evidence, not commission rate. Marketplace prices, variants, and included plans can change; verify the exact SIM and plan at checkout."
+    },
+    "translations": [
+      {
+        "locale": "en",
+        "title": "Eastel vs BeONE vs Halo Prepaid SIM Malaysia: Check the Plan, Not Just the Starter Price",
+        "slug": "eastel-vs-beone-vs-halo-prepaid-sim-malaysia",
+        "metaTitle": "Eastel vs BeONE vs Halo Prepaid SIM Malaysia",
+        "metaDescription": "Compare Eastel, BeONE, and Halo prepaid SIM operator relationships, plans, hotspot, FUP, validity, KYC, and coverage checks before buying in Malaysia.",
+        "quickAnswer": "There is no responsible universal winner from the available documentation. Eastel officially identifies itself as an MVNO using U Mobile infrastructure and publishes detailed current plan allowances. BeONE says it is powered by Maxis and publishes the clearest numerical FUP, including 512kbps after main quota and separate hotspot limits. Halo is a Tune Talk service co-branded with Winner Venture, with clear SIM activation and account-validity rules, but its current plan details are mainly image-based and need extra verification. The displayed Shopee prices of RM9.96, RM0.10, and RM4.96 are listing prices, not proof that a monthly data plan is included. No hands-on network test was performed, so this page does not rank speed, coverage quality, gaming, or reliability.",
+        "heroImageUrl": "https://lemonchiffon-mandrill-902114.hostingersite.com/wp-content/uploads/2026/02/ez35-2048x1047.png",
+        "keyTakeaways": [
+          "Treat a cheap SIM or starter-pack price separately from the cost and benefits of an active data plan.",
+          "Eastel documents U Mobile infrastructure, BeONE states it is powered by Maxis, and Halo is a Tune Talk service co-branded with Winner Venture.",
+          "Check hotspot, post-quota treatment, plan validity, account validity, KYC, and the exact Shopee variant before paying."
+        ],
+        "sections": [
+          {
+            "id": "en-prepaid-1",
+            "sectionTitle": "Start with the operator relationship, not a performance assumption",
+            "sectionImageUrl": "https://lemonchiffon-mandrill-902114.hostingersite.com/wp-content/uploads/2026/02/ez35-2048x1047.png",
+            "sectionBody": "Eastel says it is managed by Anchor Communications and operates as an MVNO using U Mobile's network infrastructure; it sends buyers to U Mobile's coverage map. BeONE's homepage describes the service as powered by Maxis, while its general terms only say availability depends on coverage, capacity, maintenance, and local conditions. Halo's subscription terms are more specific about the commercial relationship: the mobile service is supplied by Tune Talk as a co-branded product with Winner Venture, and activation makes the user a Tune Talk subscriber under that programme. These relationships help you choose the relevant coverage information, but they do not prove identical priority, indoor reception, or real-world performance to a host operator's retail plans. No hands-on network test was performed."
+          },
+          {
+            "id": "en-prepaid-2",
+            "sectionTitle": "Documented plan structure, quota, and hotspot",
+            "sectionImageUrl": "https://www.beonemobile.com.my/images/Simcard/Website%202026%20Material%20v3.2-62.png",
+            "sectionBody": "Eastel's current plan page documents EZ15 at RM15 for 30GB over 15 days; EZ35 at RM35 for 200GB with 100GB hotspot over 30 days; and EZ50, EZ68, and EZ98 at RM50, RM68, and RM98 for 500GB, 700GB, and 999GB respectively, each described as full hotspot and valid for 30 days. It also lists one-day and seven-day options. BeONE's FUP table documents 3GB daily, 15GB weekly, ULTRA plus 25 with 100GB main data and 10GB hotspot, ULTRA plus 35 with 200GB and 50GB hotspot, and a 10GB yearly plan. BeONE reduces main-data service to 512kbps after quota and may restrict tethering when the separate hotspot pool is exhausted. Halo currently publishes six Halo EPIK cards, but the reviewed legal page does not provide a clear textual hotspot or post-quota schedule. Match the Halo app or card to written terms before treating an image allowance as final."
+          },
+          {
+            "id": "en-prepaid-3",
+            "sectionTitle": "FUP and validity can matter more than the headline data number",
+            "sectionImageUrl": "https://halotelco-portal-production.s3.ap-southeast-1.amazonaws.com/images/homepage/plans/en/en_attachment_path_14_0_20260603144545.png",
+            "sectionBody": "Eastel's monthly-plan page states a 1,000-minute voice FUP and permits only one EZ35, EZ50, EZ68, or EZ98 monthly plan at a time; buying another forfeits remaining monthly-plan benefits. Its broader FUP allows speed reduction, caps, hotspot restrictions, suspension, or termination for excessive or abusive use without publishing one universal post-quota speed. BeONE publishes a 2,000-minute monthly limit for unlimited calls, then standard pay-per-use rates, and a 512kbps post-main-quota speed. Halo says service is subject to fair use and may be moderated, charged at prevailing rates, suspended, or terminated for excessive use, but does not provide a comparable numerical threshold in the reviewed subscription terms. Plan validity is not the same as phone-number validity: Eastel starts the MSISDN active for seven days and then has a 90-day barred state without reload, while Halo provides a 45-day incoming-only grace period after reload validity expires."
+          },
+          {
+            "id": "en-prepaid-4",
+            "sectionTitle": "Activation, KYC, and coverage checks before purchase",
+            "sectionImageUrl": "https://www.beonemobile.com.my/images/Simcard/Website%202026%20Material%20v3.2-62.png",
+            "sectionBody": "Eastel requires registration before activation, prohibits pre-activated SIMs, and lists MyKad, MyPR, MyTentera, or MyKAS for Malaysians and permanent residents and a valid passport for foreigners. Its current terms describe assisted registration or app self-registration, including digital-ID and biometric verification. BeONE requires identity verification and SIM registration before activation but its public general terms do not list the exact accepted documents, selfie flow, or age threshold, so confirm these in the official app or with customer care. Halo requires Malaysian citizens to use NRIC, permits up to five SIMs per NRIC or passport, and requires a registered SIM to be activated in Malaysia within 14 days by reload, call, or message. For location checks, use Eastel's linked U Mobile map and the relevant official map or operator support channel for the other services. Coverage maps are indicative, not guarantees of service, signal, indoor coverage, or speed."
+          },
+          {
+            "id": "en-prepaid-5",
+            "sectionTitle": "Verify the Shopee listing against the plan you intend to use",
+            "sectionImageUrl": "https://d3tmsgdxrf5kuq.cloudfront.net/3025ec7a-7e80-4d0d-8021-520f2b1653f6/images/guest-layout/halo_logo.png",
+            "sectionBody": "The supplied listings displayed RM9.96 for Eastel, RM0.10 for BeONE, and RM4.96 for Halo when recorded on 11 July 2026. Those figures identify marketplace offers only. They do not establish that the SIM is preloaded with a monthly plan, that activation credit is included, or that the plan pictured by the seller is still available. Before checkout, identify the selected variant, whether it is a blank starter SIM or bundled plan, the reload or activation requirement, the first active period, data and hotspot quotas, auto-renewal, post-quota treatment, seller identity, and refund restrictions after registration. Recheck all three official plan pages because operator packages can change. This comparison is documentation-based and does not recommend one service for speed, coverage quality, gaming, reliability, or commission payout."
+          }
+        ],
+        "faqItems": [
+          {
+            "id": "en-prepaid-faq-1",
+            "question": "Does the cheap Shopee SIM price include a monthly data plan?",
+            "answer": "Not necessarily. A displayed starter-SIM price and a data-plan subscription are separate unless the selected listing variant explicitly states the included plan, quota, validity, and activation conditions. Confirm the final variant and operator app after purchase."
+          },
+          {
+            "id": "en-prepaid-faq-2",
+            "question": "Which networks do Eastel, BeONE, and Halo use?",
+            "answer": "Eastel officially says it uses U Mobile infrastructure. BeONE's operator homepage says it is powered by Maxis. Halo's terms identify the mobile service as a Tune Talk service co-branded with Winner Venture; the reviewed Halo pages do not clearly name a separate underlying radio network."
+          },
+          {
+            "id": "en-prepaid-faq-3",
+            "question": "Which option has the clearest hotspot and FUP terms?",
+            "answer": "BeONE publishes the clearest numerical FUP table, including separate hotspot quotas and 512kbps after main data is exhausted. Eastel publishes plan-level hotspot allowances but its general data FUP is discretionary. Halo requires more plan-specific verification because its current details are mainly presented in image cards."
+          },
+          {
+            "id": "en-prepaid-faq-4",
+            "question": "Can I compare coverage from the host operator's map?",
+            "answer": "Use it as an indication only. Eastel explicitly directs users to U Mobile's map. BeONE states it is powered by Maxis, while Halo is a Tune Talk co-brand. A host map does not prove identical plan access, prioritisation, indoor signal, or speed at your address."
+          },
+          {
+            "id": "en-prepaid-faq-5",
+            "question": "Was Eastel, BeONE, or Halo tested hands-on for this comparison?",
+            "answer": "No. No controlled hands-on network test was performed. The comparison uses official operator plan, FUP, coverage, and subscription documentation checked on 11 July 2026 and does not rank speed, coverage quality, gaming, or reliability."
+          }
+        ],
+        "body": "## Affiliate disclosure\nThis page contains affiliate links. We may earn a commission if you buy through them, at no additional cost to you. Commission is recorded for provenance only and does not determine inclusion, order, scores, or recommendations.\n\n## Method\nWe reviewed current operator-controlled plan pages, terms, FUP material, network statements, coverage-map guidance, and the supplied Shopee listings on 11 July 2026. No hands-on network test was performed. We therefore do not rank speed, coverage quality, gaming, reliability, or real-world signal.\n\n## Buying rule\nFirst verify whether the marketplace item is only a starter SIM or includes a named data plan. Then compare operator relationship, exact quota, hotspot pool, post-quota treatment, plan validity, phone-number validity, KYC, activation deadline, and coverage at the places where you will use it."
+      },
+      {
+        "locale": "ms",
+        "title": "Eastel vs BeONE vs Halo SIM Prabayar Malaysia: Semak Pelan, Bukan Harga SIM Sahaja",
+        "slug": "eastel-vs-beone-vs-halo-sim-prabayar-malaysia",
+        "metaTitle": "Eastel vs BeONE vs Halo SIM Prabayar Malaysia",
+        "metaDescription": "Bandingkan hubungan operator, pelan, hotspot, FUP, tempoh sah, KYC dan semakan liputan Eastel, BeONE dan Halo sebelum membeli SIM di Malaysia.",
+        "quickAnswer": "Tiada satu pemenang universal yang bertanggungjawab berdasarkan dokumen semasa. Eastel mengesahkan bahawa ia MVNO menggunakan infrastruktur U Mobile dan menerbitkan elaun pelan yang terperinci. BeONE menyatakan ia dikuasakan Maxis dan mempunyai FUP bernombor paling jelas, termasuk 512kbps selepas kuota utama serta hotspot berasingan. Halo ialah perkhidmatan Tune Talk berjenama bersama Winner Venture; peraturan pengaktifan dan tempoh sah akaunnya jelas, tetapi butiran pelan semasa banyak dipaparkan sebagai imej dan perlu disahkan lagi. Harga Shopee RM9.96, RM0.10 dan RM4.96 ialah harga listing, bukan bukti pelan data bulanan disertakan. Tiada ujian rangkaian hands-on terkawal dijalankan, jadi halaman ini tidak memberi ranking kelajuan, kualiti liputan, gaming atau kebolehpercayaan.",
+        "heroImageUrl": "https://www.beonemobile.com.my/images/Simcard/Website%202026%20Material%20v3.2-62.png",
+        "keyTakeaways": [
+          "Bezakan harga SIM atau starter pack murah daripada kos dan manfaat pelan data yang aktif.",
+          "Eastel mendokumenkan infrastruktur U Mobile, BeONE menyatakan dikuasakan Maxis, dan Halo ialah perkhidmatan Tune Talk berjenama bersama Winner Venture.",
+          "Semak hotspot, layanan selepas kuota, tempoh sah pelan dan nombor, KYC serta variasi Shopee sebenar sebelum membayar."
+        ],
+        "sections": [
+          {
+            "id": "ms-prepaid-1",
+            "sectionTitle": "Mulakan dengan hubungan operator, bukan andaian prestasi",
+            "sectionImageUrl": "https://lemonchiffon-mandrill-902114.hostingersite.com/wp-content/uploads/2026/02/ez35-2048x1047.png",
+            "sectionBody": "Eastel menyatakan ia diurus Anchor Communications dan beroperasi sebagai MVNO menggunakan infrastruktur rangkaian U Mobile; pengguna diarahkan ke peta liputan rasmi U Mobile. Laman BeONE menyifatkan perkhidmatannya sebagai dikuasakan Maxis, manakala terma am hanya menyebut ketersediaan bergantung pada liputan, kapasiti, penyelenggaraan dan keadaan setempat. Terma Halo lebih jelas tentang hubungan komersial: perkhidmatan mudah alih dibekalkan Tune Talk sebagai produk berjenama bersama Winner Venture, dan pengguna menjadi pelanggan Tune Talk di bawah program itu. Hubungan ini membantu memilih sumber liputan yang relevan, tetapi tidak membuktikan prioriti, penerimaan dalam bangunan atau prestasi sama dengan pelan runcit operator hos. Tiada ujian rangkaian hands-on dijalankan."
+          },
+          {
+            "id": "ms-prepaid-2",
+            "sectionTitle": "Struktur pelan, kuota dan hotspot yang didokumenkan",
+            "sectionImageUrl": "https://www.beonemobile.com.my/images/Simcard/Website%202026%20Material%20v3.2-62.png",
+            "sectionBody": "Halaman pelan Eastel menyenaraikan EZ15 RM15 dengan 30GB untuk 15 hari; EZ35 RM35 dengan 200GB dan hotspot 100GB untuk 30 hari; serta EZ50, EZ68 dan EZ98 pada RM50, RM68 dan RM98 dengan 500GB, 700GB dan 999GB, masing-masing disebut full hotspot dan sah 30 hari. Pelan satu hari dan tujuh hari turut disenaraikan. Jadual FUP BeONE mendokumenkan 3GB harian, 15GB mingguan, ULTRA plus 25 dengan 100GB data utama dan hotspot 10GB, ULTRA plus 35 dengan 200GB dan hotspot 50GB, serta pelan tahunan 10GB. Selepas data utama habis, BeONE menurunkan kelajuan kepada 512kbps dan boleh menyekat tethering apabila kuota hotspot berasingan habis. Halo menerbitkan enam kad Halo EPIK semasa, tetapi terma undang-undang yang disemak tidak memberi jadual teks hotspot atau selepas kuota yang jelas. Padankan pelan dalam aplikasi dengan terma bertulis sebelum bergantung pada angka dalam imej."
+          },
+          {
+            "id": "ms-prepaid-3",
+            "sectionTitle": "FUP dan tempoh sah boleh lebih penting daripada angka data",
+            "sectionImageUrl": "https://halotelco-portal-production.s3.ap-southeast-1.amazonaws.com/images/homepage/plans/en/en_attachment_path_14_0_20260603144545.png",
+            "sectionBody": "Eastel menyatakan FUP panggilan 1,000 minit untuk pelan bulanan dan hanya satu daripada EZ35, EZ50, EZ68 atau EZ98 boleh aktif; pembelian pelan bulanan baharu melucutkan baki manfaat lama. FUP data amnya membolehkan pengurangan kelajuan, had penggunaan, sekatan hotspot, penggantungan atau penamatan tanpa satu kelajuan selepas kuota yang tetap. BeONE menetapkan 2,000 minit sebulan untuk panggilan unlimited sebelum kadar pay-per-use, serta 512kbps selepas kuota data utama. Halo boleh menyederhanakan penggunaan, mengenakan kadar semasa, menggantung atau menamatkan servis bagi penggunaan berlebihan, tetapi terma yang disemak tiada ambang setara. Tempoh sah pelan juga berbeza daripada tempoh sah nombor: Eastel memulakan MSISDN aktif tujuh hari sebelum status barred 90 hari jika tiada reload, manakala Halo memberi tempoh grace 45 hari untuk panggilan dan SMS masuk sahaja selepas tempoh reload tamat."
+          },
+          {
+            "id": "ms-prepaid-4",
+            "sectionTitle": "Pengaktifan, KYC dan semakan liputan sebelum membeli",
+            "sectionImageUrl": "https://d3tmsgdxrf5kuq.cloudfront.net/3025ec7a-7e80-4d0d-8021-520f2b1653f6/images/guest-layout/halo_logo.png",
+            "sectionBody": "Eastel mewajibkan pendaftaran sebelum pengaktifan, melarang SIM pre-activated, dan menerima MyKad, MyPR, MyTentera atau MyKAS untuk rakyat Malaysia dan pemastautin tetap serta pasport sah untuk warga asing. Terma semasanya menerangkan pendaftaran dibantu atau self-registration dalam aplikasi, termasuk pengesahan ID digital dan biometrik. BeONE memerlukan pengesahan identiti dan pendaftaran SIM sebelum aktif, tetapi terma awamnya tidak menyenaraikan dokumen, proses selfie atau umur minimum secara terperinci; sahkan melalui aplikasi rasmi atau khidmat pelanggan. Halo mewajibkan rakyat Malaysia mendaftar dengan NRIC, membenarkan sehingga lima SIM bagi satu NRIC atau pasport, dan SIM perlu diaktifkan di Malaysia dalam 14 hari melalui reload, panggilan atau mesej. Peta liputan hanya petunjuk dan bukan jaminan servis, signal dalam bangunan atau kelajuan."
+          },
+          {
+            "id": "ms-prepaid-5",
+            "sectionTitle": "Padankan listing Shopee dengan pelan yang anda mahu",
+            "sectionImageUrl": "https://lemonchiffon-mandrill-902114.hostingersite.com/wp-content/uploads/2026/02/ez35-2048x1047.png",
+            "sectionBody": "Listing yang dibekalkan merekodkan RM9.96 untuk Eastel, RM0.10 untuk BeONE dan RM4.96 untuk Halo pada 11 Julai 2026. Angka ini hanya mengenal pasti tawaran marketplace. Ia tidak membuktikan SIM sudah mempunyai pelan bulanan, kredit pengaktifan disertakan atau pelan dalam gambar penjual masih tersedia. Sebelum checkout, sahkan variasi dipilih, sama ada ia SIM starter kosong atau bundle pelan, syarat reload, tempoh aktif pertama, kuota data dan hotspot, auto-renewal, layanan selepas kuota, identiti penjual serta sekatan refund selepas pendaftaran. Semak semula halaman pelan rasmi kerana pakej boleh berubah. Perbandingan berasaskan dokumen ini tidak mencadangkan servis berdasarkan kelajuan, kualiti liputan, gaming, kebolehpercayaan atau bayaran komisen."
+          }
+        ],
+        "faqItems": [
+          {
+            "id": "ms-prepaid-faq-1",
+            "question": "Adakah harga SIM Shopee yang murah termasuk pelan data bulanan?",
+            "answer": "Tidak semestinya. Harga starter SIM dan langganan pelan data ialah dua perkara berasingan kecuali variasi listing menyatakan pelan, kuota, tempoh sah dan syarat pengaktifan dengan jelas. Sahkan variasi akhir dan aplikasi operator."
+          },
+          {
+            "id": "ms-prepaid-faq-2",
+            "question": "Rangkaian apa digunakan oleh Eastel, BeONE dan Halo?",
+            "answer": "Eastel mengesahkan penggunaan infrastruktur U Mobile. Laman operator BeONE menyatakan ia dikuasakan Maxis. Terma Halo menyatakan servis mudah alih ialah perkhidmatan Tune Talk berjenama bersama Winner Venture; halaman Halo yang disemak tidak menamakan rangkaian radio lain dengan jelas."
+          },
+          {
+            "id": "ms-prepaid-faq-3",
+            "question": "Pilihan mana mempunyai terma hotspot dan FUP paling jelas?",
+            "answer": "BeONE menerbitkan jadual FUP bernombor paling jelas, termasuk kuota hotspot berasingan dan 512kbps selepas data utama habis. Eastel menerbitkan elaun hotspot setiap pelan tetapi tindakan FUP data am adalah mengikut budi bicara. Pelan Halo perlu disahkan lagi kerana banyak butiran semasa dipaparkan melalui kad imej."
+          },
+          {
+            "id": "ms-prepaid-faq-4",
+            "question": "Bolehkah saya menggunakan peta liputan operator hos?",
+            "answer": "Gunakan sebagai petunjuk sahaja. Eastel memang mengarahkan pengguna ke peta U Mobile. BeONE menyatakan dikuasakan Maxis dan Halo ialah jenama bersama Tune Talk. Peta hos tidak membuktikan akses pelan, prioriti, signal indoor atau kelajuan yang sama di alamat anda."
+          },
+          {
+            "id": "ms-prepaid-faq-5",
+            "question": "Adakah Eastel, BeONE atau Halo diuji sendiri untuk perbandingan ini?",
+            "answer": "Tidak. Tiada ujian rangkaian hands-on terkawal dijalankan. Perbandingan menggunakan halaman pelan, FUP, liputan dan terma operator rasmi yang disemak pada 11 Julai 2026 dan tidak memberi ranking kelajuan, kualiti liputan, gaming atau kebolehpercayaan."
+          }
+        ],
+        "body": "## Pendedahan affiliate\nHalaman ini mengandungi pautan affiliate. Kami mungkin menerima komisen jika anda membeli melaluinya tanpa kos tambahan kepada anda. Komisen direkodkan untuk provenance sahaja dan tidak menentukan kemasukan, susunan, skor atau cadangan.\n\n## Kaedah\nKami menyemak halaman pelan, terma, FUP, kenyataan rangkaian, panduan peta liputan dan listing Shopee yang dibekalkan pada 11 Julai 2026. Tiada ujian rangkaian hands-on dijalankan. Oleh itu, kami tidak memberi ranking kelajuan, kualiti liputan, gaming, kebolehpercayaan atau signal sebenar.\n\n## Peraturan membeli\nSahkan dahulu sama ada item marketplace cuma starter SIM atau termasuk pelan data bernama. Kemudian bandingkan hubungan operator, kuota tepat, hotspot, layanan selepas kuota, tempoh sah pelan dan nombor, KYC, tarikh akhir pengaktifan serta liputan di lokasi penggunaan anda."
+      },
+      {
+        "locale": "zh-Hans",
+        "title": "Eastel、BeONE 与 Halo 马来西亚预付 SIM 对比：先核对套餐，不要只看卡价",
+        "slug": "eastel-beone-halo-malaysia-prepaid-sim",
+        "metaTitle": "Eastel、BeONE、Halo 马来西亚预付 SIM 对比",
+        "metaDescription": "比较 Eastel、BeONE 与 Halo 的运营关系、套餐、热点、FUP、有效期、实名激活和覆盖查询，避免把低价 SIM 当成含数据套餐。",
+        "quickAnswer": "根据目前官方资料，无法负责任地选出一个通用冠军。Eastel 官方确认它是使用 U Mobile 基础设施的 MVNO，并列出较完整的当前套餐。BeONE 表示服务由 Maxis 驱动，而且公布了最明确的数字 FUP，包括主数据用完后降至 512kbps，以及独立热点额度。Halo 是 Tune Talk 与 Winner Venture 的联名服务，SIM 激活和号码有效期规则较清楚，但当前套餐主要以图片展示，购买前需要进一步核对。Shopee 显示的 RM9.96、RM0.10 与 RM4.96 是商品页价格，不代表已经包含月费数据套餐。本页没有进行亲手受控网络测试，因此不比较或排名速度、覆盖质量、游戏表现和稳定性。",
+        "heroImageUrl": "https://d3tmsgdxrf5kuq.cloudfront.net/3025ec7a-7e80-4d0d-8021-520f2b1653f6/images/guest-layout/halo_logo.png",
+        "keyTakeaways": [
+          "低价 SIM 或 starter pack 与已启用的数据套餐是两项不同费用，不能混为一谈。",
+          "Eastel 官方记录使用 U Mobile 基础设施，BeONE 表示由 Maxis 驱动，Halo 则是 Tune Talk 与 Winner Venture 的联名服务。",
+          "付款前要核对热点额度、用完后的处理、套餐与号码有效期、实名激活，以及 Shopee 的准确版本。"
+        ],
+        "sections": [
+          {
+            "id": "zh-prepaid-1",
+            "sectionTitle": "先看运营关系，不要据此推测实际表现",
+            "sectionImageUrl": "https://lemonchiffon-mandrill-902114.hostingersite.com/wp-content/uploads/2026/02/ez35-2048x1047.png",
+            "sectionBody": "Eastel 表示服务由 Anchor Communications 管理，并以 MVNO 身份使用 U Mobile 的网络基础设施；用户查询覆盖时会被引导到 U Mobile 官方地图。BeONE 官网称服务由 Maxis 驱动，不过一般条款只说明可用性取决于覆盖、网络容量、维护和当地环境。Halo 的订阅条款对商业关系写得更清楚：移动通信由 Tune Talk 提供，并与 Winner Venture 共同推出联名产品；激活后，用户属于该联名计划下的 Tune Talk 用户。这些关系可以帮助你寻找相关覆盖资料，但不能证明它与主运营商零售套餐拥有相同优先级、室内信号或实际表现。本页没有进行亲手网络测试。"
+          },
+          {
+            "id": "zh-prepaid-2",
+            "sectionTitle": "官方记录的套餐、数据与热点结构",
+            "sectionImageUrl": "https://www.beonemobile.com.my/images/Simcard/Website%202026%20Material%20v3.2-62.png",
+            "sectionBody": "Eastel 当前页面列出：EZ15 为 RM15、30GB、15 天；EZ35 为 RM35、200GB、100GB 热点、30 天；EZ50、EZ68 和 EZ98 分别为 RM50、RM68 和 RM98，提供 500GB、700GB 与 999GB，均标示 full hotspot 和 30 天有效期，另有一天和七天套餐。BeONE 的 FUP 表列出每日 3GB、每周 15GB、ULTRA plus 25 的 100GB 主数据与 10GB 热点、ULTRA plus 35 的 200GB 主数据与 50GB 热点，以及 10GB 年度套餐。主数据用完后，BeONE 降至 512kbps；独立热点额度用完后，tethering 可能受限。Halo 当前展示六张 Halo EPIK 套餐卡，但所查法律条款没有提供清楚的文字版热点和用完后规则，不能只凭图片推断最终权益。"
+          },
+          {
+            "id": "zh-prepaid-3",
+            "sectionTitle": "FUP 和有效期可能比大数据数字更重要",
+            "sectionImageUrl": "https://halotelco-portal-production.s3.ap-southeast-1.amazonaws.com/images/homepage/plans/en/en_attachment_path_14_0_20260603144545.png",
+            "sectionBody": "Eastel 月费套餐列出 1,000 分钟通话 FUP，而且 EZ35、EZ50、EZ68、EZ98 同时只能订一个；换购新的月费套餐会失去旧套餐剩余权益。其一般数据 FUP 允许降速、加上限、限制热点、暂停或终止服务，但没有统一写明用完后的固定速度。BeONE 的 unlimited calls 每月上限为 2,000 分钟，之后按标准费用计费；主数据用完后为 512kbps。Halo 可对过量使用进行管理、按现行费率收费、暂停或终止服务，但所查订阅条款没有同等明确的数字门槛。套餐有效期也不等于号码有效期：Eastel 激活后号码先活跃七天，未充值会进入 90 天 barred 状态；Halo 的充值有效期结束后有 45 天仅可接听电话和接收短信的宽限期。"
+          },
+          {
+            "id": "zh-prepaid-4",
+            "sectionTitle": "购买前检查实名、激活与覆盖",
+            "sectionImageUrl": "https://d3tmsgdxrf5kuq.cloudfront.net/3025ec7a-7e80-4d0d-8021-520f2b1653f6/images/guest-layout/halo_logo.png",
+            "sectionBody": "Eastel 要求先实名后激活，禁止预先激活的 SIM；马来西亚公民或永久居民可使用 MyKad、MyPR、MyTentera 或 MyKAS，外国人使用有效护照。现行条款描述了授权人员协助注册或通过 App 自助注册，并涉及数字身份及生物识别。BeONE 也要求先完成身份验证与 SIM 注册，但公开一般条款没有详细列出证件、自拍流程或最低年龄，应向官方 App 或客服确认。Halo 要求马来西亚公民使用 NRIC，每个 NRIC 或护照最多注册五张 SIM；注册后必须在 14 天内于马来西亚通过充值、拨打电话或发送短信完成激活。覆盖地图只供参考，并不保证特定地址的服务、室内信号或速度。"
+          },
+          {
+            "id": "zh-prepaid-5",
+            "sectionTitle": "把 Shopee 商品版本与目标套餐逐项对应",
+            "sectionImageUrl": "https://www.beonemobile.com.my/images/Simcard/Website%202026%20Material%20v3.2-62.png",
+            "sectionBody": "所提供商品页在 2026 年 7 月 11 日记录的显示价为 Eastel RM9.96、BeONE RM0.10、Halo RM4.96。这些数字只代表平台商品，并不能证明 SIM 已含月费套餐、激活余额，或卖家图片中的套餐仍然有效。结账前要确认所选版本是空白 starter SIM 还是套餐组合、首次充值或激活条件、首段有效期、主数据与热点额度、自动续订、用完后的处理、卖家身份，以及实名后能否退款。运营商套餐可能变动，应重新打开官方计划页核对。这份文档型比较不会根据速度、覆盖质量、游戏表现、稳定性或佣金推荐任何一家。"
+          }
+        ],
+        "faqItems": [
+          {
+            "id": "zh-prepaid-faq-1",
+            "question": "Shopee 上很便宜的 SIM 是否已经包含月费数据套餐？",
+            "answer": "不一定。starter SIM 的显示价与数据套餐订阅是两回事，除非所选版本明确写出套餐名称、数据量、有效期和激活条件。付款前应核对版本，收到卡后也要在官方 App 确认。"
+          },
+          {
+            "id": "zh-prepaid-faq-2",
+            "question": "Eastel、BeONE 和 Halo 分别使用什么网络？",
+            "answer": "Eastel 官方确认使用 U Mobile 基础设施。BeONE 运营商官网称服务由 Maxis 驱动。Halo 条款说明移动服务由 Tune Talk 提供，并与 Winner Venture 联名；所查 Halo 页面没有清楚标出另一个底层无线网络。"
+          },
+          {
+            "id": "zh-prepaid-faq-3",
+            "question": "哪一家热点和 FUP 规则最清楚？",
+            "answer": "BeONE 公布了最清楚的数字表，包括独立热点额度和主数据用完后 512kbps。Eastel 有套餐级热点额度，但一般数据 FUP 的处理较有弹性。Halo 当前资料多在图片卡中，需要额外核对具体套餐条款。"
+          },
+          {
+            "id": "zh-prepaid-faq-4",
+            "question": "可以直接参考主运营商的覆盖地图吗？",
+            "answer": "只能作为参考。Eastel 明确引导用户查看 U Mobile 地图；BeONE 表示由 Maxis 驱动；Halo 是 Tune Talk 联名服务。主运营商地图不能证明套餐接入、优先级、室内信号或你所在地址的速度完全相同。"
+          },
+          {
+            "id": "zh-prepaid-faq-5",
+            "question": "这份比较亲手测试过 Eastel、BeONE 或 Halo 吗？",
+            "answer": "没有。本页没有进行亲手受控网络测试，只使用截至 2026 年 7 月 11 日的官方套餐、FUP、覆盖和订阅资料，因此不排名速度、覆盖质量、游戏表现或稳定性。"
+          }
+        ],
+        "body": "## 联盟链接披露\n本页含联盟链接。如果你通过链接购买，我们可能获得佣金，但不会增加你的费用。佣金只作为来源记录，不决定产品是否入选、展示次序、评分或推荐。\n\n## 方法\n我们在 2026 年 7 月 11 日核对了运营商控制的套餐页、条款、FUP、网络说明、覆盖查询指引，以及所提供的 Shopee 商品页。没有进行亲手受控网络测试，因此不排名速度、覆盖质量、游戏表现、稳定性或实际信号。\n\n## 购买原则\n先确认平台商品只是 starter SIM，还是明确包含某个数据套餐。之后再比较运营关系、准确数据量、热点、用完后的处理、套餐与号码有效期、实名要求、激活期限，以及你实际使用地点的覆盖。"
+      }
     ],
-    "updatedAt": "2026-07-11T02:40:55.754Z"
+    "affiliateLinks": [
+      {
+        "id": "shopee-my-eastel-prepaid-sim",
+        "merchantName": "Shopee Malaysia",
+        "anchorText": "Eastel prepaid SIM listing",
+        "destinationUrl": "https://shopee.com.my/product/1052723721/44808247661",
+        "trackingUrl": "https://s.shopee.com.my/4fuWnhDoL3",
+        "imageUrl": "https://lemonchiffon-mandrill-902114.hostingersite.com/wp-content/uploads/2026/02/ez35-2048x1047.png",
+        "imageLinkUrl": "https://s.shopee.com.my/4fuWnhDoL3",
+        "sourceUrls": [
+          {
+            "label": "Eastel official plans",
+            "url": "https://eastel.com.my/mobile-plan/"
+          },
+          {
+            "label": "Eastel official terms, registration, validity, and FUP",
+            "url": "https://eastel.com.my/terms-and-conditions"
+          },
+          {
+            "label": "U Mobile official coverage map",
+            "url": "https://www.u.com.my/en/personal/support/coverage-map"
+          },
+          {
+            "label": "Shopee Malaysia Eastel listing",
+            "url": "https://shopee.com.my/product/1052723721/44808247661"
+          }
+        ],
+        "rel": "sponsored nofollow noopener noreferrer",
+        "target": "_blank",
+        "ctaTextEn": "Check current Eastel listing",
+        "ctaTextMs": "Semak listing Eastel terkini",
+        "ctaTextZhHans": "查看 Eastel 当前商品页",
+        "summary": "The supplied Eastel Shopee listing; verify whether the selected variant is only a starter SIM or includes a named plan, reload, quota, hotspot, and validity.",
+        "bestFor": "Buyers who have checked U Mobile coverage and can match the listing variant to Eastel's current official plan page",
+        "notFor": "Buyers assuming the RM9.96 SIM price automatically includes an active monthly data plan",
+        "priceBand": "RM9.96 displayed on 2026-07-11",
+        "displayedPrice": "RM9.96",
+        "pricingSummary": "RM9.96 was the supplied listing price on 11 July 2026. It is a marketplace SIM price, not proof of an included data plan; confirm the live variant, activation, reload, and plan charge.",
+        "commissionRate": 81,
+        "commissionSnapshot": "Shopee Malaysia displayed an 81% commission rate when recorded on 2026-07-11. This is internal provenance only and does not determine editorial placement, scoring, or recommendation.",
+        "verifiedAt": "2026-07-11",
+        "pros": [
+          "Officially documented U Mobile infrastructure relationship",
+          "Current Eastel page publishes plan-level quota, hotspot, and validity",
+          "Official coverage-map route is clearly identified"
+        ],
+        "cons": [
+          "Starter-SIM price does not prove a data plan is included",
+          "General data FUP has no single published post-quota speed",
+          "Identity verification and reload are required before ongoing use"
+        ],
+        "score": 0,
+        "isActive": true,
+        "localizedContent": {
+          "en": {
+            "anchorText": "Eastel prepaid SIM listing",
+            "summary": "The supplied Eastel Shopee listing; verify whether the selected variant is only a starter SIM or includes a named plan, reload, quota, hotspot, and validity.",
+            "bestFor": "Buyers who have checked U Mobile coverage and can match the listing variant to Eastel's current official plan page",
+            "notFor": "Buyers assuming the RM9.96 SIM price automatically includes an active monthly data plan",
+            "priceBand": "RM9.96 displayed on 2026-07-11",
+            "pricingSummary": "RM9.96 was the supplied listing price on 11 July 2026. It is a marketplace SIM price, not proof of an included data plan; confirm the live variant, activation, reload, and plan charge.",
+            "pros": [
+              "Officially documented U Mobile infrastructure relationship",
+              "Plan-level quota, hotspot, and validity are published",
+              "Official coverage-map route is clear"
+            ],
+            "cons": [
+              "SIM price does not prove a plan is included",
+              "No single general post-quota speed is published",
+              "KYC and reload requirements apply"
+            ]
+          },
+          "ms": {
+            "anchorText": "Listing SIM prabayar Eastel",
+            "summary": "Listing Shopee Eastel yang dibekalkan; sahkan sama ada variasi cuma starter SIM atau merangkumi pelan bernama, reload, kuota, hotspot dan tempoh sah.",
+            "bestFor": "Pembeli yang sudah menyemak liputan U Mobile dan boleh memadankan variasi listing dengan halaman pelan rasmi Eastel",
+            "notFor": "Pembeli yang menganggap harga SIM RM9.96 automatik termasuk pelan data bulanan aktif",
+            "priceBand": "RM9.96 dipaparkan pada 2026-07-11",
+            "pricingSummary": "RM9.96 ialah harga listing yang dibekalkan pada 11 Julai 2026. Ia harga SIM marketplace, bukan bukti pelan data disertakan; sahkan variasi, pengaktifan, reload dan caj pelan semasa.",
+            "pros": [
+              "Hubungan infrastruktur U Mobile didokumenkan secara rasmi",
+              "Kuota, hotspot dan tempoh sah setiap pelan diterbitkan",
+              "Laluan peta liputan rasmi jelas"
+            ],
+            "cons": [
+              "Harga SIM tidak membuktikan pelan disertakan",
+              "Tiada satu kelajuan umum selepas kuota diterbitkan",
+              "KYC dan reload diperlukan"
+            ]
+          },
+          "zh-Hans": {
+            "anchorText": "Eastel 预付 SIM 商品页",
+            "summary": "所提供的 Eastel Shopee 商品页；应确认所选版本只是 starter SIM，还是包含明确套餐、充值、数据、热点和有效期。",
+            "bestFor": "已经检查 U Mobile 覆盖，并能把商品版本与 Eastel 当前官方套餐对应的买家",
+            "notFor": "认为 RM9.96 卡价自动包含已启用月费数据套餐的买家",
+            "priceBand": "2026-07-11 显示 RM9.96",
+            "pricingSummary": "RM9.96 是 2026 年 7 月 11 日所提供商品页的显示价。它是平台 SIM 价格，不证明包含数据套餐；请核对实时版本、激活、充值和套餐费用。",
+            "pros": [
+              "官方记录使用 U Mobile 基础设施",
+              "公布套餐级数据、热点和有效期",
+              "官方覆盖查询路径明确"
+            ],
+            "cons": [
+              "卡价不代表包含套餐",
+              "没有统一公布一般用完后的速度",
+              "需要实名和充值"
+            ]
+          }
+        }
+      },
+      {
+        "id": "shopee-my-beone-prepaid-sim",
+        "merchantName": "Shopee Malaysia",
+        "anchorText": "BeONE prepaid SIM listing",
+        "destinationUrl": "https://shopee.com.my/product/1320854719/41173784910",
+        "trackingUrl": "https://s.shopee.com.my/5LADazr6Y4",
+        "imageUrl": "https://www.beonemobile.com.my/images/Simcard/Website%202026%20Material%20v3.2-62.png",
+        "imageLinkUrl": "https://s.shopee.com.my/5LADazr6Y4",
+        "sourceUrls": [
+          {
+            "label": "BeONE official plans",
+            "url": "https://www.beonemobile.com.my/plans"
+          },
+          {
+            "label": "BeONE official terms",
+            "url": "https://www.beonemobile.com.my/pages/terms-and-conditions"
+          },
+          {
+            "label": "BeONE official fair usage policy",
+            "url": "https://www.beonemobile.com.my/pages/fair-usage-policy"
+          },
+          {
+            "label": "Shopee Malaysia BeONE listing",
+            "url": "https://shopee.com.my/product/1320854719/41173784910"
+          }
+        ],
+        "rel": "sponsored nofollow noopener noreferrer",
+        "target": "_blank",
+        "ctaTextEn": "Check current BeONE listing",
+        "ctaTextMs": "Semak listing BeONE terkini",
+        "ctaTextZhHans": "查看 BeONE 当前商品页",
+        "summary": "The supplied BeONE Shopee listing; confirm the selected SIM variant and reconcile it with BeONE's official plan page and numerical FUP before activation.",
+        "bestFor": "Buyers who prioritise clearly published hotspot pools and post-main-quota treatment",
+        "notFor": "Buyers treating the RM0.10 listing price as the full cost of a usable data plan",
+        "priceBand": "RM0.10 displayed on 2026-07-11",
+        "displayedPrice": "RM0.10",
+        "pricingSummary": "RM0.10 was the supplied listing price on 11 July 2026. Confirm the live variant and separate plan charge; BeONE's visual plan page and FUP table should be reconciled before subscribing.",
+        "commissionRate": 81,
+        "commissionSnapshot": "Shopee Malaysia displayed an 81% commission rate when recorded on 2026-07-11. This is internal provenance only and does not determine editorial placement, scoring, or recommendation.",
+        "verifiedAt": "2026-07-11",
+        "pros": [
+          "Official FUP publishes separate main-data and hotspot allowances",
+          "512kbps post-main-quota treatment is documented",
+          "Operator homepage states the service is powered by Maxis"
+        ],
+        "cons": [
+          "RM0.10 listing price does not represent the full plan cost",
+          "Visual plan page and FUP plan labels require reconciliation",
+          "Public terms do not detail all accepted KYC documents or steps"
+        ],
+        "score": 0,
+        "isActive": true,
+        "localizedContent": {
+          "en": {
+            "anchorText": "BeONE prepaid SIM listing",
+            "summary": "The supplied BeONE Shopee listing; confirm the selected SIM variant and reconcile it with BeONE's official plan page and numerical FUP before activation.",
+            "bestFor": "Buyers who prioritise clearly published hotspot pools and post-main-quota treatment",
+            "notFor": "Buyers treating the RM0.10 listing price as the full cost of a usable data plan",
+            "priceBand": "RM0.10 displayed on 2026-07-11",
+            "pricingSummary": "RM0.10 was the supplied listing price on 11 July 2026. Confirm the live variant and separate plan charge; reconcile BeONE's visual plan page with its FUP table.",
+            "pros": [
+              "Separate main-data and hotspot allowances are published",
+              "512kbps after main quota is documented",
+              "Powered-by-Maxis statement is operator-published"
+            ],
+            "cons": [
+              "Listing price is not the full plan cost",
+              "Current page and FUP labels need reconciliation",
+              "Detailed public KYC steps are incomplete"
+            ]
+          },
+          "ms": {
+            "anchorText": "Listing SIM prabayar BeONE",
+            "summary": "Listing Shopee BeONE yang dibekalkan; sahkan variasi SIM dan padankannya dengan halaman pelan rasmi serta FUP bernombor BeONE sebelum pengaktifan.",
+            "bestFor": "Pembeli yang mengutamakan kuota hotspot dan layanan selepas data utama yang diterbitkan dengan jelas",
+            "notFor": "Pembeli yang menganggap harga listing RM0.10 ialah jumlah kos pelan data yang boleh digunakan",
+            "priceBand": "RM0.10 dipaparkan pada 2026-07-11",
+            "pricingSummary": "RM0.10 ialah harga listing yang dibekalkan pada 11 Julai 2026. Sahkan variasi live dan caj pelan berasingan; padankan halaman pelan visual BeONE dengan jadual FUP.",
+            "pros": [
+              "Kuota data utama dan hotspot berasingan diterbitkan",
+              "512kbps selepas kuota utama didokumenkan",
+              "Kenyataan dikuasakan Maxis diterbitkan operator"
+            ],
+            "cons": [
+              "Harga listing bukan jumlah kos pelan",
+              "Label halaman semasa dan FUP perlu dipadankan",
+              "Langkah KYC awam tidak lengkap"
+            ]
+          },
+          "zh-Hans": {
+            "anchorText": "BeONE 预付 SIM 商品页",
+            "summary": "所提供的 BeONE Shopee 商品页；激活前应确认所选 SIM 版本，并与 BeONE 官方套餐页和数字 FUP 对应。",
+            "bestFor": "重视明确热点额度和主数据用完后处理的买家",
+            "notFor": "把 RM0.10 商品价当作可用数据套餐全部费用的买家",
+            "priceBand": "2026-07-11 显示 RM0.10",
+            "pricingSummary": "RM0.10 是 2026 年 7 月 11 日所提供商品页的显示价。请核对实时版本和另付套餐费，并对应 BeONE 图片套餐页与 FUP 表。",
+            "pros": [
+              "公布独立主数据和热点额度",
+              "主数据用完后 512kbps 有官方记录",
+              "由 Maxis 驱动的说法来自运营商官网"
+            ],
+            "cons": [
+              "商品价不是套餐全部费用",
+              "当前页面与 FUP 名称需要对应",
+              "公开实名步骤不完整"
+            ]
+          }
+        }
+      },
+      {
+        "id": "shopee-my-halo-prepaid-sim",
+        "merchantName": "Shopee Malaysia",
+        "anchorText": "Halo prepaid SIM listing",
+        "destinationUrl": "https://shopee.com.my/product/1202774244/29856625215",
+        "trackingUrl": "https://s.shopee.com.my/8KnpAZIkyx",
+        "imageUrl": "https://d3tmsgdxrf5kuq.cloudfront.net/3025ec7a-7e80-4d0d-8021-520f2b1653f6/images/guest-layout/halo_logo.png",
+        "imageLinkUrl": "https://s.shopee.com.my/8KnpAZIkyx",
+        "sourceUrls": [
+          {
+            "label": "Halo official EPIK plans",
+            "url": "https://halotelco.com/plans/halo-epik"
+          },
+          {
+            "label": "Halo and Tune Talk official service subscription terms",
+            "url": "https://halotelco.com/terms-and-conditions/service-subscription"
+          },
+          {
+            "label": "Halo official help centre",
+            "url": "https://halotelco.com/help-center"
+          },
+          {
+            "label": "Shopee Malaysia Halo listing",
+            "url": "https://shopee.com.my/product/1202774244/29856625215"
+          }
+        ],
+        "rel": "sponsored nofollow noopener noreferrer",
+        "target": "_blank",
+        "ctaTextEn": "Check current Halo listing",
+        "ctaTextMs": "Semak listing Halo terkini",
+        "ctaTextZhHans": "查看 Halo 当前商品页",
+        "summary": "The supplied Halo Shopee listing; verify the EPIK card, written hotspot and FUP terms, activation deadline, reload validity, and included plan before payment.",
+        "bestFor": "Buyers willing to confirm the current Halo EPIK plan in the official app and follow the documented 14-day activation rule",
+        "notFor": "Buyers who need complete textual hotspot and post-quota terms before contacting the operator",
+        "priceBand": "RM4.96 displayed on 2026-07-11",
+        "displayedPrice": "RM4.96",
+        "pricingSummary": "RM4.96 was the supplied listing price on 11 July 2026. It is not proof of an included EPIK plan; confirm the selected variant, current app plan, reload amount, and validity.",
+        "commissionRate": 81,
+        "commissionSnapshot": "Shopee Malaysia displayed an 81% commission rate when recorded on 2026-07-11. This is internal provenance only and does not determine editorial placement, scoring, or recommendation.",
+        "verifiedAt": "2026-07-11",
+        "pros": [
+          "Tune Talk and Winner Venture co-brand relationship is documented",
+          "Fourteen-day activation rule is explicit",
+          "Forty-five-day incoming-only grace period is documented"
+        ],
+        "cons": [
+          "Current plan details are mainly image-based",
+          "Reviewed terms lack a clear numerical hotspot and post-quota schedule",
+          "SIM becomes unusable if not activated in Malaysia within 14 days of registration"
+        ],
+        "score": 0,
+        "isActive": true,
+        "localizedContent": {
+          "en": {
+            "anchorText": "Halo prepaid SIM listing",
+            "summary": "The supplied Halo Shopee listing; verify the EPIK card, written hotspot and FUP terms, activation deadline, reload validity, and included plan before payment.",
+            "bestFor": "Buyers willing to confirm the current Halo EPIK plan in the official app and follow the documented 14-day activation rule",
+            "notFor": "Buyers who need complete textual hotspot and post-quota terms before contacting the operator",
+            "priceBand": "RM4.96 displayed on 2026-07-11",
+            "pricingSummary": "RM4.96 was the supplied listing price on 11 July 2026. It does not prove an EPIK plan is included; confirm the variant, app plan, reload, and validity.",
+            "pros": [
+              "Co-brand relationship is documented",
+              "Fourteen-day activation rule is explicit",
+              "Forty-five-day grace period is documented"
+            ],
+            "cons": [
+              "Current details are mainly image-based",
+              "Numerical hotspot and post-quota schedule is unclear",
+              "Activation must occur in Malaysia within 14 days"
+            ]
+          },
+          "ms": {
+            "anchorText": "Listing SIM prabayar Halo",
+            "summary": "Listing Shopee Halo yang dibekalkan; sahkan kad EPIK, terma hotspot dan FUP bertulis, tarikh akhir pengaktifan, tempoh reload serta pelan disertakan sebelum membayar.",
+            "bestFor": "Pembeli yang sanggup mengesahkan pelan Halo EPIK semasa dalam aplikasi rasmi dan mematuhi peraturan pengaktifan 14 hari",
+            "notFor": "Pembeli yang memerlukan terma teks hotspot dan selepas kuota lengkap sebelum menghubungi operator",
+            "priceBand": "RM4.96 dipaparkan pada 2026-07-11",
+            "pricingSummary": "RM4.96 ialah harga listing yang dibekalkan pada 11 Julai 2026. Ia tidak membuktikan pelan EPIK disertakan; sahkan variasi, pelan aplikasi, reload dan tempoh sah.",
+            "pros": [
+              "Hubungan jenama bersama didokumenkan",
+              "Peraturan pengaktifan 14 hari jelas",
+              "Tempoh grace 45 hari didokumenkan"
+            ],
+            "cons": [
+              "Butiran semasa banyak berasaskan imej",
+              "Jadual hotspot dan selepas kuota bernombor tidak jelas",
+              "Pengaktifan mesti berlaku di Malaysia dalam 14 hari"
+            ]
+          },
+          "zh-Hans": {
+            "anchorText": "Halo 预付 SIM 商品页",
+            "summary": "所提供的 Halo Shopee 商品页；付款前应核对 EPIK 卡、书面热点与 FUP、激活期限、充值有效期和是否含套餐。",
+            "bestFor": "愿意在官方 App 确认当前 Halo EPIK 套餐，并遵守 14 天激活规则的买家",
+            "notFor": "联系运营商前就需要完整文字版热点和用完后条款的买家",
+            "priceBand": "2026-07-11 显示 RM4.96",
+            "pricingSummary": "RM4.96 是 2026 年 7 月 11 日所提供商品页的显示价，不能证明包含 EPIK 套餐；请核对版本、App 套餐、充值和有效期。",
+            "pros": [
+              "联名服务关系有官方记录",
+              "14 天激活规则明确",
+              "45 天宽限期有官方记录"
+            ],
+            "cons": [
+              "当前详情主要通过图片展示",
+              "数字热点与用完后表格不清楚",
+              "必须在注册后 14 天内于马来西亚激活"
+            ]
+          }
+        }
+      }
+    ],
+    "updatedAt": "2026-07-11T03:25:17.235Z"
   }
 ]
