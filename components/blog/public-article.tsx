@@ -4,6 +4,7 @@ import { ANALYTICS_EVENTS } from "@/lib/analytics-events";
 import type { AffiliateLinkDraft, CmsBlogPost } from "@/lib/sample-data";
 import { MarkdownArticle } from "@/components/markdown-article";
 import { ShareCube } from "@/components/blog/share-cube";
+import { TypewriterAnswer } from "@/components/blog/typewriter-answer";
 import { resolveTranslationForLocale } from "@/lib/public-blog";
 import { SEO_EXPERIMENTS, getSeoExperimentVariant } from "@/lib/seo-experiments";
 import { absoluteUrl, getSiteUrl } from "@/lib/site";
@@ -302,9 +303,7 @@ export function PublicArticle({ post, localeCode }: Props) {
 
         <div className="mt-8 rounded-[1.15rem] border border-neutral-200 bg-white p-5">
           <p className="text-sm font-medium uppercase text-neutral-500">{labels.quickAnswer}</p>
-          <p className="mt-3 text-[1.02rem] leading-relaxed text-black">
-            {translation.quickAnswer}
-          </p>
+          <TypewriterAnswer text={translation.quickAnswer} />
           {leadOffer ? (
             <a
               href={getAffiliateUrl(leadOffer)}

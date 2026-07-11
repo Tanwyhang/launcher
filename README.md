@@ -90,6 +90,16 @@ bun run seo import-pages \
   --file data/seed-pages-first-topic-cluster.json
 ```
 
+Agent-only production CRUD uses GitHub write access as the publisher boundary. Each production command requires a clean, synchronized `master` worktree, validates every published page and affiliate offer, runs the production build, commits only `data/pages.json`, and pushes `master` without force:
+
+```bash
+bun run seo publish-post --file /tmp/full-page.json --prod --yes
+bun run seo edit-post --id existing-slug --file /tmp/full-page.json --prod --yes
+bun run seo remove-post --id existing-slug --prod --yes
+```
+
+The publish and edit input must contain exactly one complete page, either directly or inside `{ "pages": [...] }`. Published pages require distinct HTTPS affiliate tracking URLs for every active offer and explicit affiliate disclosure. Omit `--prod` to modify a test content store with `--content-file` without committing or pushing.
+
 Current commands:
 
 - `create-page`
@@ -97,6 +107,11 @@ Current commands:
 - `assign-offers` (requires an operator-provided JSON file)
 - `import-pages`
 - `audit-page`
+- `validate-offers`
+- `delete-page`
+- `publish-post`
+- `edit-post`
+- `remove-post`
 
 ### Current page model
 
@@ -126,7 +141,7 @@ Public locale mapping:
 
 ### Local fallback
 
-If Supabase env vars are missing, public content is read from `data/pages.json`. Vercel's filesystem is not used as a persistent CMS; configure Supabase before enabling production editing.
+If Supabase env vars are missing, public content is read from `data/pages.json`. Vercel's filesystem is not used as a persistent CMS. The production CRUD CLI updates the Git-backed content store and triggers Vercel through the protected `master` push workflow.
 
 ### Publishing integrity
 

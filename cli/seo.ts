@@ -1,4 +1,5 @@
-import { existsSync, mkdirSync, readFileSync, readdirSync, statSync, writeFileSync } from "node:fs";
+import { existsSync, mkdirSync, readFileSync, readdirSync, renameSync, statSync, writeFileSync } from "node:fs";
+import { spawnSync } from "node:child_process";
 import path from "node:path";
 import { createPost, deletePost, getPostByIdOrSlug, listPostsForAdmin, savePost } from "@/lib/db";
 import { renderSeoScoreMarkdown, scoreBlogPost, type SeoScoreContext } from "@/lib/seo-score";
@@ -9,7 +10,7 @@ import {
   type ClonePageInput,
   type CreatePageInput,
 } from "@/lib/seo-page";
-import type { AffiliateLinkDraft } from "@/lib/sample-data";
+import type { AffiliateLinkDraft, CmsBlogPost } from "@/lib/sample-data";
 import { getLocaleByCode, getLocaleByPathSegment, LOCALES, type LocaleCode } from "@/lib/utils";
 
 type Args = {
@@ -68,6 +69,9 @@ Usage:
   bun run seo audit-page --id best-ai-note-takers-for-meetings
   bun run seo score-page --id plaud-note-alternatives --locale en --site-url http://localhost:3000 --out reports/seo/plaud-note-alternatives-en.md
   bun run seo delete-page --id plaud-note-alternatives --seed-file data/seed-pages-first-topic-cluster.json --yes
+  bun run seo publish-post --file /tmp/page.json --prod --yes
+  bun run seo edit-post --id existing-slug --file /tmp/page.json --prod --yes
+  bun run seo remove-post --id existing-slug --prod --yes
 
 Commands:
   create-page    Create a draft page from the best-x-for-y-in-z template
@@ -78,6 +82,9 @@ Commands:
   audit-page     Audit one page for SEO/commercial readiness
   score-page     Generate a weighted SEO + A/B testing score report for one page
   delete-page    Delete one page, optionally removing it from a JSON seed file
+  publish-post   Publish one full page to the Git-backed content store
+  edit-post      Replace one existing page from a full page JSON file
+  remove-post    Remove one page from the Git-backed content store
 `);
 }
 
@@ -331,6 +338,285 @@ function normalizeSeedPage(raw: unknown, index: number) {
     translations,
     affiliateLinks: affiliateLinks.map((offer, offerIndex) => normalizeOffer(offer, offerIndex)),
   };
+}
+
+type FullPageInput = Omit<CmsBlogPost, "id" | "updatedAt">;
+
+const DEFAULT_CONTENT_FILE = "data/pages.json";
+
+function runProcess(command: string, processArgs: string[], capture = false) {
+  const result = spawnSync(command, processArgs, {
+    cwd: process.cwd(),
+    encoding: "utf8",
+    stdio: capture ? "pipe" : "inherit",
+  });
+
+  if (result.status !== 0) {
+    const detail = capture ? String(result.stderr || result.stdout || "").trim() : "";
+    throw new Error(`${command} ${processArgs.join(" ")} failed${detail ? `: ${detail}` : ""}`);
+  }
+
+  return String(result.stdout || "").trim();
+}
+
+function getContentFile(args: Args) {
+  const configured = getStringArg(args, "content-file") || DEFAULT_CONTENT_FILE;
+  if (args.prod && configured !== DEFAULT_CONTENT_FILE) {
+    throw new Error("Production CRUD must use data/pages.json");
+  }
+  return configured;
+}
+
+function resolveFile(filePath: string) {
+  return path.isAbsolute(filePath) ? filePath : path.join(process.cwd(), filePath);
+}
+
+function readContentPosts(filePath: string): CmsBlogPost[] {
+  const parsed = JSON.parse(readFileSync(resolveFile(filePath), "utf8")) as unknown;
+  if (!Array.isArray(parsed)) {
+    throw new Error(`${filePath} must contain a JSON array`);
+  }
+  return parsed as CmsBlogPost[];
+}
+
+function writeContentPosts(filePath: string, posts: CmsBlogPost[]) {
+  const absolutePath = resolveFile(filePath);
+  const temporaryPath = `${absolutePath}.${process.pid}.tmp`;
+  writeFileSync(temporaryPath, `${JSON.stringify(posts, null, 2)}\n`, "utf8");
+  renameSync(temporaryPath, absolutePath);
+}
+
+function loadSinglePageInput(filePath: string): { input: FullPageInput; suppliedId?: string } {
+  const parsed = JSON.parse(readFileSync(resolveFile(filePath), "utf8")) as unknown;
+  const raw = parsed && typeof parsed === "object" && Array.isArray((parsed as { pages?: unknown[] }).pages)
+    ? (parsed as { pages: unknown[] }).pages
+    : [parsed];
+
+  if (raw.length !== 1) {
+    throw new Error("Page file must contain exactly one page");
+  }
+
+  const candidate = raw[0] as Record<string, unknown>;
+  return {
+    input: normalizeSeedPage(candidate, 0) as FullPageInput,
+    suppliedId: typeof candidate.id === "string" ? candidate.id : undefined,
+  };
+}
+
+function findContentPost(posts: CmsBlogPost[], idOrSlug: string) {
+  const matches = posts
+    .map((post, index) => ({ post, index }))
+    .filter(({ post }) => post.id === idOrSlug || post.slug === idOrSlug || post.translations.some((item) => item.slug === idOrSlug));
+
+  if (matches.length === 0) throw new Error(`Page not found: ${idOrSlug}`);
+  if (matches.length > 1) throw new Error(`Page lookup is ambiguous: ${idOrSlug}`);
+  return matches[0];
+}
+
+function assertHttpsUrl(value: string, field: string) {
+  try {
+    const url = new URL(value);
+    if (url.protocol !== "https:" || url.username || url.password) throw new Error();
+  } catch {
+    throw new Error(`${field} must be a valid HTTPS URL`);
+  }
+}
+
+function assertPageShape(page: FullPageInput | CmsBlogPost) {
+  const slugPattern = /^[a-z0-9]+(?:-[a-z0-9]+)*$/;
+  if (!slugPattern.test(page.slug)) throw new Error(`Invalid primary slug: ${page.slug}`);
+
+  const locales = page.translations.map((item) => item.locale);
+  if (locales.length !== LOCALES.length || !LOCALES.every((item) => locales.filter((locale) => locale === item.code).length === 1)) {
+    throw new Error("Page must contain exactly one en, ms, and zh-Hans translation");
+  }
+
+  const slugs = page.translations.map((item) => item.slug);
+  if (new Set(slugs.map((slug) => slug.toLowerCase())).size !== slugs.length) {
+    throw new Error("Localized slugs must be unique");
+  }
+  for (const slug of slugs) {
+    if (!slugPattern.test(slug)) throw new Error(`Invalid localized slug: ${slug}`);
+  }
+  if (page.translations.find((item) => item.locale === "en")?.slug !== page.slug) {
+    throw new Error("Primary slug must match the English translation slug");
+  }
+
+  const configValues = Object.values(page.pageConfig);
+  if (configValues.some((value) => typeof value !== "string" || !value.trim())) {
+    throw new Error("Every pageConfig field must be a non-empty string");
+  }
+
+  for (const [index, translation] of page.translations.entries()) {
+    const required = [translation.title, translation.metaTitle, translation.metaDescription, translation.quickAnswer, translation.body];
+    if (required.some((value) => typeof value !== "string" || !value.trim())) {
+      throw new Error(`translations[${index}] has missing required copy`);
+    }
+  }
+}
+
+function assertAffiliatePublication(page: FullPageInput | CmsBlogPost) {
+  if (page.status !== "published") return;
+  const activeOffers = page.affiliateLinks.filter((offer) => offer.isActive);
+  if (activeOffers.length === 0) throw new Error(`${page.slug}: published pages require active affiliate offers`);
+
+  for (const [index, offer] of activeOffers.entries()) {
+    const trackingUrl = offer.trackingUrl?.trim() || "";
+    if (!trackingUrl || trackingUrl === offer.destinationUrl.trim()) {
+      throw new Error(`${page.slug}: affiliateLinks[${index}] requires a distinct trackingUrl`);
+    }
+    assertHttpsUrl(trackingUrl, `${page.slug}.affiliateLinks[${index}].trackingUrl`);
+    assertHttpsUrl(offer.destinationUrl, `${page.slug}.affiliateLinks[${index}].destinationUrl`);
+    if (!offer.rel.includes("sponsored") || !offer.rel.includes("nofollow") || !offer.rel.includes("noopener")) {
+      throw new Error(`${page.slug}: affiliateLinks[${index}].rel must include sponsored, nofollow, and noopener`);
+    }
+  }
+
+  if (!/affiliate|commission|komisen|联盟|佣金/i.test(page.pageConfig.disclosure)) {
+    throw new Error(`${page.slug}: disclosure must clearly identify affiliate commission`);
+  }
+}
+
+function assertStoreValid(posts: CmsBlogPost[]) {
+  const ids = new Set<string>();
+  const slugs = new Set<string>();
+  for (const post of posts) {
+    if (!post.id || ids.has(post.id)) throw new Error(`Duplicate or missing page id: ${post.id || "unknown"}`);
+    ids.add(post.id);
+    assertPageShape(post);
+    assertAffiliatePublication(post);
+    for (const slug of post.translations.map((item) => item.slug)) {
+      const key = slug.toLowerCase();
+      if (slugs.has(key)) throw new Error(`Duplicate slug in content store: ${slug}`);
+      slugs.add(key);
+    }
+    const audit = auditPage(post);
+    if (audit.blockers.length) throw new Error(`${post.slug}: ${audit.blockers.join("; ")}`);
+  }
+}
+
+function assertNoContentSlugConflict(posts: CmsBlogPost[], input: FullPageInput, excludeId?: string) {
+  const incoming = new Set([input.slug, ...input.translations.map((item) => item.slug)].map((slug) => slug.toLowerCase()));
+  for (const post of posts) {
+    if (post.id === excludeId) continue;
+    const conflict = [post.slug, ...post.translations.map((item) => item.slug)].find((slug) => incoming.has(slug.toLowerCase()));
+    if (conflict) throw new Error(`Slug already exists: ${conflict}`);
+  }
+}
+
+function assertProductionPreflight(args: Args, contentFile: string) {
+  if (!args.yes) throw new Error("Production CRUD requires --yes");
+  if (contentFile !== DEFAULT_CONTENT_FILE) throw new Error("Production CRUD must use data/pages.json");
+
+  const root = runProcess("git", ["rev-parse", "--show-toplevel"], true);
+  if (path.resolve(root) !== path.resolve(process.cwd())) throw new Error("Run production CRUD from the repository root");
+  if (runProcess("git", ["branch", "--show-current"], true) !== "master") throw new Error("Production CRUD requires the master branch");
+  if (runProcess("git", ["status", "--porcelain=v1", "--untracked-files=all"], true)) {
+    throw new Error("Production CRUD requires a completely clean worktree");
+  }
+
+  runProcess("git", ["fetch", "origin", "master"]);
+  if (runProcess("git", ["rev-list", "--left-right", "--count", "origin/master...HEAD"], true) !== "0\t0") {
+    throw new Error("Local master must exactly match origin/master");
+  }
+  runProcess("git", ["push", "--dry-run", "origin", "HEAD:master"]);
+}
+
+function assertOnlyContentFileChanged() {
+  const changed = runProcess("git", ["status", "--porcelain=v1", "--untracked-files=all"], true)
+    .split("\n")
+    .filter(Boolean)
+    .map((line) => line.slice(3));
+  if (changed.length !== 1 || changed[0] !== DEFAULT_CONTENT_FILE) {
+    throw new Error(`Production build changed unexpected files: ${changed.join(", ") || "none"}`);
+  }
+}
+
+function finalizeProductionChange(operation: "publish" | "edit" | "remove", slug: string, originalContent: string) {
+  let committed = false;
+  try {
+    assertStoreValid(readContentPosts(DEFAULT_CONTENT_FILE));
+    runProcess("npm", ["run", "build"]);
+    assertOnlyContentFileChanged();
+    runProcess("git", ["add", "--", DEFAULT_CONTENT_FILE]);
+    const staged = runProcess("git", ["diff", "--cached", "--name-only"], true);
+    if (staged !== DEFAULT_CONTENT_FILE) throw new Error(`Unexpected staged files: ${staged}`);
+    runProcess("git", ["commit", "--only", "-m", `content: ${operation} ${slug}`, "--", DEFAULT_CONTENT_FILE]);
+    committed = true;
+    const commitSha = runProcess("git", ["rev-parse", "HEAD"], true);
+    runProcess("git", ["push", "origin", "HEAD:master"]);
+    const remoteSha = runProcess("git", ["ls-remote", "origin", "refs/heads/master"], true).split(/\s+/)[0];
+    if (remoteSha !== commitSha) throw new Error(`Remote master did not reach commit ${commitSha}`);
+    return commitSha;
+  } catch (error) {
+    if (!committed) {
+      writeFileSync(resolveFile(DEFAULT_CONTENT_FILE), originalContent, "utf8");
+      spawnSync("git", ["restore", "--staged", "--", DEFAULT_CONTENT_FILE], { cwd: process.cwd(), stdio: "ignore" });
+    }
+    throw error;
+  }
+}
+
+function completeContentMutation(args: Args, operation: "publish" | "edit" | "remove", slug: string, originalContent: string) {
+  if (!args.prod) return null;
+  return finalizeProductionChange(operation, slug, originalContent);
+}
+
+function handlePublishPost(args: Args) {
+  const file = requireStringArg(args, "file");
+  const contentFile = getContentFile(args);
+  if (args.prod) assertProductionPreflight(args, contentFile);
+  const originalContent = readFileSync(resolveFile(contentFile), "utf8");
+  const posts = readContentPosts(contentFile);
+  const { input } = loadSinglePageInput(file);
+  if (input.status !== "published") throw new Error("publish-post requires status published");
+  assertPageShape(input);
+  assertAffiliatePublication(input);
+  assertNoContentSlugConflict(posts, input);
+
+  const created: CmsBlogPost = { id: crypto.randomUUID(), ...input, updatedAt: new Date().toISOString() };
+  const nextPosts = [...posts, created];
+  assertStoreValid(nextPosts);
+  writeContentPosts(contentFile, nextPosts);
+  const commitSha = completeContentMutation(args, "publish", created.slug, originalContent);
+  console.log(JSON.stringify({ operation: "publish", id: created.id, slug: created.slug, production: !!args.prod, commitSha }, null, 2));
+}
+
+function handleEditPost(args: Args) {
+  const id = requireStringArg(args, "id");
+  const file = requireStringArg(args, "file");
+  const contentFile = getContentFile(args);
+  if (args.prod) assertProductionPreflight(args, contentFile);
+  const originalContent = readFileSync(resolveFile(contentFile), "utf8");
+  const posts = readContentPosts(contentFile);
+  const existing = findContentPost(posts, id);
+  const { input, suppliedId } = loadSinglePageInput(file);
+  if (suppliedId && suppliedId !== existing.post.id) throw new Error("Input page id does not match the selected page");
+  assertPageShape(input);
+  assertAffiliatePublication(input);
+  assertNoContentSlugConflict(posts, input, existing.post.id);
+
+  const updated: CmsBlogPost = { id: existing.post.id, ...input, updatedAt: new Date().toISOString() };
+  const nextPosts = posts.map((post, index) => index === existing.index ? updated : post);
+  assertStoreValid(nextPosts);
+  writeContentPosts(contentFile, nextPosts);
+  const commitSha = completeContentMutation(args, "edit", updated.slug, originalContent);
+  console.log(JSON.stringify({ operation: "edit", id: updated.id, slug: updated.slug, production: !!args.prod, commitSha }, null, 2));
+}
+
+function handleRemovePost(args: Args) {
+  if (!args.yes) throw new Error("remove-post requires --yes");
+  const id = requireStringArg(args, "id");
+  const contentFile = getContentFile(args);
+  if (args.prod) assertProductionPreflight(args, contentFile);
+  const originalContent = readFileSync(resolveFile(contentFile), "utf8");
+  const posts = readContentPosts(contentFile);
+  const existing = findContentPost(posts, id);
+  const nextPosts = posts.filter((_, index) => index !== existing.index);
+  assertStoreValid(nextPosts);
+  writeContentPosts(contentFile, nextPosts);
+  const commitSha = completeContentMutation(args, "remove", existing.post.slug, originalContent);
+  console.log(JSON.stringify({ operation: "remove", id: existing.post.id, slug: existing.post.slug, production: !!args.prod, commitSha }, null, 2));
 }
 
 async function handleCreatePage(args: Args) {
@@ -677,6 +963,21 @@ async function main() {
 
   if (command === "delete-page") {
     await handleDeletePage(args);
+    return;
+  }
+
+  if (command === "publish-post") {
+    handlePublishPost(args);
+    return;
+  }
+
+  if (command === "edit-post") {
+    handleEditPost(args);
+    return;
+  }
+
+  if (command === "remove-post") {
+    handleRemovePost(args);
     return;
   }
 
