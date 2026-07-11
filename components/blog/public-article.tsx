@@ -34,6 +34,10 @@ function getPublicSourceUrl(offer: AffiliateLinkDraft, sourceUrl: string) {
     : sourceUrl;
 }
 
+function getImageOffer(imageUrl: string, offers: AffiliateLinkDraft[], fallbackIndex = 0) {
+  return offers.find((offer) => offer.imageUrl === imageUrl) ?? offers[fallbackIndex % offers.length] ?? null;
+}
+
 function localizeLabels(locale: LocaleCode) {
   if (locale === "ms") {
     return {
@@ -275,7 +279,19 @@ export function PublicArticle({ post, localeCode }: Props) {
 
       {translation.heroImageUrl ? (
         <figure className="relative mt-6 h-[15rem] overflow-hidden rounded-[1.15rem] border border-black/5 bg-neutral-50 sm:h-[20rem]">
-          <img src={translation.heroImageUrl} alt={translation.title} className="h-full w-full object-contain" />
+          {leadOffer ? (
+            <a
+              href={getAffiliateUrl(getImageOffer(translation.heroImageUrl, activeOffers) ?? leadOffer)}
+              target="_blank"
+              rel={(getImageOffer(translation.heroImageUrl, activeOffers) ?? leadOffer).rel}
+              aria-label={`${translation.title}: ${pickCta(localeCode, getImageOffer(translation.heroImageUrl, activeOffers) ?? leadOffer)}`}
+              className="block h-full w-full"
+            >
+              <img src={translation.heroImageUrl} alt={translation.title} className="h-full w-full object-contain transition-transform duration-300 hover:scale-[1.02]" />
+            </a>
+          ) : (
+            <img src={translation.heroImageUrl} alt={translation.title} className="h-full w-full object-contain" />
+          )}
         </figure>
       ) : null}
 
@@ -289,6 +305,21 @@ export function PublicArticle({ post, localeCode }: Props) {
           <p className="mt-3 text-[1.02rem] leading-relaxed text-black">
             {translation.quickAnswer}
           </p>
+          {leadOffer ? (
+            <a
+              href={getAffiliateUrl(leadOffer)}
+              target="_blank"
+              rel={leadOffer.rel}
+              className="mt-5 inline-flex items-center rounded-full bg-black px-5 py-2.5 text-sm font-medium text-white no-underline"
+              data-analytics-event={ANALYTICS_EVENTS.leadOfferClick}
+              data-page-id={post.id}
+              data-locale={localeCode}
+              data-offer-id={leadOffer.id}
+            >
+              {pickCta(localeCode, leadOffer)}
+              <ArrowRight className="ml-2" size={16} weight="regular" aria-hidden="true" />
+            </a>
+          ) : null}
         </div>
 
         <section className="mt-8 rounded-[1.15rem] bg-neutral-50 p-5" aria-labelledby="key-takeaways">
@@ -469,21 +500,48 @@ export function PublicArticle({ post, localeCode }: Props) {
           </section>
         ) : null}
 
-        {translation.sections.map((section) => {
+        {translation.sections.map((section, index) => {
           const sectionBody = cleanSectionBody(section.sectionTitle, section.sectionBody);
+          const sectionOffer = getImageOffer(section.sectionImageUrl, activeOffers, index);
 
           return (
             <section key={section.id} className="mt-10 pt-2">
-              {section.sectionImageUrl ? (
-                <img
-                  src={section.sectionImageUrl}
-                  alt={section.sectionTitle}
-                  className="mb-6 max-h-80 w-full rounded-[1.15rem] bg-neutral-50 object-contain"
-                  loading="lazy"
-                />
+              {section.sectionImageUrl && sectionOffer ? (
+                <a
+                  href={getAffiliateUrl(sectionOffer)}
+                  target="_blank"
+                  rel={sectionOffer.rel}
+                  aria-label={`${section.sectionTitle}: ${pickCta(localeCode, sectionOffer)}`}
+                  className="mb-6 block overflow-hidden rounded-[1.15rem] bg-neutral-50"
+                >
+                  <img
+                    src={section.sectionImageUrl}
+                    alt={section.sectionTitle}
+                    className="max-h-80 w-full object-contain transition-transform duration-300 hover:scale-[1.02]"
+                    loading="lazy"
+                  />
+                </a>
+              ) : section.sectionImageUrl ? (
+                <img src={section.sectionImageUrl} alt={section.sectionTitle} className="mb-6 max-h-80 w-full rounded-[1.15rem] bg-neutral-50 object-contain" loading="lazy" />
               ) : null}
               <h2 className="text-[1.55rem] font-medium leading-tight text-black sm:text-[1.8rem]">{section.sectionTitle}</h2>
               {sectionBody ? <p className="mt-5 text-[1.08rem] leading-relaxed text-neutral-800">{sectionBody}</p> : null}
+              {sectionOffer ? (
+                <a
+                  href={getAffiliateUrl(sectionOffer)}
+                  target="_blank"
+                  rel={sectionOffer.rel}
+                  className="mt-5 inline-flex items-center rounded-full border border-neutral-300 px-4 py-2 text-sm font-medium text-black no-underline hover:border-black"
+                  data-analytics-event={ANALYTICS_EVENTS.affiliateCardClick}
+                  data-page-id={post.id}
+                  data-locale={localeCode}
+                  data-offer-id={sectionOffer.id}
+                  data-offer-position={index + 1}
+                >
+                  {pickCta(localeCode, sectionOffer)}
+                  <ArrowRight className="ml-2" size={16} weight="regular" aria-hidden="true" />
+                </a>
+              ) : null}
             </section>
           );
         })}
@@ -506,9 +564,11 @@ export function PublicArticle({ post, localeCode }: Props) {
                     data-offer-position={index + 2}
                   >
                     <div className="flex items-start gap-4">
-                      <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-black text-lg font-medium text-white">
-                        {item.merchantName.slice(0, 1)}
-                      </span>
+                      {item.imageUrl ? (
+                        <span className="flex h-16 w-20 shrink-0 items-center justify-center overflow-hidden rounded-xl bg-neutral-50">
+                          <img src={item.imageUrl} alt="" className="h-full w-full object-contain" loading="lazy" />
+                        </span>
+                      ) : null}
                       <div className="min-w-0 flex-1">
                         <p className="text-sm text-neutral-500">{labels.affiliatePick}</p>
                         <h3 className="mt-1 text-[1.2rem] font-medium leading-snug text-black">{item.anchorText}</h3>
@@ -553,6 +613,22 @@ export function PublicArticle({ post, localeCode }: Props) {
           <p className="mt-3">{hasAffiliateTracking ? labels.affiliateDisclosureText : labels.disclosureText}</p>
         </aside>
       </div>
+
+      {leadOffer ? (
+        <a
+          href={getAffiliateUrl(leadOffer)}
+          target="_blank"
+          rel={leadOffer.rel}
+          className="fixed bottom-3 left-3 right-3 z-40 flex items-center justify-between rounded-full bg-black px-5 py-3 text-sm font-medium text-white no-underline shadow-[0_10px_30px_rgba(0,0,0,0.22)] sm:hidden"
+          data-analytics-event={ANALYTICS_EVENTS.leadOfferClick}
+          data-page-id={post.id}
+          data-locale={localeCode}
+          data-offer-id={leadOffer.id}
+        >
+          <span className="truncate">{pickCta(localeCode, leadOffer)}</span>
+          <span className="ml-3 shrink-0 text-white/70">{leadOffer.displayedPrice || leadOffer.priceBand}</span>
+        </a>
+      ) : null}
 
     </article>
   );
