@@ -77,8 +77,8 @@ export async function GET(request: Request, { params }: { params: Promise<{ loca
           <div style={{ color: "#77736d", display: "flex", fontSize: 34, marginLeft: "auto", marginTop: -22 }}>•••</div>
         </div>
 
-        <div style={{ background: "white", display: "flex", height: 566, overflow: "hidden", padding: "0 52px", width: "100%" }}>
-          <img alt="" height="566" src={coverImageUrl} style={{ borderRadius: 30, height: "100%", objectFit: "cover", width: "100%" }} width="746" />
+        <div style={{ background: "white", display: "flex", height: 430, overflow: "hidden", padding: "0 72px", width: "100%" }}>
+          <img alt="" height="430" src={coverImageUrl} style={{ borderRadius: 30, height: "100%", objectFit: "cover", width: "100%" }} width="706" />
         </div>
 
         <div style={{ display: "flex", flexDirection: "column", padding: "48px 52px 54px" }}>
