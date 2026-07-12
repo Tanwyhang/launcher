@@ -28,6 +28,8 @@ INDEXNOW_KEY_LOCATION
 
 The IndexNow key must also be publicly retrievable from `INDEXNOW_KEY_LOCATION`.
 
+Production `content-pipeline promote` and `promote-ready` commands automatically wait for the live sitemap, validate discovery files, submit the sitemap to Search Console when credentials exist, and notify IndexNow when configured. The GitHub workflow remains available for manual reruns.
+
 ## Commands
 
 ```bash

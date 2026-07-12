@@ -228,6 +228,13 @@ function promote(args: Record<string, string | boolean>) {
   if (!args.prod || !args.yes) throw new Error("Production promotion requires --prod --yes");
   const command = spawnSync("bun", ["run", "seo", "edit-post", "--id", id, "--file", file, "--prod", "--yes"], { cwd: root, stdio: "inherit" });
   if (command.status !== 0) process.exitCode = command.status || 1;
+  else notifySearchEngines();
+}
+
+function notifySearchEngines() {
+  run("node", ["scripts/indexing.mjs", "validate-live", "--base-url", "https://www.launcher.my", "--wait", "300"]);
+  run("node", ["scripts/indexing.mjs", "submit-google", "--optional"]);
+  run("node", ["scripts/indexing.mjs", "submit-indexnow", "--optional"]);
 }
 
 function promoteReady(args: Record<string, string | boolean>) {
@@ -262,6 +269,7 @@ function promoteReady(args: Record<string, string | boolean>) {
     run("git", ["commit", "-m", `content: publish ${ready.length} researched article groups`, "--", "data/pages.json"]);
     committed = true;
     run("git", ["push", "origin", "HEAD:master"]);
+    notifySearchEngines();
     process.stdout.write(`${JSON.stringify({ ...summary, production: true, commitSha: run("git", ["rev-parse", "HEAD"], true) }, null, 2)}\n`);
   } catch (error) {
     if (!committed) writeFileSync(pagesPath, original, "utf8");

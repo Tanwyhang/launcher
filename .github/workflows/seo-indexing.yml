@@ -1,14 +1,7 @@
 name: SEO indexing
 
 on:
-  push:
-    branches: [master]
-    paths:
-      - "data/pages.json"
-      - "app/**"
-      - "components/**"
-      - "lib/**"
-      - "scripts/indexing.mjs"
+  workflow_dispatch:
 
 permissions:
   contents: read
