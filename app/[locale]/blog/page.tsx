@@ -16,6 +16,8 @@ const copy: Record<string, {
   approach: string[];
   coverageTitle: string;
   coverage: string[];
+  topicsTitle: string;
+  topicsIntro: string;
   minRead: string;
   empty: string;
 }> = {
@@ -33,6 +35,8 @@ const copy: Record<string, {
       "Current guides compare creator cameras and prepaid SIM plans, with more Malaysia-focused technology categories planned. You can use them to understand tradeoffs before visiting a merchant, rather than relying on a product title or discount alone.",
       "Some links are affiliate links, which may earn Launcher a commission without changing your price. Commercial relationships do not determine our conclusions, and every guide includes a clear disclosure.",
     ],
+    topicsTitle: "Explore by decision topic",
+    topicsIntro: "Start with a topic cluster when you want to compare related guides before choosing a product or plan.",
     minRead: "min read",
     empty: "No cubes launched yet.",
   },
@@ -50,6 +54,8 @@ const copy: Record<string, {
       "Panduan semasa membandingkan kamera pencipta dan pelan SIM prabayar, dengan lebih banyak kategori teknologi berfokuskan Malaysia akan datang. Gunakannya untuk memahami pertimbangan sebelum melawat peniaga, bukan bergantung pada tajuk produk atau diskaun semata-mata.",
       "Sesetengah pautan ialah pautan ahli gabungan yang mungkin memberi Launcher komisen tanpa mengubah harga anda. Hubungan komersial tidak menentukan kesimpulan kami dan setiap panduan mempunyai pendedahan yang jelas.",
     ],
+    topicsTitle: "Teroka mengikut topik keputusan",
+    topicsIntro: "Mulakan dengan kelompok topik untuk membandingkan panduan berkaitan sebelum memilih produk atau pelan.",
     minRead: "min bacaan",
     empty: "Belum ada cube dilancarkan.",
   },
@@ -67,6 +73,8 @@ const copy: Record<string, {
       "目前的指南涵盖创作者相机与预付 SIM 配套，未来将加入更多以马来西亚为重点的科技类别。你可以在前往商家购买前先了解各种取舍，而不是只根据商品标题或折扣作决定。",
       "部分链接属于联盟链接，Launcher 可能获得佣金，但不会增加你的购买价格。商业合作不会决定我们的结论，每篇指南也会提供清楚的联盟披露。",
     ],
+    topicsTitle: "按决策主题浏览",
+    topicsIntro: "若想在选择产品或配套前比较相关指南，可先从同一主题的内容开始。",
     minRead: "分钟阅读",
     empty: "还没有发布 cube。",
   },
@@ -105,6 +113,14 @@ export default async function LocalizedBlogIndexPage({
     const translation = resolveTranslationForLocale(post, localeCode);
     return `${translation.title} ${translation.metaDescription} ${post.pageConfig.category}`.toLocaleLowerCase().includes(query);
   });
+  const topicGroups = Object.values(
+    publishedPosts.reduce<Record<string, typeof publishedPosts>>((groups, post) => {
+      const category = post.pageConfig.category;
+      groups[category] ??= [];
+      groups[category].push(post);
+      return groups;
+    }, {}),
+  ).filter((group) => group.length > 1);
   const siteUrl = getSiteUrl();
   const collectionJsonLd = {
     "@context": "https://schema.org",
@@ -141,6 +157,32 @@ export default async function LocalizedBlogIndexPage({
         </h1>
         <p className="mt-1.5 text-[1rem] leading-snug text-neutral-500 sm:text-[1.1rem]">{pageCopy.intro}</p>
       </div>
+
+      {!query && topicGroups.length > 0 ? (
+        <section className="mb-12 border-y border-neutral-200 py-8" aria-labelledby="decision-topics">
+          <h2 id="decision-topics" className="text-xl font-medium text-black sm:text-2xl">{pageCopy.topicsTitle}</h2>
+          <p className="mt-2 max-w-2xl text-[0.98rem] leading-7 text-neutral-600">{pageCopy.topicsIntro}</p>
+          <div className="mt-6 grid gap-4 sm:grid-cols-2">
+            {topicGroups.map((group) => (
+              <section key={group[0].pageConfig.category} className="rounded-[1.1rem] border border-neutral-200 p-5">
+                <h3 className="text-[1.05rem] font-medium text-black">{group[0].pageConfig.category}</h3>
+                <ul className="mt-3 space-y-2">
+                  {group.map((post) => {
+                    const translation = resolveTranslationForLocale(post, localeCode);
+                    return (
+                      <li key={post.id}>
+                        <Link className="text-sm leading-snug text-neutral-700 underline underline-offset-4 hover:text-black" href={getLocalePath(localeCode, translation.slug) as any}>
+                          {translation.title}
+                        </Link>
+                      </li>
+                    );
+                  })}
+                </ul>
+              </section>
+            ))}
+          </div>
+        </section>
+      ) : null}
 
       <div className="space-y-6">
         <h2 className="text-xl font-medium text-black sm:text-2xl">{pageCopy.latest}</h2>

@@ -83,7 +83,15 @@ export default async function LocalizedBlogPostPage({
     redirect(getLocalePath(localeCode, translation.slug) as any);
   }
 
-  return <PublicArticle post={post} localeCode={localeCode} />;
+  const relatedPosts = (await listPostsForAdmin())
+    .filter((item) =>
+      item.status === "published" &&
+      item.id !== post.id &&
+      item.pageConfig.category === post.pageConfig.category,
+    )
+    .slice(0, 3);
+
+  return <PublicArticle post={post} localeCode={localeCode} relatedPosts={relatedPosts} />;
 }
 
 export const revalidate = 3600;

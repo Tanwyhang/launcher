@@ -123,7 +123,11 @@ function run(command: string, args: string[], capture = false) {
 function audit(page: Page) {
   const blockers: string[] = [];
   const warnings: string[] = [];
-  const existingSlugs = new Set(pages().flatMap((item) => item.translations.map((translation) => translation.slug)));
+  const publishedPaths = new Set(
+    [...pages().filter((item) => item.status === "published" || item.slug === page.slug), page].flatMap((item) =>
+      item.translations.map((translation) => `${localePaths[translation.locale]}/blog/${translation.slug}`),
+    ),
+  );
   const expectedLocales = new Set(["en", "ms", "zh-Hans"]);
   const receivedLocales = new Set(page.translations.map((translation) => translation.locale));
 
@@ -166,8 +170,7 @@ function audit(page: Page) {
     for (const link of links) {
       const prefix = localePaths[translation.locale];
       if (!link.startsWith(`${prefix}/blog/`)) blockers.push(`${translation.locale}: internal link uses the wrong locale: ${link}`);
-      const slug = link.split("/").at(-1) || "";
-      if (!existingSlugs.has(slug)) blockers.push(`${translation.locale}: internal link target does not exist: ${link}`);
+      if (!publishedPaths.has(link)) blockers.push(`${translation.locale}: internal link target is not published: ${link}`);
     }
   }
 

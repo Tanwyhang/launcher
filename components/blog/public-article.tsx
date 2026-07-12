@@ -58,6 +58,7 @@ function localizeLabels(locale: LocaleCode) {
       updated: "Dikemas kini",
       recommendedPicks: "Senarai pendek editorial",
       topPicksTitle: "Pilihan untuk dibandingkan",
+      relatedDecisions: "Panduan keputusan berkaitan",
       minRead: "min bacaan",
       product: "Produk",
       price: "Format",
@@ -87,6 +88,7 @@ function localizeLabels(locale: LocaleCode) {
       updated: "更新于",
       recommendedPicks: "编辑短名单",
       topPicksTitle: "值得比较的选择",
+      relatedDecisions: "相关决策指南",
       minRead: "分钟阅读",
       product: "产品",
       price: "形式",
@@ -115,6 +117,7 @@ function localizeLabels(locale: LocaleCode) {
     updated: "Updated",
     recommendedPicks: "Editorial shortlist",
     topPicksTitle: "Options to compare",
+    relatedDecisions: "Related decisions",
     minRead: "min read",
     product: "Product",
     price: "Format",
@@ -154,9 +157,10 @@ function safeJsonLd(value: unknown) {
 type Props = {
   post: CmsBlogPost;
   localeCode: LocaleCode;
+  relatedPosts?: CmsBlogPost[];
 };
 
-export function PublicArticle({ post, localeCode }: Props) {
+export function PublicArticle({ post, localeCode, relatedPosts = [] }: Props) {
   const translation = resolveTranslationForLocale(post, localeCode);
   const coverImageUrl = getPostCoverImage(post, localeCode);
   const activeOffers = post.affiliateLinks.filter((item) => item.isActive).map((item) => localizeOffer(item, localeCode));
@@ -479,6 +483,29 @@ export function PublicArticle({ post, localeCode }: Props) {
         <section className="mt-10 pt-2">
           <MarkdownArticle markdown={translation.body} />
         </section>
+
+        {relatedPosts.length > 0 ? (
+          <section className="mt-10 pt-2" aria-labelledby="related-decisions">
+            <h2 id="related-decisions" className="text-[1.55rem] font-medium leading-tight text-black sm:text-[1.8rem]">
+              {labels.relatedDecisions}
+            </h2>
+            <div className="mt-5 grid gap-3 sm:grid-cols-3">
+              {relatedPosts.map((relatedPost) => {
+                const relatedTranslation = resolveTranslationForLocale(relatedPost, localeCode);
+                return (
+                  <Link
+                    key={relatedPost.id}
+                    href={getLocalePath(localeCode, relatedTranslation.slug) as any}
+                    className="rounded-[1.1rem] border border-neutral-200 bg-white p-4 text-black no-underline transition-colors hover:border-black"
+                  >
+                    <p className="text-sm text-neutral-500">{relatedPost.pageConfig.category}</p>
+                    <h3 className="mt-2 text-[1.05rem] font-medium leading-snug">{relatedTranslation.title}</h3>
+                  </Link>
+                );
+              })}
+            </div>
+          </section>
+        ) : null}
 
         {activeOffers.length > 0 ? (
           <section className="mt-10 pt-2">
