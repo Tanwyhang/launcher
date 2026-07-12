@@ -199,7 +199,7 @@ export default async function LocalizedBlogIndexPage({
                   <img
                     src={getPostCoverImage(post, localeCode)}
                     alt={`${translation.title} guide illustration`}
-                    className="aspect-square w-full rounded-lg object-cover"
+                    className="aspect-square w-full rounded-lg bg-neutral-50 object-contain"
                     loading={index < 4 ? "eager" : "lazy"}
                   />
                   <span className="min-w-0">
