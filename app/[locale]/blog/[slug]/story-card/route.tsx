@@ -53,7 +53,7 @@ export async function GET(request: Request, { params }: { params: Promise<{ loca
         </div>
       </div>
 
-      <div style={{ fontSize: 68, fontWeight: 750, letterSpacing: -2.8, lineHeight: 1.04, marginTop: 54 }}>{headline}</div>
+      <div style={{ display: "flex", fontSize: 68, fontWeight: 750, letterSpacing: -2.8, lineHeight: 1.04, marginTop: 54 }}>{headline}</div>
 
       <div style={{ background: "white", borderRadius: 36, display: "flex", height: 560, marginTop: 48, overflow: "hidden", width: "100%" }}>
         <img alt="" height="560" src={coverImageUrl} style={{ height: "100%", objectFit: "cover", objectPosition: "right center", width: "100%" }} width="952" />
@@ -70,7 +70,7 @@ export async function GET(request: Request, { params }: { params: Promise<{ loca
       </div>
 
       <div style={{ alignItems: "center", borderTop: "1px solid #d9d5ce", display: "flex", marginTop: "auto", paddingTop: 32 }}>
-        <div style={{ fontSize: 28, fontWeight: 700 }}>{labels.read} → launcher.my</div>
+        <div style={{ display: "flex", fontSize: 28, fontWeight: 700 }}>{labels.read} → launcher.my</div>
       </div>
     </div>,
     size,
