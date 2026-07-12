@@ -17,12 +17,12 @@ jobs:
       - name: Audit published content
         run: npm run indexing -- audit-content
       - name: Wait for production and validate discovery files
-        run: npm run indexing -- validate-live --base-url https://www.launcher.my --wait 300
+        run: npm run indexing -- validate-live --base-url https://launcher.my --wait 300
       - name: Submit sitemap to Google Search Console
         run: npm run indexing -- submit-google --optional
         env:
-          SITE_URL: https://www.launcher.my
-          GOOGLE_SEARCH_CONSOLE_PROPERTY: sc-domain:launcher.my
+          SITE_URL: https://launcher.my
+          GOOGLE_SEARCH_CONSOLE_PROPERTY: https://launcher.my/
           GOOGLE_SEARCH_CONSOLE_CLIENT_EMAIL: ${{ secrets.GOOGLE_SEARCH_CONSOLE_CLIENT_EMAIL }}
           GOOGLE_SEARCH_CONSOLE_PRIVATE_KEY: ${{ secrets.GOOGLE_SEARCH_CONSOLE_PRIVATE_KEY }}
       - name: Notify IndexNow engines

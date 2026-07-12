@@ -126,6 +126,18 @@ async function submitGoogle() {
   console.log(JSON.stringify({ submitted: sitemapUrl, property }, null, 2));
 }
 
+async function listGoogleSites() {
+  const email = process.env.GOOGLE_SEARCH_CONSOLE_CLIENT_EMAIL;
+  const privateKey = process.env.GOOGLE_SEARCH_CONSOLE_PRIVATE_KEY;
+  if (!email || !privateKey) throw new Error("Set GOOGLE_SEARCH_CONSOLE_CLIENT_EMAIL and GOOGLE_SEARCH_CONSOLE_PRIVATE_KEY");
+  const token = await googleAccessToken(email, privateKey);
+  const response = await fetch("https://www.googleapis.com/webmasters/v3/sites", {
+    headers: { authorization: `Bearer ${token}` },
+  });
+  if (!response.ok) throw new Error(`Search Console site listing failed: ${response.status} ${await response.text()}`);
+  console.log(JSON.stringify(await response.json(), null, 2));
+}
+
 async function submitIndexNow() {
   const key = process.env.INDEXNOW_KEY;
   if (!key) {
@@ -155,6 +167,7 @@ async function submitIndexNow() {
 if (command === "audit-content") auditContent();
 else if (command === "validate-live") await validateLive();
 else if (command === "submit-google") await submitGoogle();
+else if (command === "list-google-sites") await listGoogleSites();
 else if (command === "submit-indexnow") await submitIndexNow();
 else {
   console.log(`Indexing automation
@@ -162,5 +175,6 @@ else {
   npm run indexing -- audit-content
   npm run indexing -- validate-live --base-url https://www.launcher.my --wait 300
   npm run indexing -- submit-google [--optional]
+  npm run indexing -- list-google-sites
   npm run indexing -- submit-indexnow [--optional]`);
 }

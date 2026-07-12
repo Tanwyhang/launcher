@@ -12,7 +12,7 @@ Google's Indexing API is not used because Google limits it to qualifying `JobPos
 
 ## GitHub Secrets
 
-Add the service-account email as an owner or full user of the `sc-domain:launcher.my` Search Console property, then configure:
+Add the service-account email as an owner or full user of the Search Console property. The currently configured property is the URL-prefix property `https://launcher.my/`.
 
 ```text
 GOOGLE_SEARCH_CONSOLE_CLIENT_EMAIL
