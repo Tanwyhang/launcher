@@ -283,7 +283,7 @@ export function PublicArticle({ post, localeCode, relatedPosts = [] }: Props) {
         </div>
       </header>
 
-      <figure className="relative mt-6 h-[15rem] overflow-hidden rounded-[1.15rem] border border-black/5 bg-neutral-50 sm:h-[28rem]">
+      <figure className="relative mt-6 aspect-square w-full overflow-hidden rounded-[1.15rem] border border-black/5 bg-neutral-50 sm:mx-auto sm:max-w-[46rem]">
         {leadOffer && coverImageUrl === translation.heroImageUrl ? (
           <a
             href={getAffiliateUrl(getImageOffer(coverImageUrl, activeOffers) ?? leadOffer)}
