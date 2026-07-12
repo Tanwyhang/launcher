@@ -7,18 +7,15 @@ const size = { width: 1080, height: 1920 };
 const copy = {
   en: {
     eyebrow: "Independent buyer guide",
-    read: "Read the full comparison",
-    region: "Malaysia + Singapore",
+    read: "Full comparison",
   },
   ms: {
     eyebrow: "Panduan pembeli bebas",
-    read: "Baca perbandingan penuh",
-    region: "Malaysia + Singapura",
+    read: "Perbandingan penuh",
   },
   "zh-Hans": {
     eyebrow: "独立选购指南",
-    read: "阅读完整比较",
-    region: "马来西亚 + 新加坡",
+    read: "完整比较",
   },
 } as const;
 
@@ -34,8 +31,9 @@ export async function GET(request: Request, { params }: { params: Promise<{ loca
   const translation = post?.status === "published" ? resolveTranslationForLocale(post, localeCode) : null;
   const labels = copy[localeCode];
   const title = translation?.title || "launcher";
-  const summary = shorten(translation?.quickAnswer || "Independent comparisons with transparent tradeoffs.", localeCode === "zh-Hans" ? 110 : 245);
+  const headline = shorten(post?.pageConfig.primaryKeyword || title, localeCode === "zh-Hans" ? 44 : 76);
   const takeaway = translation?.keyTakeaways[0];
+  const readMinutes = Math.max(4, Math.ceil(`${translation?.body || ""} ${translation?.sections.map((section) => section.sectionBody).join(" ") || ""}`.split(/\s+/).filter(Boolean).length / 180));
   const logoUrl = new URL("/logo.png", request.url).toString();
   const coverImageUrl = post?.status === "published"
     ? new URL(getPostCoverImage(post, localeCode), request.url).toString()
@@ -43,56 +41,36 @@ export async function GET(request: Request, { params }: { params: Promise<{ loca
 
   return new ImageResponse(
     <div
-      style={{
-        alignItems: "center",
-        background: "#f5f4f1",
-        color: "#121212",
-        display: "flex",
-        height: "100%",
-        justifyContent: "center",
-        position: "relative",
-        width: "100%",
-      }}
+      style={{ background: "#f6f5f2", color: "#121212", display: "flex", flexDirection: "column", height: "100%", padding: 64, width: "100%" }}
     >
-      <div
-        style={{
-          background: "white",
-          border: "1px solid #dedbd4",
-          borderRadius: 54,
-          boxShadow: "0 24px 60px rgba(20, 20, 20, 0.11)",
-          display: "flex",
-          flexDirection: "column",
-          overflow: "hidden",
-          width: 850,
-        }}
-      >
-        <div style={{ alignItems: "center", display: "flex", padding: "48px 52px 40px" }}>
-          <div style={{ alignItems: "center", background: "#111", borderRadius: 28, display: "flex", height: 82, justifyContent: "center", width: 82 }}>
-            <img alt="" height="50" src={logoUrl} style={{ filter: "invert(1)", objectFit: "contain" }} width="50" />
-          </div>
-          <div style={{ display: "flex", flexDirection: "column", gap: 5, marginLeft: 20 }}>
-            <div style={{ fontSize: 32, fontWeight: 700 }}>launcher</div>
-            <div style={{ color: "#77736d", fontSize: 23 }}>{labels.eyebrow}</div>
-          </div>
-          <div style={{ color: "#77736d", display: "flex", fontSize: 34, marginLeft: "auto", marginTop: -22 }}>•••</div>
+      <div style={{ alignItems: "center", display: "flex" }}>
+        <div style={{ alignItems: "center", background: "#111", borderRadius: 22, display: "flex", height: 66, justifyContent: "center", width: 66 }}>
+          <img alt="" height="38" src={logoUrl} style={{ filter: "invert(1)", objectFit: "contain" }} width="38" />
         </div>
+        <div style={{ display: "flex", flexDirection: "column", gap: 2, marginLeft: 16 }}>
+          <div style={{ fontSize: 28, fontWeight: 700 }}>launcher</div>
+          <div style={{ color: "#77736d", fontSize: 19 }}>{labels.eyebrow}</div>
+        </div>
+      </div>
 
-        <div style={{ background: "white", display: "flex", height: 430, overflow: "hidden", padding: "0 72px", width: "100%" }}>
-          <img alt="" height="430" src={coverImageUrl} style={{ borderRadius: 30, height: "100%", objectFit: "cover", width: "100%" }} width="706" />
-        </div>
+      <div style={{ fontSize: 68, fontWeight: 750, letterSpacing: -2.8, lineHeight: 1.04, marginTop: 54 }}>{headline}</div>
 
-        <div style={{ display: "flex", flexDirection: "column", padding: "48px 52px 54px" }}>
-          <div style={{ color: "#77736d", fontSize: 23, fontWeight: 600, letterSpacing: 1.4, textTransform: "uppercase" }}>{labels.region}</div>
-          <div style={{ fontSize: 52, fontWeight: 750, letterSpacing: -1.8, lineHeight: 1.1, marginTop: 20 }}>{title}</div>
-          <div style={{ color: "#55514c", fontSize: 27, lineHeight: 1.48, marginTop: 26 }}>{summary}</div>
-          {takeaway ? (
-            <div style={{ borderLeft: "5px solid #111", color: "#222", display: "flex", fontSize: 25, lineHeight: 1.4, marginTop: 28, paddingLeft: 20 }}>{shorten(takeaway, localeCode === "zh-Hans" ? 70 : 130)}</div>
-          ) : null}
-          <div style={{ alignItems: "center", borderTop: "1px solid #e5e2dc", display: "flex", marginTop: 34, paddingTop: 28 }}>
-            <div style={{ fontSize: 24, fontWeight: 700 }}>{labels.read}</div>
-            <div style={{ alignItems: "center", background: "#111", borderRadius: 24, color: "white", display: "flex", fontSize: 27, height: 48, justifyContent: "center", marginLeft: "auto", width: 48 }}>→</div>
-          </div>
+      <div style={{ background: "white", borderRadius: 36, display: "flex", height: 560, marginTop: 48, overflow: "hidden", width: "100%" }}>
+        <img alt="" height="560" src={coverImageUrl} style={{ height: "100%", objectFit: "cover", objectPosition: "right center", width: "100%" }} width="952" />
+      </div>
+
+      {takeaway ? (
+        <div style={{ borderLeft: "7px solid #111", color: "#222", display: "flex", fontSize: 38, fontWeight: 600, lineHeight: 1.26, marginTop: 48, paddingLeft: 28 }}>
+          {shorten(takeaway, localeCode === "zh-Hans" ? 70 : 135)}
         </div>
+      ) : null}
+
+      <div style={{ color: "#68645f", display: "flex", fontSize: 25, marginTop: 38 }}>
+        {post?.pageConfig.market || "Malaysia"} · {readMinutes} min read
+      </div>
+
+      <div style={{ alignItems: "center", borderTop: "1px solid #d9d5ce", display: "flex", marginTop: "auto", paddingTop: 32 }}>
+        <div style={{ fontSize: 28, fontWeight: 700 }}>{labels.read} → launcher.my</div>
       </div>
     </div>,
     size,
