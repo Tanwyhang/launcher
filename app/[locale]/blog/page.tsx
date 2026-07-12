@@ -158,32 +158,6 @@ export default async function LocalizedBlogIndexPage({
         <p className="mt-1.5 text-[1rem] leading-snug text-neutral-500 sm:text-[1.1rem]">{pageCopy.intro}</p>
       </div>
 
-      {!query && topicGroups.length > 0 ? (
-        <section className="mb-12 border-y border-neutral-200 py-8" aria-labelledby="decision-topics">
-          <h2 id="decision-topics" className="text-xl font-medium text-black sm:text-2xl">{pageCopy.topicsTitle}</h2>
-          <p className="mt-2 max-w-2xl text-[0.98rem] leading-7 text-neutral-600">{pageCopy.topicsIntro}</p>
-          <div className="mt-6 grid gap-4 sm:grid-cols-2">
-            {topicGroups.map((group) => (
-              <section key={group[0].pageConfig.category} className="rounded-[1.1rem] border border-neutral-200 p-5">
-                <h3 className="text-[1.05rem] font-medium text-black">{group[0].pageConfig.category}</h3>
-                <ul className="mt-3 space-y-2">
-                  {group.map((post) => {
-                    const translation = resolveTranslationForLocale(post, localeCode);
-                    return (
-                      <li key={post.id}>
-                        <Link className="text-sm leading-snug text-neutral-700 underline underline-offset-4 hover:text-black" href={getLocalePath(localeCode, translation.slug) as any}>
-                          {translation.title}
-                        </Link>
-                      </li>
-                    );
-                  })}
-                </ul>
-              </section>
-            ))}
-          </div>
-        </section>
-      ) : null}
-
       <div className="space-y-6">
         <h2 className="text-xl font-medium text-black sm:text-2xl">{pageCopy.latest}</h2>
         {publishedPosts.map((post, index) => {
@@ -245,6 +219,32 @@ export default async function LocalizedBlogIndexPage({
           </div>
         </details>
       </div>
+
+      {!query && topicGroups.length > 0 ? (
+        <section className="mt-14 border-t border-neutral-200 pt-10" aria-labelledby="decision-topics">
+          <h2 id="decision-topics" className="text-xl font-medium text-black sm:text-2xl">{pageCopy.topicsTitle}</h2>
+          <p className="mt-2 max-w-2xl text-[0.98rem] leading-7 text-neutral-600">{pageCopy.topicsIntro}</p>
+          <div className="mt-6 grid gap-4 sm:grid-cols-2">
+            {topicGroups.map((group) => (
+              <section key={group[0].pageConfig.category} className="rounded-[1.1rem] border border-neutral-200 p-5">
+                <h3 className="text-[1.05rem] font-medium text-black">{group[0].pageConfig.category}</h3>
+                <ul className="mt-3 space-y-2">
+                  {group.map((post) => {
+                    const translation = resolveTranslationForLocale(post, localeCode);
+                    return (
+                      <li key={post.id}>
+                        <Link className="text-sm leading-snug text-neutral-700 underline underline-offset-4 hover:text-black" href={getLocalePath(localeCode, translation.slug) as any}>
+                          {translation.title}
+                        </Link>
+                      </li>
+                    );
+                  })}
+                </ul>
+              </section>
+            ))}
+          </div>
+        </section>
+      ) : null}
     </section>
   );
 }
