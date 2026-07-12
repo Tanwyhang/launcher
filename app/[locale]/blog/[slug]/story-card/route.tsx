@@ -35,9 +35,8 @@ export async function GET(request: Request, { params }: { params: Promise<{ loca
   const takeaway = translation?.keyTakeaways[0];
   const readMinutes = Math.max(4, Math.ceil(`${translation?.body || ""} ${translation?.sections.map((section) => section.sectionBody).join(" ") || ""}`.split(/\s+/).filter(Boolean).length / 180));
   const logoUrl = new URL("/logo.png", request.url).toString();
-  const coverImageUrl = post?.status === "published"
-    ? new URL(getPostCoverImage(post, localeCode), request.url).toString()
-    : new URL("/cube-launcher-mark.png", request.url).toString();
+  const visualImageUrl = translation?.heroImageUrl || (post?.status === "published" ? getPostCoverImage(post, localeCode) : "/cube-launcher-mark.png");
+  const coverImageUrl = new URL(visualImageUrl, request.url).toString();
 
   return new ImageResponse(
     <div
@@ -55,8 +54,8 @@ export async function GET(request: Request, { params }: { params: Promise<{ loca
 
       <div style={{ display: "flex", fontSize: 68, fontWeight: 750, letterSpacing: -2.8, lineHeight: 1.04, marginTop: 54 }}>{headline}</div>
 
-      <div style={{ background: "white", borderRadius: 36, display: "flex", height: 560, marginTop: 48, overflow: "hidden", width: "100%" }}>
-        <img alt="" height="560" src={coverImageUrl} style={{ height: "100%", objectFit: "cover", objectPosition: "right center", width: "100%" }} width="952" />
+      <div style={{ background: "white", borderRadius: 36, display: "flex", height: 660, marginTop: 48, overflow: "hidden", width: "100%" }}>
+        <img alt="" height="660" src={coverImageUrl} style={{ height: "100%", objectFit: "cover", objectPosition: "center", width: "100%" }} width="952" />
       </div>
 
       {takeaway ? (
@@ -69,7 +68,7 @@ export async function GET(request: Request, { params }: { params: Promise<{ loca
         {post?.pageConfig.market || "Malaysia"} · {readMinutes} min read
       </div>
 
-      <div style={{ alignItems: "center", borderTop: "1px solid #d9d5ce", display: "flex", marginTop: "auto", paddingTop: 32 }}>
+      <div style={{ alignItems: "center", borderTop: "1px solid #d9d5ce", display: "flex", marginTop: 64, paddingTop: 32 }}>
         <div style={{ display: "flex", fontSize: 28, fontWeight: 700 }}>{labels.read} → launcher.my</div>
       </div>
     </div>,
