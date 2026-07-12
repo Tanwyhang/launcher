@@ -5,7 +5,7 @@ import type { AffiliateLinkDraft, CmsBlogPost } from "@/lib/sample-data";
 import { MarkdownArticle } from "@/components/markdown-article";
 import { ShareCube } from "@/components/blog/share-cube";
 import { TypewriterAnswer } from "@/components/blog/typewriter-answer";
-import { resolveTranslationForLocale } from "@/lib/public-blog";
+import { getPostCoverImage, resolveTranslationForLocale } from "@/lib/public-blog";
 import { SEO_EXPERIMENTS, getSeoExperimentVariant } from "@/lib/seo-experiments";
 import { absoluteUrl, getSiteUrl } from "@/lib/site";
 import type { LocaleCode } from "@/lib/utils";
@@ -158,6 +158,7 @@ type Props = {
 
 export function PublicArticle({ post, localeCode }: Props) {
   const translation = resolveTranslationForLocale(post, localeCode);
+  const coverImageUrl = getPostCoverImage(post, localeCode);
   const activeOffers = post.affiliateLinks.filter((item) => item.isActive).map((item) => localizeOffer(item, localeCode));
   const hasAffiliateTracking = activeOffers.some((item) => item.trackingUrl && item.trackingUrl !== item.destinationUrl);
   const leadOffer = activeOffers[0] ?? null;
@@ -278,23 +279,21 @@ export function PublicArticle({ post, localeCode }: Props) {
         </div>
       </header>
 
-      {translation.heroImageUrl ? (
-        <figure className="relative mt-6 h-[15rem] overflow-hidden rounded-[1.15rem] border border-black/5 bg-neutral-50 sm:h-[20rem]">
-          {leadOffer ? (
-            <a
-              href={getAffiliateUrl(getImageOffer(translation.heroImageUrl, activeOffers) ?? leadOffer)}
-              target="_blank"
-              rel={(getImageOffer(translation.heroImageUrl, activeOffers) ?? leadOffer).rel}
-              aria-label={`${translation.title}: ${pickCta(localeCode, getImageOffer(translation.heroImageUrl, activeOffers) ?? leadOffer)}`}
-              className="block h-full w-full"
-            >
-              <img src={translation.heroImageUrl} alt={translation.title} className="h-full w-full object-contain transition-transform duration-300 hover:scale-[1.02]" />
-            </a>
-          ) : (
-            <img src={translation.heroImageUrl} alt={translation.title} className="h-full w-full object-contain" />
-          )}
-        </figure>
-      ) : null}
+      <figure className="relative mt-6 h-[15rem] overflow-hidden rounded-[1.15rem] border border-black/5 bg-neutral-50 sm:h-[28rem]">
+        {leadOffer && coverImageUrl === translation.heroImageUrl ? (
+          <a
+            href={getAffiliateUrl(getImageOffer(coverImageUrl, activeOffers) ?? leadOffer)}
+            target="_blank"
+            rel={(getImageOffer(coverImageUrl, activeOffers) ?? leadOffer).rel}
+            aria-label={`${translation.title}: ${pickCta(localeCode, getImageOffer(coverImageUrl, activeOffers) ?? leadOffer)}`}
+            className="block h-full w-full"
+          >
+            <img src={coverImageUrl} alt={translation.title} className="h-full w-full object-contain transition-transform duration-300 hover:scale-[1.02]" />
+          </a>
+        ) : (
+          <img src={coverImageUrl} alt={translation.title} className="h-full w-full object-contain" />
+        )}
+      </figure>
 
       <div className="mt-6">
         <p className="text-[1.05rem] leading-relaxed text-black sm:text-[1.12rem]">

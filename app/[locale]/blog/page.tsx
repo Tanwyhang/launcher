@@ -5,32 +5,8 @@ import { notFound } from "next/navigation";
 import { listPostsForAdmin } from "@/lib/db";
 import { buildLocaleMetadata } from "@/lib/locale-metadata";
 import { getLocaleByPathSegment, getLocalePath, type LocaleCode } from "@/lib/utils";
-import { resolveTranslationForLocale } from "@/lib/public-blog";
+import { getPostCoverImage, resolveTranslationForLocale } from "@/lib/public-blog";
 import { absoluteUrl, getSiteUrl } from "@/lib/site";
-
-const cubeAssets = [
-  "/cube-launcher-mark.png",
-  "/cube-slash.png",
-  "/cube-square.png",
-  "/cube-triangle.png",
-  "/cube-steps.png",
-  "/cube-plus.png",
-  "/cube-pair.png",
-  "/cube-frame.png",
-];
-
-const postThumbnails: Record<string, string> = {
-  "dji-osmo-pocket-3-vs-creator-combo-malaysia": "/blog-thumbnails/dji-osmo-pocket-3-vs-creator-combo.png",
-  "eastel-vs-beone-vs-halo-prepaid-sim-malaysia": "/blog-thumbnails/eastel-vs-beone-vs-halo.png",
-  "hot-weather-commute-comparison-malaysia": "/blog-thumbnails/hot-weather-commute-comparison.png",
-  "hot-weather-commute-bundle-malaysia": "/blog-thumbnails/hot-weather-commute-bundle.png",
-  "hot-weather-commute-checklist-malaysia": "/blog-thumbnails/hot-weather-commute-checklist.png",
-  "campus-days-guide-malaysia": "/blog-thumbnails/campus-days-guide.png",
-  "campus-days-comparison-malaysia": "/blog-thumbnails/campus-days-comparison.png",
-  "campus-days-bundle-malaysia": "/blog-thumbnails/campus-days-bundle.png",
-  "campus-days-checklist-malaysia": "/blog-thumbnails/campus-days-checklist.png",
-  "weekend-city-trip-comparison-malaysia": "/blog-thumbnails/weekend-city-trip-comparison.png",
-};
 
 const copy: Record<string, {
   title: string;
@@ -178,13 +154,11 @@ export default async function LocalizedBlogIndexPage({
                   href={getLocalePath(localeCode, translation.slug) as any}
                 >
                   <span className="text-[1.35rem] font-normal sm:text-[1.65rem]">{index + 1}</span>
-                  <Image
-                    src={postThumbnails[post.slug] ?? cubeAssets[index % cubeAssets.length]}
+                  <img
+                    src={getPostCoverImage(post, localeCode)}
                     alt={`${translation.title} guide illustration`}
-                    width={288}
-                    height={288}
-                    sizes="(min-width: 640px) 192px, 128px"
-                    className="aspect-square w-full object-contain"
+                    className="aspect-square w-full rounded-lg object-cover"
+                    loading={index < 4 ? "eager" : "lazy"}
                   />
                   <span className="min-w-0">
                     <span className="block text-[1rem] font-medium leading-snug sm:text-[1.18rem]">
