@@ -19,6 +19,19 @@ const cubeAssets = [
   "/cube-frame.png",
 ];
 
+const postThumbnails: Record<string, string> = {
+  "dji-osmo-pocket-3-vs-creator-combo-malaysia": "/blog-thumbnails/dji-osmo-pocket-3-vs-creator-combo.png",
+  "eastel-vs-beone-vs-halo-prepaid-sim-malaysia": "/blog-thumbnails/eastel-vs-beone-vs-halo.png",
+  "hot-weather-commute-comparison-malaysia": "/blog-thumbnails/hot-weather-commute-comparison.png",
+  "hot-weather-commute-bundle-malaysia": "/blog-thumbnails/hot-weather-commute-bundle.png",
+  "hot-weather-commute-checklist-malaysia": "/blog-thumbnails/hot-weather-commute-checklist.png",
+  "campus-days-guide-malaysia": "/blog-thumbnails/campus-days-guide.png",
+  "campus-days-comparison-malaysia": "/blog-thumbnails/campus-days-comparison.png",
+  "campus-days-bundle-malaysia": "/blog-thumbnails/campus-days-bundle.png",
+  "campus-days-checklist-malaysia": "/blog-thumbnails/campus-days-checklist.png",
+  "weekend-city-trip-comparison-malaysia": "/blog-thumbnails/weekend-city-trip-comparison.png",
+};
+
 const copy: Record<string, {
   title: string;
   intro: string;
@@ -161,16 +174,17 @@ export default async function LocalizedBlogIndexPage({
             return (
               <article key={post.id}>
                 <Link
-                  className="grid grid-cols-[1.45rem_5.9rem_minmax(0,1fr)] items-center gap-3 text-black no-underline sm:grid-cols-[1.8rem_7.2rem_minmax(0,1fr)] sm:gap-4"
+                  className="grid grid-cols-[1.45rem_8rem_minmax(0,1fr)] items-center gap-3 text-black no-underline sm:grid-cols-[1.8rem_12rem_minmax(0,1fr)] sm:gap-5"
                   href={getLocalePath(localeCode, translation.slug) as any}
                 >
                   <span className="text-[1.35rem] font-normal sm:text-[1.65rem]">{index + 1}</span>
                   <Image
-                    src={cubeAssets[index % cubeAssets.length]}
+                    src={postThumbnails[post.slug] ?? cubeAssets[index % cubeAssets.length]}
                     alt={`${translation.title} guide illustration`}
                     width={288}
                     height={288}
-                    className="w-full object-contain"
+                    sizes="(min-width: 640px) 192px, 128px"
+                    className="aspect-square w-full object-contain"
                   />
                   <span className="min-w-0">
                     <span className="block text-[1rem] font-medium leading-snug sm:text-[1.18rem]">
