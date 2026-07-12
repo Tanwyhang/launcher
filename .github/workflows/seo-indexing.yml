@@ -1,0 +1,40 @@
+name: SEO indexing
+
+on:
+  push:
+    branches: [master]
+    paths:
+      - "data/pages.json"
+      - "app/**"
+      - "components/**"
+      - "lib/**"
+      - "scripts/indexing.mjs"
+
+permissions:
+  contents: read
+
+jobs:
+  submit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Audit published content
+        run: npm run indexing -- audit-content
+      - name: Wait for production and validate discovery files
+        run: npm run indexing -- validate-live --base-url https://www.launcher.my --wait 300
+      - name: Submit sitemap to Google Search Console
+        run: npm run indexing -- submit-google --optional
+        env:
+          SITE_URL: https://www.launcher.my
+          GOOGLE_SEARCH_CONSOLE_PROPERTY: sc-domain:launcher.my
+          GOOGLE_SEARCH_CONSOLE_CLIENT_EMAIL: ${{ secrets.GOOGLE_SEARCH_CONSOLE_CLIENT_EMAIL }}
+          GOOGLE_SEARCH_CONSOLE_PRIVATE_KEY: ${{ secrets.GOOGLE_SEARCH_CONSOLE_PRIVATE_KEY }}
+      - name: Notify IndexNow engines
+        run: npm run indexing -- submit-indexnow --optional
+        env:
+          SITE_URL: https://www.launcher.my
+          INDEXNOW_KEY: ${{ secrets.INDEXNOW_KEY }}
+          INDEXNOW_KEY_LOCATION: ${{ secrets.INDEXNOW_KEY_LOCATION }}

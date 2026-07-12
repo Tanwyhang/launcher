@@ -9,7 +9,8 @@
     "start": "next start",
     "lint": "next lint",
     "seo": "bun run cli/seo.ts",
-    "content-pipeline": "bun run cli/content-pipeline.ts"
+    "content-pipeline": "bun run cli/content-pipeline.ts",
+    "indexing": "node scripts/indexing.mjs"
   },
   "dependencies": {
     "@emotion/react": "^11.14.0",
