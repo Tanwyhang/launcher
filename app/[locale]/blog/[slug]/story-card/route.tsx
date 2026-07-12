@@ -30,46 +30,44 @@ export async function GET(request: Request, { params }: { params: Promise<{ loca
   const post = await getPostByIdOrSlug(slug);
   const translation = post?.status === "published" ? resolveTranslationForLocale(post, localeCode) : null;
   const labels = copy[localeCode];
-  const title = translation?.title || "launcher";
-  const headline = shorten(post?.pageConfig.primaryKeyword || title, localeCode === "zh-Hans" ? 44 : 76);
   const takeaway = translation?.keyTakeaways[0];
   const readMinutes = Math.max(4, Math.ceil(`${translation?.body || ""} ${translation?.sections.map((section) => section.sectionBody).join(" ") || ""}`.split(/\s+/).filter(Boolean).length / 180));
   const logoUrl = new URL("/logo.png", request.url).toString();
-  const visualImageUrl = translation?.heroImageUrl || (post?.status === "published" ? getPostCoverImage(post, localeCode) : "/cube-launcher-mark.png");
+  const visualImageUrl = post?.status === "published" ? getPostCoverImage(post, localeCode) : "/cube-launcher-mark.png";
   const coverImageUrl = new URL(visualImageUrl, request.url).toString();
 
   return new ImageResponse(
     <div
-      style={{ background: "#f6f5f2", color: "#121212", display: "flex", flexDirection: "column", height: "100%", padding: 64, width: "100%" }}
+      style={{ alignItems: "center", background: "#f5f4f1", color: "#121212", display: "flex", height: "100%", justifyContent: "center", width: "100%" }}
     >
-      <div style={{ alignItems: "center", display: "flex" }}>
-        <div style={{ alignItems: "center", background: "#111", borderRadius: 22, display: "flex", height: 66, justifyContent: "center", width: 66 }}>
-          <img alt="" height="38" src={logoUrl} style={{ filter: "invert(1)", objectFit: "contain" }} width="38" />
+      <div style={{ background: "white", border: "1px solid #dedbd4", borderRadius: 54, boxShadow: "0 24px 60px rgba(20, 20, 20, 0.11)", display: "flex", flexDirection: "column", overflow: "hidden", width: 850 }}>
+        <div style={{ alignItems: "center", display: "flex", padding: "48px 52px 40px" }}>
+          <div style={{ alignItems: "center", background: "#111", borderRadius: 28, display: "flex", height: 82, justifyContent: "center", width: 82 }}>
+            <img alt="" height="50" src={logoUrl} style={{ filter: "invert(1)", objectFit: "contain" }} width="50" />
+          </div>
+          <div style={{ display: "flex", flexDirection: "column", gap: 5, marginLeft: 20 }}>
+            <div style={{ display: "flex", fontSize: 32, fontWeight: 700 }}>launcher</div>
+            <div style={{ display: "flex", color: "#77736d", fontSize: 23 }}>{labels.eyebrow}</div>
+          </div>
         </div>
-        <div style={{ display: "flex", flexDirection: "column", gap: 2, marginLeft: 16 }}>
-          <div style={{ fontSize: 28, fontWeight: 700 }}>launcher</div>
-          <div style={{ color: "#77736d", fontSize: 19 }}>{labels.eyebrow}</div>
+
+        <div style={{ background: "white", display: "flex", height: 560, overflow: "hidden", padding: "0 52px", width: "100%" }}>
+          <img alt="" height="560" src={coverImageUrl} style={{ borderRadius: 30, height: "100%", objectFit: "cover", width: "100%" }} width="746" />
         </div>
-      </div>
 
-      <div style={{ display: "flex", fontSize: 68, fontWeight: 750, letterSpacing: -2.8, lineHeight: 1.04, marginTop: 54 }}>{headline}</div>
-
-      <div style={{ background: "white", borderRadius: 36, display: "flex", height: 660, marginTop: 48, overflow: "hidden", width: "100%" }}>
-        <img alt="" height="660" src={coverImageUrl} style={{ height: "100%", objectFit: "cover", objectPosition: "center", width: "100%" }} width="952" />
-      </div>
-
-      {takeaway ? (
-        <div style={{ borderLeft: "7px solid #111", color: "#222", display: "flex", fontSize: 38, fontWeight: 600, lineHeight: 1.26, marginTop: 48, paddingLeft: 28 }}>
-          {shorten(takeaway, localeCode === "zh-Hans" ? 70 : 135)}
+        <div style={{ display: "flex", flexDirection: "column", padding: "42px 52px 52px" }}>
+          <div style={{ display: "flex", color: "#77736d", fontSize: 23, fontWeight: 600, letterSpacing: 1.4, textTransform: "uppercase" }}>
+            {post?.pageConfig.market || "Malaysia"} · {readMinutes} min read
+          </div>
+          {takeaway ? (
+            <div style={{ borderLeft: "5px solid #111", color: "#222", display: "flex", fontSize: 30, lineHeight: 1.35, marginTop: 26, paddingLeft: 20 }}>
+              {shorten(takeaway, localeCode === "zh-Hans" ? 58 : 110)}
+            </div>
+          ) : null}
+          <div style={{ alignItems: "center", borderTop: "1px solid #e5e2dc", display: "flex", marginTop: 34, paddingTop: 28 }}>
+            <div style={{ display: "flex", fontSize: 24, fontWeight: 700 }}>{labels.read} → launcher.my</div>
+          </div>
         </div>
-      ) : null}
-
-      <div style={{ color: "#68645f", display: "flex", fontSize: 25, marginTop: 38 }}>
-        {post?.pageConfig.market || "Malaysia"} · {readMinutes} min read
-      </div>
-
-      <div style={{ alignItems: "center", borderTop: "1px solid #d9d5ce", display: "flex", marginTop: 64, paddingTop: 32 }}>
-        <div style={{ display: "flex", fontSize: 28, fontWeight: 700 }}>{labels.read} → launcher.my</div>
       </div>
     </div>,
     size,
