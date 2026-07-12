@@ -1,6 +1,6 @@
 import { ImageResponse } from "next/og";
 import { getPostByIdOrSlug } from "@/lib/db";
-import { resolveLocaleCodeFromSegment, resolveTranslationForLocale } from "@/lib/public-blog";
+import { getPostCoverImage, resolveLocaleCodeFromSegment, resolveTranslationForLocale } from "@/lib/public-blog";
 
 const size = { width: 1080, height: 1920 };
 
@@ -37,7 +37,9 @@ export async function GET(request: Request, { params }: { params: Promise<{ loca
   const summary = shorten(translation?.quickAnswer || "Independent comparisons with transparent tradeoffs.", localeCode === "zh-Hans" ? 110 : 245);
   const takeaway = translation?.keyTakeaways[0];
   const logoUrl = new URL("/logo.png", request.url).toString();
-  const cubeUrl = new URL("/cube-launcher-mark.png", request.url).toString();
+  const coverImageUrl = post?.status === "published"
+    ? new URL(getPostCoverImage(post, localeCode), request.url).toString()
+    : new URL("/cube-launcher-mark.png", request.url).toString();
 
   return new ImageResponse(
     <div
@@ -64,7 +66,7 @@ export async function GET(request: Request, { params }: { params: Promise<{ loca
           width: 850,
         }}
       >
-        <div style={{ alignItems: "center", display: "flex", padding: "42px 46px 34px" }}>
+        <div style={{ alignItems: "center", display: "flex", padding: "48px 52px 40px" }}>
           <div style={{ alignItems: "center", background: "#111", borderRadius: 28, display: "flex", height: 82, justifyContent: "center", width: 82 }}>
             <img alt="" height="50" src={logoUrl} style={{ filter: "invert(1)", objectFit: "contain" }} width="50" />
           </div>
@@ -75,14 +77,14 @@ export async function GET(request: Request, { params }: { params: Promise<{ loca
           <div style={{ color: "#77736d", display: "flex", fontSize: 34, marginLeft: "auto", marginTop: -22 }}>•••</div>
         </div>
 
-        <div style={{ background: "white", display: "flex", height: 610, overflow: "hidden", width: "100%" }}>
-          <img alt="" height="610" src={cubeUrl} style={{ height: "100%", objectFit: "cover", width: "100%" }} width="850" />
+        <div style={{ background: "white", display: "flex", height: 566, overflow: "hidden", padding: "0 52px", width: "100%" }}>
+          <img alt="" height="566" src={coverImageUrl} style={{ borderRadius: 30, height: "100%", objectFit: "cover", width: "100%" }} width="746" />
         </div>
 
-        <div style={{ display: "flex", flexDirection: "column", padding: "42px 48px 48px" }}>
+        <div style={{ display: "flex", flexDirection: "column", padding: "48px 52px 54px" }}>
           <div style={{ color: "#77736d", fontSize: 23, fontWeight: 600, letterSpacing: 1.4, textTransform: "uppercase" }}>{labels.region}</div>
-          <div style={{ fontSize: 54, fontWeight: 750, letterSpacing: -1.8, lineHeight: 1.08, marginTop: 18 }}>{title}</div>
-          <div style={{ color: "#55514c", fontSize: 28, lineHeight: 1.45, marginTop: 24 }}>{summary}</div>
+          <div style={{ fontSize: 52, fontWeight: 750, letterSpacing: -1.8, lineHeight: 1.1, marginTop: 20 }}>{title}</div>
+          <div style={{ color: "#55514c", fontSize: 27, lineHeight: 1.48, marginTop: 26 }}>{summary}</div>
           {takeaway ? (
             <div style={{ borderLeft: "5px solid #111", color: "#222", display: "flex", fontSize: 25, lineHeight: 1.4, marginTop: 28, paddingLeft: 20 }}>{shorten(takeaway, localeCode === "zh-Hans" ? 70 : 130)}</div>
           ) : null}
